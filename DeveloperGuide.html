@@ -80,7 +80,11 @@
 <li><a href="#GetStartedProgramming-RemarkCommand">A.2. Creating a new command: <code>remark</code></a></li>
 </ul>
 </li>
-<li><a href="#product-scope">Appendix B: Product Scope</a></li>
+<li><a href="#product-scope">Appendix B: Product Scope</a>
+<ul class="sectlevel2">
+<li><a href="#feature-contribution">B.1. Feature Contribution</a></li>
+</ul>
+</li>
 <li><a href="#user-stories">Appendix C: User Stories</a></li>
 <li><a href="#use-cases">Appendix D: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
@@ -1906,7 +1910,13 @@ for <code>RemarkCommandParser</code>.</p>
 <p>has a need to plan tuition slots for large number of students</p>
 </li>
 <li>
-<p>handle their contacts</p>
+<p>wants to store students' profile information and pictures</p>
+</li>
+<li>
+<p>wants to keep a progress log for students</p>
+</li>
+<li>
+<p>is able to reference common important student details like contact number</p>
 </li>
 <li>
 <p>prefer desktop apps over other types</p>
@@ -1924,6 +1934,118 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Value proposition</strong>: improve the planning process for scheduling time slots for all tutees</p>
+</div>
+<div class="sect2">
+<h3 id="feature-contribution"><a class="link" href="#feature-contribution">B.1. Feature Contribution</a></h3>
+<div class="paragraph">
+<p><strong>Samuel Loh:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>(Minor)</strong> Added programmingLanguage field to student model and modified add/edit commands to fit enhancement</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor to identify what programming language is being used by each student to learn coding.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Major)</strong> Create a "more information" page storing other important details of the students including an optional profile picture.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor store more information about students, which are not referenced as often, in another portion and thus are not displayed on the student card.
+E.g. emergency contact and an optional profile picture</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tan Wei Hao:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>(Minor)</strong> Added a findTag command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This allows the tutor to find a student by tag labels.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Major)</strong> Syncing timetable with Google calendar</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor keep track of lessons better by syncing with his Google calendar. It also allows the use of Google calendar features.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tan Chee Wee:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>(Minor)</strong> Selecting a student via 'select' commands renders their location on google maps</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This allows the tutor to easily plan a route to the student&#8217;s home.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Major)</strong> Add a functionality that enables tutor to use free-form english to execute commands instead of conforming to the specific syntax</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This makes the app more user-friendly without the need to memorise the syntax of respective commands and able to execute them more intuitively.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Yap ni:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>(Minor)</strong> Favourites feature where tutors can add or remove students from favourites and list students that are in their favourites</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor to remember or view the list of prominent students they want to take note of easily.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Major)</strong> Dashboard feature where each student has their own dashboard</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor to better plan out lessons for each student and track their learning progress.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -2416,7 +2538,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-17 09:56:22 UTC
+Last updated 2018-03-19 15:11:21 UTC
 </div>
 </div>
 </body>
