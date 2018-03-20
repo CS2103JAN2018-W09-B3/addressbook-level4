@@ -46,8 +46,9 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#programming-language-feature">3.3. Programming Language Feature</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -879,14 +880,162 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="programming-language-feature"><a class="link" href="#programming-language-feature">3.3. Programming Language Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The programming language feature involves having an additional class to the student model called <code>ProgrammingLanguage</code>.
+It stores the name of the programming language currently being taught to each student as a string.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The string for <code>ProgrammingLanguage</code> must contain visible characters.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelWithPLFeature.png" alt="ModelWithPLFeature" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen from the diagram, the field <code>ProgrammingLanuage</code> has been added to the student model.</p>
+</div>
+<div class="paragraph">
+<p>Concerning the Logic component, when the <code>add</code> command or <code>edit</code> command is called,
+a <code>Student</code> object with attributes including <code>ProgrammingLanguage</code> will be created/edited depending on which command was entered.</p>
+</div>
+<div class="paragraph">
+<p>For example, adding a student would have the command string parsed for arguments in such a way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> AddCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
+        <span class="comment">// ...Tokenize the String Input...</span>
+
+        <span class="comment">// ...Check if prefixes are present...</span>
+
+        <span class="keyword">try</span> {
+            <span class="comment">// ...Parses the other fields required of a Student...</span>
+
+            ProgrammingLanguage programmingLanguage = ParserUtil.parseSubject(argMultimap
+                    .getValue(PREFIX_PROGRAMMING_LANGUAGE)).get();
+
+            Student student = <span class="keyword">new</span> Student(name, phone, email, address, programmingLanguage, tagList);
+
+            <span class="keyword">return</span> <span class="keyword">new</span> AddCommand(student);
+                } <span class="keyword">catch</span> (IllegalValueException ive) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(ive.getMessage(), ive);
+        }
+        }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A new student would then be added. On the other hand, editing a student&#8217;s programming language will be done by creating an edited student in such a way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student studentToEdit, EditStudentDescriptor editStudentDescriptor) {
+        <span class="keyword">assert</span> studentToEdit != <span class="predefined-constant">null</span>;
+
+        <span class="comment">// ...Set other attributes of the prospective newly edited student...</span>
+
+        ProgrammingLanguage updatedProgrammingLanguage = editStudentDescriptor.getProgrammingLanguage();
+
+        <span class="keyword">return</span> <span class="keyword">new</span> Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedProgrammingLanguage,
+                updatedTags);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The editedStudent will have the new programming language attribute and will hence be used to replace in the Address Book in-memory.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-store-code-programminglanguage-code-for-a-code-student-code"><a class="link" href="#aspect-how-to-store-code-programminglanguage-code-for-a-code-student-code">Aspect: How to store <code>ProgrammingLanguage</code> for a <code>Student</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Store as an attribute of Student.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to keep track of as well as modify.</p>
+</li>
+<li>
+<p>Cons: Coupling increases as more classes (<code>ProgrammingLanguage</code> and <code>Student</code>) are associated with each other.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store as a separate list and have each student index in the UniqueStudentsList be mapped to each item in the list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less coupling so less need to refactor code</p>
+</li>
+<li>
+<p>Cons: Might be messier to implement, especially if the UniqueStudentsList have it&#8217;s students swapping indexes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-what-command-to-add-code-programminglanguage-code-to-code-student-code"><a class="link" href="#aspect-what-command-to-add-code-programminglanguage-code-to-code-student-code">Aspect: What command to add <code>ProgrammingLanguage</code> to <code>Student</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Implement it through the existing <code>add</code> command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Intuitive and the user does not have to learn an additional command</p>
+</li>
+<li>
+<p>Cons: User will have to type a longer string for add command to include the programming language used by the student.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Implement it as a new command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User will be able to add or modify <code>ProgrammingLanguage</code> one or possibly even a few students at their own discretion.</p>
+</li>
+<li>
+<p>Cons: User will have to learn a new specific command and might also be slightly difficult to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -917,7 +1066,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2538,7 +2687,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-19 15:11:21 UTC
+Last updated 2018-03-20 15:39:38 UTC
 </div>
 </div>
 </body>
