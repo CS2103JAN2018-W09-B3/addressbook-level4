@@ -46,9 +46,10 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#programming-language-feature">3.3. Programming Language Feature</a></li>
-<li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#location-feature">3.3. Location feature</a></li>
+<li><a href="#programming-language-feature">3.4. Programming Language Feature</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -880,9 +881,74 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="programming-language-feature"><a class="link" href="#programming-language-feature">3.3. Programming Language Feature</a></h3>
+<h3 id="location-feature"><a class="link" href="#location-feature">3.3. Location feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Selecting a student using the <code>select</code> command will render their location on google maps.</p>
+</div>
+<div class="paragraph">
+<p>The address of the student is extracted and converted in a string to be appended to the end of the <code>SEARCH_PAGE_URL</code> in the following function</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    private void loadStudentPage(Student student) {
+        Address location = student.getAddress();
+        String append = location.urlstyle();
+        loadPage(SEARCH_PAGE_URL + append);
+    }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example is provided below when <code>select 1</code> is entered as a command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/location_screenshot.png" alt="location screenshot" width="300">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-displaying-student-locations"><a class="link" href="#aspect-implementation-of-displaying-student-locations">Aspect: Implementation of displaying student locations</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: display it on the embedded browser</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement, simply alter the default webpage</p>
+</li>
+<li>
+<p>Cons: Might not be able to display student information and location simultaneously</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: creating a new window to display the location</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This would allow concurrent display of locations of many students</p>
+</li>
+<li>
+<p>Cons: the UI would be messy and user has to navigate between 2 different windows</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="programming-language-feature"><a class="link" href="#programming-language-feature">3.4. Programming Language Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The programming language feature involves having an additional class to the student model called <code>ProgrammingLanguage</code>.
 It stores the name of the programming language currently being taught to each student as a string.</p>
@@ -958,7 +1024,7 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-store-code-programminglanguage-code-for-a-code-student-code"><a class="link" href="#aspect-how-to-store-code-programminglanguage-code-for-a-code-student-code">Aspect: How to store <code>ProgrammingLanguage</code> for a <code>Student</code></a></h5>
 <div class="ulist">
@@ -1028,14 +1094,14 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1066,7 +1132,7 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2687,7 +2753,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 15:39:38 UTC
+Last updated 2018-03-20 15:54:31 UTC
 </div>
 </div>
 </body>
