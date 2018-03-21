@@ -46,10 +46,11 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#location-feature">3.3. Location feature</a></li>
-<li><a href="#programming-language-feature">3.4. Programming Language Feature</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#favourites-feature">3.3. Favourites feature</a></li>
+<li><a href="#location-feature">3.4. Location feature</a></li>
+<li><a href="#programming-language-feature">3.5. Programming Language Feature</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -881,9 +882,109 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="location-feature"><a class="link" href="#location-feature">3.3. Location feature</a></h3>
+<h3 id="favourites-feature"><a class="link" href="#favourites-feature">3.3. Favourites feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To facilitate the favourite/unfavourite feature, a <code>Favourite</code> attribute is added to the <code>Student</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/StudentClassDiagram.png" alt="StudentClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Since the implementation of the favourite and unfavourite command are similar, we will talk about the implementation of the favourite command only.</p>
+</div>
+<div class="paragraph">
+<p>The logic part of the favourite command will be executed by the <code>FavouriteCommand</code> class.
+To mark a <code>Student</code> object called "studentToFavourite" as favourite:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A Student object called "editedStudent" will be created by <code>FavouriteCommand.createEditedStudent(Student)</code>, which is implemented as such:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    private static Student createEditedStudent(Student target) {
+        assert target != null;
+
+        Name name = target.getName();
+        Phone phone = target.getPhone();
+        // ... get the rest of the target's attributes ...
+        Favourite fav = new Favourite(true);
+
+        return new Student(name, phone, email, address, programmingLanguage, tags, fav, dashboard);
+    }</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>editedStudent will have the attributes of studentToFavourite, except that its <code>Favourite</code> attribute will be set to "true"</p>
+</li>
+<li>
+<p><code>Model.updateStudent(Student, Student)</code> is used to replace studentToFavourite with editedStudent in the Address Book in-memory</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have a future implementation that requires the addition of a new attribute in the <code>Student</code> class, you must take note of updating the <code>FavouriteCommand.createEditedStudent(Student)</code> method to reflect the new attribute.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-favouritecommand"><a class="link" href="#aspect-implementation-of-favouritecommand">Aspect: Implementation of 'FavouriteCommand'</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Add a <code>Favourite</code> attribute to <code>Student</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: It is easy to mark a student as favourite since we can make use of the current <code>Model.updateStudent(Student, Student)</code> method by creating a copy of the target <code>Student</code> object, with the value of its <code>Favourite</code> attribute set to "true"</p>
+</li>
+<li>
+<p>Con: Creating a copy of the <code>Student</code> object can be inefficient</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Create a new <code>UniqueFavouriteStudentsList</code> that contains the list of students in favourites and store this list in the Address Book</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Students that are currently in favourites can be managed more easily since there is a direct overview of which student is in favourites</p>
+</li>
+<li>
+<p>Con: Students in the <code>UniqueFavouriteStudentsList</code> have to be synced with the <code>UniqueStudentsList</code>. For example, we have to ensure that deleting a student in the <code>UniqueStudentList</code> deletes the student in the <code>UniqueFavouriteStudentsList</code> too</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="location-feature"><a class="link" href="#location-feature">3.4. Location feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Selecting a student using the <code>select</code> command will render their location on google maps.</p>
 </div>
@@ -909,7 +1010,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-displaying-student-locations"><a class="link" href="#aspect-implementation-of-displaying-student-locations">Aspect: Implementation of displaying student locations</a></h5>
 <div class="ulist">
@@ -946,9 +1047,9 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="programming-language-feature"><a class="link" href="#programming-language-feature">3.4. Programming Language Feature</a></h3>
+<h3 id="programming-language-feature"><a class="link" href="#programming-language-feature">3.5. Programming Language Feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The programming language feature involves having an additional class to the student model called <code>ProgrammingLanguage</code>.
 It stores the name of the programming language currently being taught to each student as a string.</p>
@@ -1024,7 +1125,7 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-to-store-code-programminglanguage-code-for-a-code-student-code"><a class="link" href="#aspect-how-to-store-code-programminglanguage-code-for-a-code-student-code">Aspect: How to store <code>ProgrammingLanguage</code> for a <code>Student</code></a></h5>
 <div class="ulist">
@@ -1094,14 +1195,14 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1132,7 +1233,7 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2753,7 +2854,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-21 10:01:07 UTC
+Last updated 2018-03-21 12:05:25 UTC
 </div>
 </div>
 </body>
