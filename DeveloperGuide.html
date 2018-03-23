@@ -49,8 +49,9 @@
 <li><a href="#favourites-feature">3.3. Favourites feature</a></li>
 <li><a href="#location-feature">3.4. Location feature</a></li>
 <li><a href="#programming-language-feature">3.5. Programming Language Feature</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#schedule-feature">3.6. Schedule feature</a></li>
+<li><a href="#logging">3.7. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1195,14 +1196,99 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="schedule-feature"><a class="link" href="#schedule-feature">3.6. Schedule feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.6.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To get better control of one&#8217;s weekly schedule, we will now attach a component called <code>Schedule</code> to <code>Model</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ScheduleClassDiagram.png" alt="ScheduleClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>Schedule</code> is a list of <code>Lessons</code>. A <code>Lesson</code> has a <code>Student</code> attribute, a <code>Day</code> attribute, a starting <code>TIME START_TIME</code> and an ending <code>TIME END_TIME</code> attribute</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Lesson</code> object called <code>newLesson</code> will be created by <code>ModelManager.addLesson(Student, Day, Time START_TIME, Time END_TIME)</code>, which is implemented as such:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    public void addLesson(Student studentToAddLesson, Day day, Time startTime, Time endTime)
+            throws DuplicateLessonException, StudentNotFoundException, InvalidLessonTimeSlotException {
+        //Check for Duplicate Lesson, StudentNotFound, invalid input ime
+
+        schedule.addLesson(newLesson);
+    }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The student will be selected by the Index of the last seen list of students. A new <code>Lesson</code> will now be added for that student at the specific <code>Day</code>, <code>START_TIME</code> and <code>END_TIME</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have a future implementation that requires the addition of a new attribute in the <code>Schedule</code> class, you must take note of updating the <code>Model.addLesson(Student, Day, Time START_TIME, Time END_TIME)</code> method to reflect the new attribute.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-schedule-code"><a class="link" href="#aspect-implementation-of-code-schedule-code">Aspect: Implementation of <code>Schedule</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: <code>Schedule</code> contains <code>Lesson</code> classes that is made up of one layer, with attributes directly attached to <code>Lesson</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: It is easier implement, just add <code>Lesson</code> to a <code>Schedule</code>, which is a list of <code>Lessons</code></p>
+</li>
+<li>
+<p>Con: Results in more coupling, attributes could have been furthur separated out. It is inefficient to search by <code>Day</code>. Searching for empty slot requires linear searching.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: <code>Lesson</code> contains two layers of classes, <code>Day</code> is attached to <code>Schedule</code> and <code>Lesson</code> is attached to <code>Day</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Less coupling and more cohesive design</p>
+</li>
+<li>
+<p>Con: Much harder to implement and gets overly complicated</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1233,7 +1319,7 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2854,7 +2940,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-22 11:31:47 UTC
+Last updated 2018-03-23 16:10:15 UTC
 </div>
 </div>
 </body>
