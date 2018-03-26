@@ -50,8 +50,9 @@
 <li><a href="#location-feature">3.4. Location feature</a></li>
 <li><a href="#programming-language-feature">3.5. Programming Language Feature</a></li>
 <li><a href="#schedule-feature">3.6. Schedule feature</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#dashboard-feature">3.7. Dashboard feature</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -522,6 +523,12 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="title">Figure 9. Structure of the Model Component</div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width=""800">
+</div>
+<div class="title">Figure 10. Structure of the Dashboard Class. This diagram shows finer details about the Dashboard Class.</div>
+</div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-W09-B3/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
@@ -551,7 +558,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Structure of the Storage Component</div>
+<div class="title">Figure 11. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103JAN2018-W09-B3/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -887,7 +894,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>To facilitate the favourite/unfavourite feature, a <code>Favourite</code> attribute is added to the <code>Student</code> class:</p>
+<p>To facilitate the favourite/unfavourite feature, an association with a new <code>Favourite</code> class is added to the <code>Student</code> class:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -904,22 +911,23 @@ To mark a <code>Student</code> object called "studentToFavourite" as favourite:<
 <div class="ulist">
 <ul>
 <li>
-<p>A Student object called "editedStudent" will be created by <code>FavouriteCommand.createEditedStudent(Student)</code>, which is implemented as such:</p>
+<p>A Student object called "editedStudent" will be returned by <code>FavouriteCommand.createEditedStudent(Student)</code> to the <code>FavouriteCommand.preprocess()</code> method.
+<code>FavouriteCommand.createEditedStudent(Student)</code> is implemented as such:</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    private static Student createEditedStudent(Student target) {
-        assert target != null;
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student target) {
+        <span class="keyword">assert</span> target != <span class="predefined-constant">null</span>;
 
-        Name name = target.getName();
+        <span class="predefined-type">Name</span> name = target.getName();
         Phone phone = target.getPhone();
-        // ... get the rest of the target's attributes ...
-        Favourite fav = new Favourite(true);
+        <span class="comment">// ... get the rest of the target's attributes ...</span>
+        Favourite fav = <span class="keyword">new</span> Favourite(<span class="predefined-constant">true</span>);
 
-        return new Student(name, phone, email, address, programmingLanguage, tags, fav, dashboard);
-    }</pre>
+        <span class="keyword">return</span> <span class="keyword">new</span> Student(name, phone, email, address, programmingLanguage, tags, fav, dashboard);
+    }</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -927,10 +935,10 @@ To mark a <code>Student</code> object called "studentToFavourite" as favourite:<
 <li>
 <p>editedStudent will have the attributes of studentToFavourite, except that its <code>Favourite</code> attribute will be set to "true"</p>
 </li>
-<li>
-<p><code>Model.updateStudent(Student, Student)</code> is used to replace studentToFavourite with editedStudent in the Address Book in-memory</p>
-</li>
 </ul>
+</div>
+<div class="paragraph">
+<p>In the <code>FavouriteCommand.execute()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace studentToFavourite with editedStudent in the Address Book in-memory.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1281,14 +1289,160 @@ If you have a future implementation that requires the addition of a new attribut
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="dashboard-feature"><a class="link" href="#dashboard-feature">3.7. Dashboard feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To have a dashboard for each student, an association with a new <code>Dashboard</code> class is added to the <code>Student</code> class. We have also created new classes associated with the <code>Dashboard</code> class to facilitate the different capabilities of the dashboard.
+The following diagram shows the structure of the classes that facilitate the dashboard feature:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><code>Dashboard</code> and <code>Milestone</code> are exposed to <code>ObservableList&lt;Milestone&gt;</code> and <code>ObservableList&lt;Task&gt;</code> respectively that can be 'observed'.
+This means that the UI can be bound to both of the lists so that the UI automatically updates when the data in both lists change.</p>
+</div>
+<div class="paragraph">
+<p>A new <code>Dashboard</code> object is created every time a new <code>Student</code> is being created. The <code>Dashboard</code> object will contain an empty milestone list until the user adds new milestones to the dashboard.
+This enforces 1-to-1 association between <code>Student</code> and <code>Dashboard</code>, as well as between <code>Dashboard</code> and <code>UniqueMilestoneList</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, the constructor for <code>Student</code> is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> Student(<span class="predefined-type">Name</span> name, Phone phone, Email email, Address address, ProgrammingLanguage programmingLanguage, <span class="predefined-type">Set</span>&lt;Tag&gt; tags) {
+        requireAllNonNull(name, phone, email, address, tags);
+        <span class="local-variable">this</span>.name = name;
+        <span class="local-variable">this</span>.phone = phone;
+        <span class="comment">// ... initialise the rest of the attributes ...</span>
+        <span class="local-variable">this</span>.dashboard = <span class="keyword">new</span> Dashboard();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The constructor for <code>Dashboard</code> is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> Dashboard() {
+        milestoneList = <span class="keyword">new</span> UniqueMilestoneList();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>AddMilestoneCommand</code>, <code>AddTaskCommand</code>, <code>CheckTaskCommand</code> and <code>ShowDashboardCommand</code> commands facilitate operations to the dashboard.
+A common implementation for commands that modify the dashboard (e.g. <code>AddMilestoneCommand</code>) is that a new copy of <code>Dashboard</code> is created with the new modification.</p>
+</div>
+<div class="paragraph">
+<p>For example, in the <code>AddMilestoneCommand</code>, to add a new milestone object to the dashboard of a <code>Student</code> Object called "studentToEdit":</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Student</code> object called "editedStudent" will be returned by the <code>AddMilestoneCommand.createEditedStudent(Student, Milestone)</code> method to the <code>AddMilestoneCommand.preprocess()</code> method.
+<code>AddMilestoneCommand.createEditedStudent(Student, Milestone)</code> is implemented as such:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    private Student createEditedStudent(Student studentToEdit, Milestone newMilestone)
+            throws DuplicateMilestoneException {
+        requireAllNonNull(studentToEdit, newMilestone);
+
+        /* Get all the attributes of the student */
+        Name name = studentToEdit.getName();
+        Phone phone = studentToEdit.getPhone();
+        // ... get remaining attributes of the student ...
+        UniqueMilestoneList milestoneList = studentToEdit.getDashboard().getMilestoneList();
+
+        milestoneList.add(newMilestone);
+
+        Dashboard dashboard = new Dashboard(milestoneList, homeworkList);
+
+        return new Student(name, phone, email, address, programmingLanguage, tags, fav, dashboard);
+    }</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The new <code>Milestone</code> object is added to the <code>UniqueMilestoneList</code> object that belongs to the <code>Dashboard</code> of "studentToEdit"</p>
+</li>
+<li>
+<p>A new <code>Dashboard</code> object is created with the updated <code>UniqueMilestoneList</code> object</p>
+</li>
+<li>
+<p>"editedStudent" is created with the same attributes of "targetStudent", but with the new <code>Dashboard</code> object</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the <code>AddMilestoneCommand.execute()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "targetStudent" with "editedStudent" in the Address Book in-memory</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have a future implementation that requires the addition of a new attribute in the <code>Student</code> class, you must take note of updating the <code>X.createEditedStudent(&#8230;&#8203;)</code> method, where X is any command that modifies the dashboard, to reflect the new attribute.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-dashboard-feature"><a class="link" href="#aspect-data-structure-to-support-the-dashboard-feature">Aspect: Data structure to support the dashboard feature</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Add a <code>Dashboard</code> association to <code>Student</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Able to access the dashboard of a student easily.</p>
+</li>
+<li>
+<p>Con: Since <code>Student</code> is immutable, a new <code>Student</code> object has to be created each time its <code>Dashboard</code> is modified.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Add a new <code>UniqueDashboardList</code> association to <code>AddressBook</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Able to modify the dashboard easily if it is not made immutable.</p>
+</li>
+<li>
+<p>Con: We will have to sync the <code>UniqueDashboardList</code> with the <code>UniqueStudentList</code> since <code>Dashboard</code> will be associated to a <code>Student</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1319,7 +1473,7 @@ If you have a future implementation that requires the addition of a new attribut
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1385,7 +1539,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 12. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2940,7 +3094,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-26 17:04:39 UTC
+Last updated 2018-03-26 17:06:09 UTC
 </div>
 </div>
 </body>
