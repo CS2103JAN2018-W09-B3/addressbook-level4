@@ -44,15 +44,16 @@
 <li><a href="#selecting-a-student-code-select-code">3.14. Selecting a student : <code>select</code></a></li>
 <li><a href="#viewing-your-schedule-code-schedule-code">3.15. Viewing your schedule : <code>schedule</code></a></li>
 <li><a href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.16. Adding a lesson to your schedule: <code>addLesson</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.17. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.18. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.19. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.20. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.21. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.22. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.23. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.24. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.25. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
+<li><a href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.17. Deleting a lesson in your schedule: <code>deleteLesson</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.18. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.19. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.20. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.21. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.22. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.23. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.24. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.25. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.26. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -737,6 +738,18 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 <p>Shows your weekly schedule as a list of lessons.<br>
 Format: <code>schedule</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Currently displayed in the terminal. UI will be added in coming weeks.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="adding-a-lesson-to-your-schedule-code-addlesson-code"><a class="link" href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.16. Adding a lesson to your schedule: <code>addLesson</code></a></h3>
@@ -752,13 +765,13 @@ Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
 <p>Adds a lesson for the student at the specified <code>INDEX</code>. The index refers to the index number shown in the last student listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The day for the input is the first three letters (non-case sensitive) of the name of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
+<p>The day for the input is the abbreviated first three letters (non-case sensitive) of the name of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
 </li>
 <li>
 <p>The time input must be in the format <code>HH:MM</code>, seperated by a colon &#8216;:&#8217;</p>
 </li>
 <li>
-<p>The time input must be a valid time within the range of <code>00:00</code> to <code>23:59</code></p>
+<p>The time input must be a valid 24-hour time within the range of <code>00:00</code> to <code>23:59</code></p>
 </li>
 <li>
 <p>Input lesson cannot clash with existing lessons already in the schedule.</p>
@@ -773,14 +786,61 @@ Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>list</code></p>
+</li>
+<li>
 <p><code>addLesson 1 d/mon st/10:00 et/10:30</code><br>
-Adds a lesson for the 1st student. Lesson time will be on <code>mon</code> and starting time will be <code>10:00</code> and ending time will be <code>10:30</code>.</p>
+Adds a lesson for the 1st student of the <code>list</code> command. Lesson will be held on the day of <code>mon</code> and starting time will be <code>10:00</code> and ending time will be <code>10:30</code>.</p>
+</li>
+<li>
+<p><code>find Betsy</code></p>
+</li>
+<li>
+<p><code>addLesson 1 d/tue st/12:00 et/13:30</code><br>
+Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson will be held on the day of <code>tue</code> and starting time will be <code>12:00</code> and ending time will be <code>13:30</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.17. Listing entered commands : <code>history</code></a></h3>
+<h3 id="deleting-a-lesson-in-your-schedule-code-deletelesson-code"><a class="link" href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.17. Deleting a lesson in your schedule: <code>deleteLesson</code></a></h3>
+<div class="paragraph">
+<p>Deletes an existing lesson in your schedule identified by the index number in the last schedule listing. of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>deleteLesson INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes a lesson for the student at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the last schedule listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>schedule</code></p>
+</li>
+<li>
+<p><code>deleteLesson 2</code><br>
+Deletes the 2nd lesson listing in the schedule</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.18. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -801,7 +861,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.18. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.19. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -846,7 +906,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.19. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.20. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -878,40 +938,40 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.20. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.21. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.21. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.22. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.22. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.23. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.23. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.24. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code"><a class="link" href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.24. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code"><a class="link" href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.25. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>_{Explain command to obtain full information page for each student}</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.25. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
+<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.26. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
 
 </div>
 </div>
@@ -975,7 +1035,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 02:57:32 UTC
+Last updated 2018-03-27 03:06:25 UTC
 </div>
 </div>
 </body>
