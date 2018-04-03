@@ -525,7 +525,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width=""800">
+<img src="images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width="400">
 </div>
 <div class="title">Figure 10. Structure of the Dashboard Class. This diagram shows finer details about the Dashboard Class.</div>
 </div>
@@ -919,14 +919,9 @@ To mark a <code>Student</code> object called "studentToFavourite" as favourite:<
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student target) {
-        <span class="keyword">assert</span> target != <span class="predefined-constant">null</span>;
+        requireNonNull(target);
 
-        <span class="predefined-type">Name</span> name = target.getName();
-        Phone phone = target.getPhone();
-        <span class="comment">// ... get the rest of the target's attributes ...</span>
-        Favourite fav = <span class="keyword">new</span> Favourite(<span class="predefined-constant">true</span>);
-
-        <span class="keyword">return</span> <span class="keyword">new</span> Student(name, phone, email, address, programmingLanguage, tags, fav, dashboard);
+        <span class="keyword">return</span> <span class="keyword">new</span> StudentBuilder(target).withFavourite(<span class="predefined-constant">true</span>).build();
     }</code></pre>
 </div>
 </div>
@@ -939,18 +934,6 @@ To mark a <code>Student</code> object called "studentToFavourite" as favourite:<
 </div>
 <div class="paragraph">
 <p>In the <code>FavouriteCommand.execute()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace studentToFavourite with editedStudent in the Address Book in-memory.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If you have a future implementation that requires the addition of a new attribute in the <code>Student</code> class, you must take note of updating the <code>FavouriteCommand.createEditedStudent(Student)</code> method to reflect the new attribute.
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect3">
@@ -1298,11 +1281,11 @@ The following diagram shows the structure of the classes that facilitate the das
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width="800">
+<img src="images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width="500">
 </div>
 </div>
 <div class="paragraph">
-<p><code>Dashboard</code> and <code>Milestone</code> are exposed to <code>ObservableList&lt;Milestone&gt;</code> and <code>ObservableList&lt;Task&gt;</code> respectively that can be 'observed'.
+<p><code>UniqueMilestoneList</code> and <code>UniqueTaskList</code> are associated to <code>ObservableList&lt;Milestone&gt;</code> and <code>ObservableList&lt;Task&gt;</code> respectively that can be 'observed'.
 This means that the UI can be bound to both of the lists so that the UI automatically updates when the data in both lists change.</p>
 </div>
 <div class="paragraph">
@@ -1338,7 +1321,7 @@ This enforces 1-to-1 association between <code>Student</code> and <code>Dashboar
 A common implementation for commands that modify the dashboard (e.g. <code>AddMilestoneCommand</code>) is that a new copy of <code>Dashboard</code> is created with the new modification.</p>
 </div>
 <div class="paragraph">
-<p>For example, in the <code>AddMilestoneCommand</code>, to add a new milestone object to the dashboard of a <code>Student</code> Object called "studentToEdit":</p>
+<p>For example, in the <code>AddMilestoneCommand</code>, to add a new milestone object to the dashboard of a <code>Student</code> Object called "targetStudent":</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1350,51 +1333,22 @@ A common implementation for commands that modify the dashboard (e.g. <code>AddMi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    private Student createEditedStudent(Student studentToEdit, Milestone newMilestone)
-            throws DuplicateMilestoneException {
+<pre>    private Student createEditedStudent(Student studentToEdit, Milestone newMilestone) throws DuplicateMilestoneException {
         requireAllNonNull(studentToEdit, newMilestone);
 
-        /* Get all the attributes of the student */
-        Name name = studentToEdit.getName();
-        Phone phone = studentToEdit.getPhone();
-        // ... get remaining attributes of the student ...
-        UniqueMilestoneList milestoneList = studentToEdit.getDashboard().getMilestoneList();
-
-        milestoneList.add(newMilestone);
-
-        Dashboard dashboard = new Dashboard(milestoneList, homeworkList);
-
-        return new Student(name, phone, email, address, programmingLanguage, tags, fav, dashboard);
+        return new StudentBuilder(studentToEdit).withNewMilestone(newMilestone).build();
     }</pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The new <code>Milestone</code> object is added to the <code>UniqueMilestoneList</code> object that belongs to the <code>Dashboard</code> of "studentToEdit"</p>
-</li>
-<li>
-<p>A new <code>Dashboard</code> object is created with the updated <code>UniqueMilestoneList</code> object</p>
-</li>
-<li>
-<p>"editedStudent" is created with the same attributes of "targetStudent", but with the new <code>Dashboard</code> object</p>
+<p>"editedStudent" is created with the same attributes of "targetStudent", but with a new <code>Dashboard</code> object containing the new milestone</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>In the <code>AddMilestoneCommand.execute()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "targetStudent" with "editedStudent" in the Address Book in-memory</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If you have a future implementation that requires the addition of a new attribute in the <code>Student</code> class, you must take note of updating the <code>X.createEditedStudent(&#8230;&#8203;)</code> method, where X is any command that modifies the dashboard, to reflect the new attribute.
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect3">
@@ -3124,7 +3078,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 14:27:39 UTC
+Last updated 2018-04-03 14:55:01 UTC
 </div>
 </div>
 </body>

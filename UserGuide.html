@@ -38,22 +38,23 @@
 <li><a href="#remove-a-student-from-favourites-code-unfav-code">3.8. Remove a student from favourites : <code>unfav</code></a></li>
 <li><a href="#show-the-dashboard-of-a-student-code-showdb-code">3.9. Show the dashboard of a student: <code>showDB</code></a></li>
 <li><a href="#add-a-milestone-to-a-student-s-dashboard-code-addms-code">3.10. Add a milestone to a student&#8217;s dashboard: <code>addMS</code></a></li>
-<li><a href="#add-a-task-to-a-milestone-code-addtask-code">3.11. Add a task to a milestone: <code>addTask</code></a></li>
-<li><a href="#mark-a-task-as-completed-code-checktask-code">3.12. Mark a task as completed: <code>checkTask</code></a></li>
-<li><a href="#deleting-a-student-code-delete-code">3.13. Deleting a student : <code>delete</code></a></li>
-<li><a href="#selecting-a-student-code-select-code">3.14. Selecting a student : <code>select</code></a></li>
-<li><a href="#viewing-your-schedule-code-schedule-code">3.15. Viewing your schedule : <code>schedule</code></a></li>
-<li><a href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.16. Adding a lesson to your schedule: <code>addLesson</code></a></li>
-<li><a href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.17. Deleting a lesson in your schedule: <code>deleteLesson</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.18. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.19. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.20. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.21. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.22. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.23. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.24. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.25. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.26. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
+<li><a href="#delete-a-milestone-from-a-student-s-dashboard-code-deletems-code">3.11. Delete a milestone from a student&#8217;s dashboard: <code>deleteMS</code></a></li>
+<li><a href="#add-a-task-to-a-milestone-code-addtask-code">3.12. Add a task to a milestone: <code>addTask</code></a></li>
+<li><a href="#mark-a-task-as-completed-code-checktask-code">3.13. Mark a task as completed: <code>checkTask</code></a></li>
+<li><a href="#deleting-a-student-code-delete-code">3.14. Deleting a student : <code>delete</code></a></li>
+<li><a href="#selecting-a-student-code-select-code">3.15. Selecting a student : <code>select</code></a></li>
+<li><a href="#viewing-your-schedule-code-schedule-code">3.16. Viewing your schedule : <code>schedule</code></a></li>
+<li><a href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.17. Adding a lesson to your schedule: <code>addLesson</code></a></li>
+<li><a href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.18. Deleting a lesson in your schedule: <code>deleteLesson</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.19. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.20. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.21. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.22. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.24. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.25. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.26. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.27. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -461,6 +462,18 @@ Format: <code>showDB INDEX</code></p>
 </div>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A dashboard provides at-a-glance view of your student&#8217;s progress. Each dashboard contains a list of milestones and tasks that you can set for your student.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -490,7 +503,7 @@ Format: <code>addMS i/STUDENT_INDEX d/DUE_DATE o/DESCRIPTION</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Adds a milestone to a dashboard of a student at the specified <code>STUDENT_INDEX</code>.</p>
+<p>Adds a milestone to the dashboard of a student at the specified <code>STUDENT_INDEX</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -536,7 +549,51 @@ Adds a milestone to the dashboard of the 2nd person in the results of the <code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-a-task-to-a-milestone-code-addtask-code"><a class="link" href="#add-a-task-to-a-milestone-code-addtask-code">3.11. Add a task to a milestone: <code>addTask</code></a></h3>
+<h3 id="delete-a-milestone-from-a-student-s-dashboard-code-deletems-code"><a class="link" href="#delete-a-milestone-from-a-student-s-dashboard-code-deletems-code">3.11. Delete a milestone from a student&#8217;s dashboard: <code>deleteMS</code></a></h3>
+<div class="paragraph">
+<p>Deletes a milestone from the dashboard of an existing student in the address book.<br>
+Format: <code>deleteMS i/STUDENT_INDEX m/MILESTONE_INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the milestone at the specified <code>MILESTONE_INDEX</code></p>
+</li>
+<li>
+<p>The milestone is in the dashboard of a student at the specified <code>STUDENT_INDEX</code></p>
+</li>
+<li>
+<p>Both indexes refer to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>deleteMS i/1 m/2</code><br>
+Deletes the 2nd milestone from the dashboard of the 1st student in the address book.</p>
+</li>
+<li>
+<p><code>find Betsey</code><br>
+<code>deleteMS i/3 m/4</code><br>
+Deletes the 4th milestone from the dashboard of the 3rd student in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-a-task-to-a-milestone-code-addtask-code"><a class="link" href="#add-a-task-to-a-milestone-code-addtask-code">3.12. Add a task to a milestone: <code>addTask</code></a></h3>
 <div class="paragraph">
 <p>Adds a task to an existing milestone in a dashboard.<br>
 Format: <code>addTask i/STUDENT_INDEX m/MILESTONE_INDEX n/NAME o/DESCRIPTION</code></p>
@@ -546,10 +603,10 @@ Format: <code>addTask i/STUDENT_INDEX m/MILESTONE_INDEX n/NAME o/DESCRIPTION</co
 <div class="ulist">
 <ul>
 <li>
-<p>Adds a task to a milestone at the specified <code>MILESTONE_INDEX</code></p>
+<p>Adds a task to the milestone at the specified <code>MILESTONE_INDEX</code></p>
 </li>
 <li>
-<p>The milestone is in the dashboard of a student at the specified <code>STUDENT_INDEX</code></p>
+<p>The milestone is in the dashboard of the student at the specified <code>STUDENT_INDEX</code></p>
 </li>
 <li>
 <p>Both indexes refers to the index number shown in the most recent listing.</p>
@@ -592,7 +649,7 @@ Adds a task to the 1st milestone in the dashboard of the 2nd student in the resu
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-a-task-as-completed-code-checktask-code"><a class="link" href="#mark-a-task-as-completed-code-checktask-code">3.12. Mark a task as completed: <code>checkTask</code></a></h3>
+<h3 id="mark-a-task-as-completed-code-checktask-code"><a class="link" href="#mark-a-task-as-completed-code-checktask-code">3.13. Mark a task as completed: <code>checkTask</code></a></h3>
 <div class="paragraph">
 <p>Marks a task in an existing milestone as completed.<br>
 Format: <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p>
@@ -602,10 +659,10 @@ Format: <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></
 <div class="ulist">
 <ul>
 <li>
-<p>Marks a task at the specified <code>TASK_INDEX</code> as completed</p>
+<p>Marks the task at the specified <code>TASK_INDEX</code> as completed</p>
 </li>
 <li>
-<p>The task is in a milestone at the specified <code>MILESTONE_INDEX</code></p>
+<p>The task is in the milestone at the specified <code>MILESTONE_INDEX</code></p>
 </li>
 <li>
 <p>The milestone is in the dashboard of a student at the specified <code>STUDENT_INDEX</code></p>
@@ -651,7 +708,7 @@ Marks the 4th task in the 3rd milestone as completed. The milestone is in the da
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.13. Deleting a student : <code>delete</code></a></h3>
+<h3 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.14. Deleting a student : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified student from the address book.<br>
 Format: <code>delete INDEX</code></p>
@@ -692,7 +749,7 @@ Deletes the 1st student in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.14. Selecting a student : <code>select</code></a></h3>
+<h3 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.15. Selecting a student : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the student identified by the index number used in the last student listing, and display their address on google maps.<br>
 Format: <code>select INDEX</code></p>
@@ -733,7 +790,7 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-your-schedule-code-schedule-code"><a class="link" href="#viewing-your-schedule-code-schedule-code">3.15. Viewing your schedule : <code>schedule</code></a></h3>
+<h3 id="viewing-your-schedule-code-schedule-code"><a class="link" href="#viewing-your-schedule-code-schedule-code">3.16. Viewing your schedule : <code>schedule</code></a></h3>
 <div class="paragraph">
 <p>Shows your weekly schedule as a list of lessons.<br>
 Format: <code>schedule</code></p>
@@ -752,7 +809,7 @@ Currently displayed in the terminal. UI will be added in coming weeks.
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-lesson-to-your-schedule-code-addlesson-code"><a class="link" href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.16. Adding a lesson to your schedule: <code>addLesson</code></a></h3>
+<h3 id="adding-a-lesson-to-your-schedule-code-addlesson-code"><a class="link" href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.17. Adding a lesson to your schedule: <code>addLesson</code></a></h3>
 <div class="paragraph">
 <p>Adds a lesson to your schedule for a student identified by the index number in the last student listing.<br>
 Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
@@ -803,7 +860,7 @@ Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-lesson-in-your-schedule-code-deletelesson-code"><a class="link" href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.17. Deleting a lesson in your schedule: <code>deleteLesson</code></a></h3>
+<h3 id="deleting-a-lesson-in-your-schedule-code-deletelesson-code"><a class="link" href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.18. Deleting a lesson in your schedule: <code>deleteLesson</code></a></h3>
 <div class="paragraph">
 <p>Deletes an existing lesson in your schedule identified by the index number in the last schedule listing. of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
 </div>
@@ -840,7 +897,7 @@ Deletes the 2nd lesson listing in the schedule</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.18. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.19. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -861,7 +918,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.19. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.20. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -906,7 +963,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.20. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.21. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -938,40 +995,40 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.21. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.22. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.22. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.23. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.24. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.24. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.25. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code"><a class="link" href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.25. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code"><a class="link" href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.26. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>_{Explain command to obtain full information page for each student}</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.26. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
+<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.27. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
 
 </div>
 </div>
@@ -1035,7 +1092,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 14:27:39 UTC
+Last updated 2018-04-03 14:55:01 UTC
 </div>
 </div>
 </body>
