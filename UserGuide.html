@@ -52,10 +52,11 @@
 <li><a href="#undoing-previous-command-code-undo-code">3.22. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.23. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.24. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.25. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.26. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.27. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.28. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
+<li><a href="#syncing-with-your-google-account">3.25. Syncing with your Google Account</a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.26. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.27. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.28. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.29. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -1087,27 +1088,100 @@ Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.25. Exiting the program : <code>exit</code></a></h3>
+<h3 id="syncing-with-your-google-account"><a class="link" href="#syncing-with-your-google-account">3.25. Syncing with your Google Account</a></h3>
+<div class="paragraph">
+<p>Syncs your Schedule and AddressBook and uploads them to your Google Account.
+AddressBook is synced with Google Contacts: <a href="https://contacts.google.com/"><code>contacts.google.com</code></a>.
+Schedule is synced with Google Calendar: <a href="https://calendar.google.com/calendar/r/week"><code>calendar.google.com</code></a></p>
+</div>
+<div class="sect3">
+<h4 id="logging-in-to-your-google-account"><a class="link" href="#logging-in-to-your-google-account">3.25.1. Logging in to your Google Account</a></h4>
+<div class="paragraph">
+<p>Logs in to your Google Account. Authorizes your Google Account to communicate with our app and gives
+Codeducator permission to modify your data.<br>
+Opens a new window in your default browser to the Oauth2 screen<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You must be first logged out to log in
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>login</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging-out-of-your-google-account"><a class="link" href="#logging-out-of-your-google-account">3.25.2. Logging out of your Google Account</a></h4>
+<div class="paragraph">
+<p>Logs out of your Google Account. Securely deletes the OAuth2 credential stored in the App.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You must be first logged in to log out
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>logout</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="syncing-data-with-your-google-account"><a class="link" href="#syncing-data-with-your-google-account">3.25.3. Syncing data with your Google Account</a></h4>
+<div class="paragraph">
+<p>Updates both Google Contacts and Google Calendar with Addressbook and Schedule.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You must be first logged in to sync your data
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>sync</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.26. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.26. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.27. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.27. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.28. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.28. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
+<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.29. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
 
 </div>
 </div>
@@ -1171,7 +1245,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 04:30:51 UTC
+Last updated 2018-04-06 05:39:56 UTC
 </div>
 </div>
 </body>
