@@ -46,15 +46,16 @@
 <li><a href="#viewing-your-schedule-code-schedule-code">3.16. Viewing your schedule : <code>schedule</code></a></li>
 <li><a href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.17. Adding a lesson to your schedule: <code>addLesson</code></a></li>
 <li><a href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.18. Deleting a lesson in your schedule: <code>deleteLesson</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.19. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.20. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.21. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.22. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.24. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.25. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.26. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.27. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
+<li><a href="#full-information-page-for-each-student-code-moreinfo-code">3.19. Full information page for each student : <code>moreInfo</code></a></li>
+<li><a href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.20. Edit the profile picture of a student : <code>editPicture</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.21. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.22. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.23. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.24. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.25. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.26. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.27. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.28. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -897,7 +898,91 @@ Deletes the 2nd lesson listing in the schedule</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.19. Listing entered commands : <code>history</code></a></h3>
+<h3 id="full-information-page-for-each-student-code-moreinfo-code"><a class="link" href="#full-information-page-for-each-student-code-moreinfo-code">3.19. Full information page for each student : <code>moreInfo</code></a></h3>
+<div class="paragraph">
+<p>Displays the full information of a student on the browser panel. This includes his/her profile picture if one exists.<br>
+Format: <code>moreInfo INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the full information of a student with the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the last schedule listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>moreInfo 2</code>
+Displays the full information of the 2nd student in the current listing.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-the-profile-picture-of-a-student-code-editpicture-code"><a class="link" href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.20. Edit the profile picture of a student : <code>editPicture</code></a></h3>
+<div class="paragraph">
+<p>Edits the current profile picture of a student to a new picture from a specific file path indicated by the user.<br>
+Format: <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Changes the profile photo of a student with the specified <code>INDEX</code> to a new one which has a file path of <code>FILE_PATH_OF_PICTURE</code></p>
+</li>
+<li>
+<p>The index refers to the index number shown in the last schedule listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The file path of the picture is either relative to the folder which the jar application is or can be speicifed from the hard drive.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Image files must exist and have extensions either of <code>.jpg</code> or <code>.png</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br></p>
+</li>
+<li>
+<p>`editPicture i/1 pa/C:/Users/User/Desktop/test.jpg
+Changes the profil photo of the 1st student in the current listing to the image found at the specific file path.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.21. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -918,7 +1003,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.20. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.22. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -963,7 +1048,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.21. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.23. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -995,40 +1080,34 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.22. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.24. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.23. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.25. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.24. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.26. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.25. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.27. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code"><a class="link" href="#full-information-page-for-each-student-code-moreinfo-code-code-coming-in-v2-0-code">3.26. Full information page for each student : <code>moreInfo</code> <code>[coming in v2.0]</code></a></h3>
-<div class="paragraph">
-<p>_{Explain command to obtain full information page for each student}</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.27. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
+<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.28. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
 
 </div>
 </div>
@@ -1092,7 +1171,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 03:27:41 UTC
+Last updated 2018-04-06 04:30:51 UTC
 </div>
 </div>
 </body>
