@@ -339,7 +339,7 @@ Format: <code>findTag KEYWORD [MORE_KEYWORDS]</code></p>
 <p>The search is case insensitive. e.g <code>Friends</code> will match <code>friends</code></p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. ` friends owesMoney` will match <code>owesMoney friends</code></p>
+<p>The order of the keywords does not matter. e.g. ` friends owesMoney` will match <code>owesMoney</code> and <code>friends</code></p>
 </li>
 <li>
 <p>Only the tag is searched.</p>
@@ -348,7 +348,8 @@ Format: <code>findTag KEYWORD [MORE_KEYWORDS]</code></p>
 <p>Only full words will be matched e.g. <code>friend</code> will not match <code>friends</code></p>
 </li>
 <li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>friends owesMoney</code> will return <code>friends rich</code>, <code>owesMoney poor</code></p>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>friends owesMoney</code> will return a
+student with tags <code>friends</code> and <code>rich</code>, as well as a student with tags <code>owesMoney</code> and <code>poor</code></p>
 </li>
 </ul>
 </div>
@@ -794,7 +795,7 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 <div class="sect2">
 <h3 id="viewing-your-schedule-code-schedule-code"><a class="link" href="#viewing-your-schedule-code-schedule-code">3.16. Viewing your schedule : <code>schedule</code></a></h3>
 <div class="paragraph">
-<p>Shows your weekly schedule as a list of lessons.<br>
+<p>Shows your weekly schedule as a list of lessons. Displays lessons in chronological order.<br>
 Format: <code>schedule</code></p>
 </div>
 <div class="admonitionblock note">
@@ -804,7 +805,7 @@ Format: <code>schedule</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Currently displayed in the terminal. UI will be added in coming weeks.
+Currently displayed in the CommandResult Dialogue box. UI will be added in coming weeks.
 </td>
 </tr>
 </table>
@@ -827,13 +828,16 @@ Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
 <p>The day for the input is the abbreviated first three letters (non-case sensitive) of the name of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
 </li>
 <li>
-<p>The time input must be in the format <code>HH:MM</code>, seperated by a colon &#8216;:&#8217;</p>
+<p>The time input must be in the format <code>HH:MM</code>, seperated by a colon <code>:</code></p>
 </li>
 <li>
 <p>The time input must be a valid 24-hour time within the range of <code>00:00</code> to <code>23:59</code></p>
 </li>
 <li>
-<p>Input lesson cannot clash with existing lessons already in the schedule.</p>
+<p>Input lesson cannot clash with existing lessons already in the <code>Schedule</code></p>
+</li>
+<li>
+<p>Lessons will be added in chronological order to your <code>Schedule</code></p>
 </li>
 </ul>
 </div>
@@ -845,17 +849,13 @@ Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code></p>
-</li>
-<li>
-<p><code>addLesson 1 d/mon st/10:00 et/10:30</code><br>
+<p><code>list</code><br>
+<code>addLesson 1 d/mon st/10:00 et/10:30</code><br>
 Adds a lesson for the 1st student of the <code>list</code> command. Lesson will be held on the day of <code>mon</code> and starting time will be <code>10:00</code> and ending time will be <code>10:30</code>.</p>
 </li>
 <li>
-<p><code>find Betsy</code></p>
-</li>
-<li>
-<p><code>addLesson 1 d/tue st/12:00 et/13:30</code><br>
+<p><code>find Betsy</code><br>
+<code>addLesson 1 d/tue st/12:00 et/13:30</code><br>
 Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson will be held on the day of <code>tue</code> and starting time will be <code>12:00</code> and ending time will be <code>13:30</code>.</p>
 </li>
 </ul>
@@ -889,10 +889,8 @@ Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson
 <div class="ulist">
 <ul>
 <li>
-<p><code>schedule</code></p>
-</li>
-<li>
-<p><code>deleteLesson 2</code><br>
+<p><code>schedule</code><br>
+<code>deleteLesson 2</code><br>
 Deletes the 2nd lesson listing in the schedule</p>
 </li>
 </ul>
@@ -976,8 +974,8 @@ Format: <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code></p>
 <p><code>list</code><br></p>
 </li>
 <li>
-<p>`editPicture i/1 pa/C:/Users/User/Desktop/test.jpg
-Changes the profil photo of the 1st student in the current listing to the image found at the specific file path.</p>
+<p><code>editPicture i/1 pa/C:/Users/User/Desktop/test.jpg</code><br>
+Changes the profile photo of the 1st student in the current listing to the image found at the specific file path.</p>
 </li>
 </ul>
 </div>
@@ -1238,6 +1236,53 @@ e.g.<code>select 2</code></p>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
+<li>
+<p><strong>Show Dashboard</strong>: <code>showDB INDEX</code><br>
+e.g. <code>showDB 3</code></p>
+</li>
+<li>
+<p><strong>Add Milestone</strong> : <code>addMS i/STUDENT_INDEX d/DUE_DATE o/DESCRIPTION</code><br>
+e.g. <code>addMS i/1 d/23/11/2018 23:59 o/Arrays</code></p>
+</li>
+<li>
+<p><strong>Delete Milestone</strong> : <code>deleteMS i/STUDENT_INDEX m/MILESTONE_INDEX</code><br>
+e.g. <code>deleteMS i/1 m/2</code></p>
+</li>
+<li>
+<p><strong>Add Task</strong> : <code>addTask i/STUDENT_INDEX m/MILESTONE_INDEX n/NAME o/DESCRIPTION</code><br>
+e.g. <code>addTask i/1 m/2 n/Learn arrays syntax o/Refer to textbook</code></p>
+</li>
+<li>
+<p><strong>Mark Task as completed</strong> : <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code><br>
+e.g. <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p>
+</li>
+<li>
+<p><strong>View your Schedule</strong> : <code>schedule</code></p>
+</li>
+<li>
+<p><strong>Add a Lesson</strong> : <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code><br>
+e.g. <code>addLesson 1 d/mon st/10:00 et/10:30</code></p>
+</li>
+<li>
+<p><strong>Delete a Lesson</strong> : <code>deleteLesson INDEX</code><br>
+e.g. <code>deleteLesson 2</code></p>
+</li>
+<li>
+<p><strong>Login to your Google Account</strong> : <code>login</code></p>
+</li>
+<li>
+<p><strong>Logout of your Google Account</strong> : <code>logout</code></p>
+</li>
+<li>
+<p><strong>Synchronize data with Google Account</strong> : <code>sync</code></p>
+</li>
+<li>
+<p><strong>Full information page</strong> : <code>moreInfo INDEX</code></p>
+</li>
+<li>
+<p><strong>Edit the profile picture</strong> : <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code><br>
+e.g. <code>editPicture i/1 pa/C:/Users/User/Desktop/test.jpg</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -1245,7 +1290,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 07:05:44 UTC
+Last updated 2018-04-06 07:35:36 UTC
 </div>
 </div>
 </body>
