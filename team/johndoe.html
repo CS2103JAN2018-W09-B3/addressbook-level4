@@ -164,8 +164,15 @@ Format: <code>undo</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+</li>
+<li>
+<p>The <code>undo</code> command currently does not supports reversing dashboard commands (<code>addMS</code>, <code>addTask</code>, <code>deleteMS</code>, <code>deleteTask</code> and <code>checkTask</code>)</p>
+</li>
+</ul>
 </div>
 </td>
 </tr>
@@ -561,7 +568,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 02:16:32 UTC
+Last updated 2018-04-10 02:46:55 UTC
 </div>
 </div>
 </body>

@@ -899,42 +899,56 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/StudentClassDiagram.png" alt="StudentClassDiagram" width="800">
+<img src="images/StudentClassDiagram.png" alt="StudentClassDiagram" width="500">
 </div>
 </div>
 <div class="paragraph">
-<p>Since the implementation of the favourite and unfavourite command are similar, we will talk about the implementation of the favourite command only.</p>
+<p>Since the implementation of the favourite and unfavourite command are similar, we will describe the implementation of the favourite command only.</p>
 </div>
 <div class="paragraph">
-<p>The logic part of the favourite command will be executed by the <code>FavouriteCommand</code> class.
-To mark a <code>Student</code> object called "studentToFavourite" as favourite:</p>
+<p>The following sequence diagram shows how the favourite command works:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/FavouriteCommandSequenceDiagram.png" alt="FavouriteCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>A Student object called "editedStudent" will be returned by <code>FavouriteCommand.createEditedStudent(Student)</code> to the <code>FavouriteCommand.preprocess()</code> method.
-<code>FavouriteCommand.createEditedStudent(Student)</code> is implemented as such:</p>
+<p>The <code>FavouriteCommandParser</code> parses the user input to obtain the target student index and constructs a new <code>FavouriteCommand</code> with this index.</p>
 </li>
-</ul>
+<li>
+<p>The logic portion of the favourite command will be executed by the <code>FavouriteCommand</code> class.
+To mark a <code>Student</code> object called "studentToFavourite" as favourite:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The <code>preprocessUndoableCommand()</code> method calls <code>setTargetStudent()</code> which will set the "studentToFavourite" object based on the provided student index.</p>
+</li>
+<li>
+<p><code>preprocessUndoableCommand()</code> will then call the <code>createEditedStudent()</code> method which will create a <code>Student</code> object called "editedStudent". "editedStudent" will have the attributes of "studentToFavourite", except that its <code>Favourite</code> attribute will be set to "true".<br>
+<code>createEditedStudent()</code> is implemented as such:</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student target) {
-        requireNonNull(target);
-
-        <span class="keyword">return</span> <span class="keyword">new</span> StudentBuilder(target).withFavourite(<span class="predefined-constant">true</span>).build();
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">void</span> createEditedStudent() {
+        <span class="keyword">assert</span> targetStudent != <span class="predefined-constant">null</span>;
+        editedStudent = <span class="keyword">new</span> StudentBuilder(target).withFavourite(<span class="predefined-constant">true</span>).build();
     }</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic" start="3">
 <li>
-<p>editedStudent will have the attributes of studentToFavourite, except that its <code>Favourite</code> attribute will be set to "true"</p>
+<p>In the <code>executeUndoableCommand()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "studentToFavourite" with "editedStudent" in the Address Book in-memory.</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In the <code>FavouriteCommand.execute()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace studentToFavourite with editedStudent in the Address Book in-memory.</p>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -1365,6 +1379,8 @@ This enforces 1-to-1 association between <code>Student</code> and <code>Dashboar
     }</code></pre>
 </div>
 </div>
+<div class="sect4">
+<h5 id="implementation-for-commands-that-modify-the-dashboard"><a class="link" href="#implementation-for-commands-that-modify-the-dashboard">Implementation for commands that modify the Dashboard</a></h5>
 <div class="paragraph">
 <p>The <code>AddMilestoneCommand</code>, <code>AddTaskCommand</code>, <code>CheckTaskCommand</code> and <code>ShowDashboardCommand</code> commands facilitate operations to the dashboard.
 A common implementation for commands that modify the dashboard (e.g. <code>AddMilestoneCommand</code>) is that a new copy of <code>Dashboard</code> is created with the new modification.</p>
@@ -1372,32 +1388,69 @@ A common implementation for commands that modify the dashboard (e.g. <code>AddMi
 <div class="paragraph">
 <p>For example, in the <code>AddMilestoneCommand</code>, to add a new milestone object to the dashboard of a <code>Student</code> Object called "targetStudent":</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>A <code>Student</code> object called "editedStudent" will be returned by the <code>AddMilestoneCommand.createEditedStudent(Student, Milestone)</code> method to the <code>AddMilestoneCommand.preprocess()</code> method.
-<code>AddMilestoneCommand.createEditedStudent(Student, Milestone)</code> is implemented as such:</p>
+<p><code>AddMilestoneCommand.preprocessUndoableCommand()</code> calls the <code>AddMilestoneCommand.createEditedStudent()</code> method which will create a <code>Student</code> object called "editedStudent".
+"editedStudent" is created with the same attributes of "targetStudent", but with a new <code>Dashboard</code> object containing the new milestone.<br>
+<code>AddMilestoneCommand.createEditedStudent()</code> is implemented as such:</p>
 </li>
-</ul>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    private Student createEditedStudent(Student studentToEdit, Milestone newMilestone) throws DuplicateMilestoneException {
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">void</span> createEditedStudent() <span class="directive">throws</span> DuplicateMilestoneException {
         requireAllNonNull(studentToEdit, newMilestone);
-
-        return new StudentBuilder(studentToEdit).withNewMilestone(newMilestone).build();
-    }</pre>
+        editedStudent = <span class="keyword">new</span> StudentBuilder(targetStudent).withNewMilestone(newMilestone).build();
+    }</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic" start="2">
 <li>
-<p>"editedStudent" is created with the same attributes of "targetStudent", but with a new <code>Dashboard</code> object containing the new milestone</p>
+<p>In the <code>AddMilestoneCommand.executeUndoableCommand()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "targetStudent" with "editedStudent" in the Address Book in-memory</p>
 </li>
-</ul>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation-for-displaying-the-dashboard"><a class="link" href="#implementation-for-displaying-the-dashboard">Implementation for displaying the dashboard</a></h5>
+<div class="paragraph">
+<p>The <code>ShowDashboardCommand</code> facilitates the displaying of a student&#8217;s dashboard. The <code>ShowDashboardCommand.execute()</code> method is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+        <span class="comment">// ... check whether targetIndex is valid ...</span>
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ShowStudentDashboardEvent(lastShownList.get(targetIndex.getZeroBased())));
+        <span class="comment">// ... return command result ...</span>
+    }</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>In the <code>AddMilestoneCommand.execute()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "targetStudent" with "editedStudent" in the Address Book in-memory</p>
+<p>As seen from the above code snippet, <code>ShowDashboardCommand.execute()</code> raises a <code>ShowStudentDashboardEvent</code>. The sequence diagram below shows how the <code>EventsCenter</code> reacts to that event.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ShowDashboardCommandSequenceDiagram.png" alt="ShowDashboardCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As seen from the above diagram,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>InfoPanel</code> handles the <code>ShowStudentInDashboard</code> event.<br></p>
+</li>
+<li>
+<p><code>InfoPanel</code> then raises the <code>ShowStudentNameInDashboard</code> which is handled by <code>DashboardPanel</code> to display the name of the student in the dashboard.<br></p>
+</li>
+<li>
+<p>Finally, <code>InfoPanel</code> raises the <code>ShowMilestoneEvent</code> which is also handled by <code>DashboardPanel</code> to display the milestones of the student in the dashboard.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -3127,7 +3180,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 02:16:32 UTC
+Last updated 2018-04-10 02:46:55 UTC
 </div>
 </div>
 </body>

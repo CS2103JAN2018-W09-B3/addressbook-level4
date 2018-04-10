@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Yap Ni - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Yap Ni - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-codeducator"><a class="link" href="#project-codeducator">PROJECT: Codeducator</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Codeducator is a desktop address book application for private programming language tutors.
+Users are able to track the progress of their students, manage their tutoring schedule and other important information about their students.<br></p>
+</div>
+<div class="paragraph">
+<p>Codeducator has a graphical user interface built with JavaFX but most of the user interactions are done using command line interface. It is written in Java and has about 10 kLoC.<br></p>
+</div>
+<div class="paragraph">
+<p>This project is based on the <a href="https://github.com/se-edu/addressbook-level4">AddressBook-Level4</a> created by the SE-EDU initiative.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added a <strong>dashboard</strong> feature</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The dashboard aims to help tutors track the progress of each of their student.</p>
+</li>
+<li>
+<p>Each student will have a dashboard.</p>
+</li>
+<li>
+<p>Tutors are able to add milestones they want their students to achieve to their dashboards. Each milestone signifies a significant accomplishment in the development of the student&#8217;s learning progress.</p>
+</li>
+<li>
+<p>Tutors are able to add a list of tasks to each milestone. A task is a piece of work that needs to be done to be closer to achieving the milestone.</p>
+</li>
+<li>
+<p>Tutors are able to mark each task as completed, which updates the progress of the milestone.</p>
+</li>
+<li>
+<p>Tutors are able to delete milestone and delete task.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: Besides managing their student contacts, tutors will also need to manage the learning progress of their students so that they can tutor them better. If they have a large number of students they tutor,
+it is hard to keep track of what needs to be done for each of them. Hence, this feature not only allows tutors to manage both their student contacts and student progress all in one place, it also provides them ease in documenting
+and tracking their students' learning development.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a <strong>favourites</strong> feature</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows users to add students to favourites and view the list of students in favourites.</p>
+</li>
+<li>
+<p>Justification: Tutors may have some students that they wish to take note of. This feature helps tutors highlight these students.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W09-B3/main/blob/master/collated/functional/yapni.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W09-B3/main/blob/master/collated/test/yapni.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed release <code>v1.4</code> on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Modification to original AddressBook-Level4 code base:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactored the name of some classes in the context of Codeducator (e.g. changed the name of <code>Person</code> to <code>Student</code> and <code>Subject</code> to <code>ProgrammingLanguage</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="adding-a-student-to-favourites-code-fav-code"><a class="link" href="#adding-a-student-to-favourites-code-fav-code">Adding a student to favourites : <code>fav</code></a></h3>
+<div class="paragraph">
+<p>Adds an existing student in the address book to your favourites.<br>
+Format: <code>fav INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Add the student at the specified <code>INDEX</code> to your favourites.</p>
+</li>
+<li>
+<p>The index refers to the index number in the most recent listing.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>fav 2</code><br>
+Adds the 2nd student in the address book to favourites.</p>
+</li>
+<li>
+<p><code>find Betsey</code><br>
+<code>fav 1</code><br>
+Adds the 1st student in the results of the <code>find</code> command to favourites</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remove-a-student-from-favourites-code-unfav-code"><a class="link" href="#remove-a-student-from-favourites-code-unfav-code">Remove a student from favourites : <code>unfav</code></a></h3>
+<div class="paragraph">
+<p>Removes an existing student in the address book from your favourites.<br>
+Format: <code>unfav INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Removes the student at specified <code>INDEX</code> from your favourites.</p>
+</li>
+<li>
+<p>The index refers to the index number in the most recent listing.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>unfav 2</code><br>
+Removes the 2nd student in the address book from favourites.</p>
+</li>
+<li>
+<p><code>find Betsey</code><br>
+<code>unfav 1</code><br>
+Removes the 1st student in the results of the <code>find</code> command from favourites</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="show-the-dashboard-of-a-student-code-showdb-code"><a class="link" href="#show-the-dashboard-of-a-student-code-showdb-code">Show the dashboard of a student: <code>showDB</code></a></h3>
+<div class="paragraph">
+<p>Shows the dashboard of an existing student in the address book.<br>
+Format: <code>showDB INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Shows the dashboard of the student at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A dashboard provides an at-a-glance view of your student&#8217;s progress. Each dashboard contains a list of milestones and tasks that you can set for your student.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>showDB 2</code><br>
+Shows the dashboard of the 2nd student in the address book.</p>
+</li>
+<li>
+<p><code>list -f</code><br>
+<code>showDB 1</code><br>
+Shows the dashboard of the 1st student the favourites list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-a-milestone-to-a-student-s-dashboard-code-addms-code"><a class="link" href="#add-a-milestone-to-a-student-s-dashboard-code-addms-code">Add a milestone to a student&#8217;s dashboard: <code>addMS</code></a></h3>
+<div class="paragraph">
+<p>Adds a milestone to the dashboard of an existing student in the address book.<br>
+Format: <code>addMS i/STUDENT_INDEX d/MILESTONE_DUE_DATE o/DESCRIPTION_OF_MILESTONE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a milestone to the dashboard of a student at the specified <code>STUDENT_INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The milestone due date must be in this format: <strong>DD/MM/YYYY HH:MM</strong> where HH:MM is in 24-hour time notation</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A milestone signifies a <strong>major step in the learning progress</strong> of your student. Hence, you may want to create the milestones carefully such that completing every milestone signifies the completion of your tutoring objective with your student.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>addMS i/1 d/18/08/2018 23:59 o/Learn Arrays</code><br>
+Adds a milestone to the dashboard of the 1st student in the address book. The milestone is due on 18/08/2018 23:59 and the objective is "Learn Arrays".</p>
+</li>
+<li>
+<p><code>find Betsey</code><br>
+<code>addMS i/2 d/03/04/2019 10:30 o/Learn Recursion</code><br>
+Adds a milestone to the dashboard of the 2nd person in the results of the <code>find</code> command. The milestone is due on 03/04/2019 10:30 and the objective is "Learn Recursion".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-a-milestone-from-a-student-s-dashboard-code-deletems-code"><a class="link" href="#delete-a-milestone-from-a-student-s-dashboard-code-deletems-code">Delete a milestone from a student&#8217;s dashboard: <code>deleteMS</code></a></h3>
+<div class="paragraph">
+<p>Deletes a milestone from the dashboard of an existing student in the address book.<br>
+Format: <code>deleteMS i/STUDENT_INDEX m/MILESTONE_INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the milestone at the specified <code>MILESTONE_INDEX</code></p>
+</li>
+<li>
+<p>The milestone is in the dashboard of a student at the specified <code>STUDENT_INDEX</code></p>
+</li>
+<li>
+<p>Both indexes refer to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>deleteMS i/1 m/2</code><br>
+Deletes the 2nd milestone from the dashboard of the 1st student in the address book.</p>
+</li>
+<li>
+<p><code>find Betsey</code><br>
+<code>deleteMS i/3 m/4</code><br>
+Deletes the 4th milestone from the dashboard of the 3rd student in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-a-task-to-a-milestone-code-addtask-code"><a class="link" href="#add-a-task-to-a-milestone-code-addtask-code">Add a task to a milestone: <code>addTask</code></a></h3>
+<div class="paragraph">
+<p>Adds a task to an existing milestone in a dashboard.<br>
+Format: <code>addTask i/STUDENT_INDEX m/MILESTONE_INDEX n/NAME_OF_TASK o/DESCRIPTION_OF_TASK</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a task to the milestone at the specified <code>MILESTONE_INDEX</code></p>
+</li>
+<li>
+<p>The milestone is in the dashboard of the student at the specified <code>STUDENT_INDEX</code></p>
+</li>
+<li>
+<p>Both indexes refer to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A task signifies a <strong>piece of work to be done to meet the milestone&#8217;s objective</strong>. Hence, a milestone&#8217;s objective should be met when all its tasks are completed.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>addTask i/1 m/3 n/Learn Array Syntax o/Student to refer to the textbook</code><br>
+Adds a task to the 3rd milestone in the dashboard of the 1st student in the address book. The name of the task is "Learn Array Syntax" and the description is "Student to refer to the textbook".</p>
+</li>
+<li>
+<p><code>find Betsey</code><br>
+<code>addTask i/2 m/1 n/Practice Recursion Exercises o/Refer to problem set</code><br>
+Adds a task to the 1st milestone in the dashboard of the 2nd student in the results of the <code>find</code> command. The name of the task is "Practice Recursion Exercises" and the description is "Refer to problem set".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-a-task-from-a-milestone-code-deletetask-code"><a class="link" href="#delete-a-task-from-a-milestone-code-deletetask-code">Delete a task from a milestone: <code>deleteTask</code></a></h3>
+<div class="paragraph">
+<p>Deletes a task from an existing milestone in a dashboard.<br>
+Format: <code>deleteTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the task at the specified <code>TASK_INDEX</code></p>
+</li>
+<li>
+<p>The task is in the milestone at the specified <code>MILESTONE_INDEX</code></p>
+</li>
+<li>
+<p>The milestone is in the dashboard of a student at the specified <code>STUDENT_INDEX</code></p>
+</li>
+<li>
+<p>All indexes refer to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>Both indexes <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>deleteTask i/1 m/2 tk/3</code><br>
+Deletes the 3rd task in the 2nd milestone. The milestone is in the dashboard of the 1st student in the address book.</p>
+</li>
+<li>
+<p><code>find Betsey</code><br>
+<code>deleteTask i/2 m/3 tk/1</code><br>
+Deletes the 1st task in the 3rd milestone. The milestone is in the dashboard of the 2nd student in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mark-a-task-as-completed-code-checktask-code"><a class="link" href="#mark-a-task-as-completed-code-checktask-code">Mark a task as completed: <code>checkTask</code></a></h3>
+<div class="paragraph">
+<p>Marks a task in an existing milestone as completed.<br>
+Format: <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Marks the task at the specified <code>TASK_INDEX</code> as completed</p>
+</li>
+<li>
+<p>The task is in the milestone at the specified <code>MILESTONE_INDEX</code></p>
+</li>
+<li>
+<p>The milestone is in the dashboard of a student at the specified <code>STUDENT_INDEX</code></p>
+</li>
+<li>
+<p>All indexes refer to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>All indexes <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Marking a task as completed updates the progress of the milestone.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>checkTask i/1 m/2 tk/3</code><br>
+Marks the 3rd task in the 2nd milestone as completed. The milestone is in the dashboard of the 1st student in the address book.</p>
+</li>
+<li>
+<p><code>find Betsey</code><br>
+<code>checkTask i/2 m/3 tk/4</code><br>
+Marks the 4th task in the 3rd milestone as completed. The milestone is in the dashboard of the 2nd student in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="favourites-feature"><a class="link" href="#favourites-feature">Favourites feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>To facilitate the favourite/unfavourite feature, an association with a new <code>Favourite</code> class is added to the <code>Student</code> class:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StudentClassDiagram.png" alt="StudentClassDiagram" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Since the implementation of the favourite and unfavourite command are similar, we will describe the implementation of the favourite command only.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the favourite command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FavouriteCommandSequenceDiagram.png" alt="FavouriteCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>FavouriteCommandParser</code> parses the user input to obtain the target student index and constructs a new <code>FavouriteCommand</code> with this index.</p>
+</li>
+<li>
+<p>The logic portion of the favourite command will be executed by the <code>FavouriteCommand</code> class.
+To mark a <code>Student</code> object called "studentToFavourite" as favourite:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The <code>preprocessUndoableCommand()</code> method calls <code>setTargetStudent()</code> which will set the "studentToFavourite" object based on the provided student index.</p>
+</li>
+<li>
+<p><code>preprocessUndoableCommand()</code> will then call the <code>createEditedStudent()</code> method which will create a <code>Student</code> object called "editedStudent". "editedStudent" will have the attributes of "studentToFavourite", except that its <code>Favourite</code> attribute will be set to "true".<br>
+<code>createEditedStudent()</code> is implemented as such:</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">void</span> createEditedStudent() {
+        <span class="keyword">assert</span> targetStudent != <span class="predefined-constant">null</span>;
+        editedStudent = <span class="keyword">new</span> StudentBuilder(target).withFavourite(<span class="predefined-constant">true</span>).build();
+    }</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>In the <code>executeUndoableCommand()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "studentToFavourite" with "editedStudent" in the Address Book in-memory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-favouritecommand"><a class="link" href="#aspect-implementation-of-favouritecommand">Aspect: Implementation of 'FavouriteCommand'</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Add a <code>Favourite</code> attribute to <code>Student</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: It is easy to mark a student as favourite since we can make use of the current <code>Model.updateStudent(Student, Student)</code> method by creating a copy of the target <code>Student</code> object, with the value of its <code>Favourite</code> attribute set to "true"</p>
+</li>
+<li>
+<p>Con: Creating a copy of the <code>Student</code> object can be inefficient</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Create a new <code>UniqueFavouriteStudentsList</code> that contains the list of students in favourites and store this list in the Address Book</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Students that are currently in favourites can be managed more easily since there is a direct overview of which student is in favourites</p>
+</li>
+<li>
+<p>Con: Students in the <code>UniqueFavouriteStudentsList</code> have to be synced with the <code>UniqueStudentsList</code>. For example, we have to ensure that deleting a student in the <code>UniqueStudentList</code> deletes the student in the <code>UniqueFavouriteStudentsList</code> too</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dashboard-feature"><a class="link" href="#dashboard-feature">Dashboard feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>To have a dashboard for each student, an association with a new <code>Dashboard</code> class is added to the <code>Student</code> class. We have also created new classes associated with the <code>Dashboard</code> class to facilitate the different capabilities of the dashboard.
+The following diagram shows the structure of the classes that facilitate the dashboard feature:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p><code>UniqueMilestoneList</code> and <code>UniqueTaskList</code> are associated to <code>ObservableList&lt;Milestone&gt;</code> and <code>ObservableList&lt;Task&gt;</code> respectively that can be 'observed'.
+This means that the UI can be bound to both of the lists so that the UI automatically updates when the data in both lists change.</p>
+</div>
+<div class="paragraph">
+<p>A new <code>Dashboard</code> object is created every time a new <code>Student</code> is being created. The <code>Dashboard</code> object will contain an empty milestone list until the user adds new milestones to the dashboard.
+This enforces 1-to-1 association between <code>Student</code> and <code>Dashboard</code>, as well as between <code>Dashboard</code> and <code>UniqueMilestoneList</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, the constructor for <code>Student</code> is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> Student(<span class="predefined-type">Name</span> name, Phone phone, Email email, Address address, ProgrammingLanguage programmingLanguage, <span class="predefined-type">Set</span>&lt;Tag&gt; tags) {
+        requireAllNonNull(name, phone, email, address, tags);
+        <span class="local-variable">this</span>.name = name;
+        <span class="local-variable">this</span>.phone = phone;
+        <span class="comment">// ... initialise the rest of the attributes ...</span>
+        <span class="local-variable">this</span>.dashboard = <span class="keyword">new</span> Dashboard();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The constructor for <code>Dashboard</code> is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> Dashboard() {
+        milestoneList = <span class="keyword">new</span> UniqueMilestoneList();
+    }</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation-for-commands-that-modify-the-dashboard"><a class="link" href="#implementation-for-commands-that-modify-the-dashboard">Implementation for commands that modify the Dashboard</a></h5>
+<div class="paragraph">
+<p>The <code>AddMilestoneCommand</code>, <code>AddTaskCommand</code>, <code>CheckTaskCommand</code> and <code>ShowDashboardCommand</code> commands facilitate operations to the dashboard.
+A common implementation for commands that modify the dashboard (e.g. <code>AddMilestoneCommand</code>) is that a new copy of <code>Dashboard</code> is created with the new modification.</p>
+</div>
+<div class="paragraph">
+<p>For example, in the <code>AddMilestoneCommand</code>, to add a new milestone object to the dashboard of a <code>Student</code> Object called "targetStudent":</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>AddMilestoneCommand.preprocessUndoableCommand()</code> calls the <code>AddMilestoneCommand.createEditedStudent()</code> method which will create a <code>Student</code> object called "editedStudent".
+"editedStudent" is created with the same attributes of "targetStudent", but with a new <code>Dashboard</code> object containing the new milestone.<br>
+<code>AddMilestoneCommand.createEditedStudent()</code> is implemented as such:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">void</span> createEditedStudent() <span class="directive">throws</span> DuplicateMilestoneException {
+        requireAllNonNull(studentToEdit, newMilestone);
+        editedStudent = <span class="keyword">new</span> StudentBuilder(targetStudent).withNewMilestone(newMilestone).build();
+    }</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>In the <code>AddMilestoneCommand.executeUndoableCommand()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "targetStudent" with "editedStudent" in the Address Book in-memory</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation-for-displaying-the-dashboard"><a class="link" href="#implementation-for-displaying-the-dashboard">Implementation for displaying the dashboard</a></h5>
+<div class="paragraph">
+<p>The <code>ShowDashboardCommand</code> facilitates the displaying of a student&#8217;s dashboard. The <code>ShowDashboardCommand.execute()</code> method is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+        <span class="comment">// ... check whether targetIndex is valid ...</span>
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ShowStudentDashboardEvent(lastShownList.get(targetIndex.getZeroBased())));
+        <span class="comment">// ... return command result ...</span>
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As seen from the above code snippet, <code>ShowDashboardCommand.execute()</code> raises a <code>ShowStudentDashboardEvent</code>. The sequence diagram below shows how the <code>EventsCenter</code> reacts to that event.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ShowDashboardCommandSequenceDiagram.png" alt="ShowDashboardCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As seen from the above diagram,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>InfoPanel</code> handles the <code>ShowStudentInDashboard</code> event.<br></p>
+</li>
+<li>
+<p><code>InfoPanel</code> then raises the <code>ShowStudentNameInDashboard</code> which is handled by <code>DashboardPanel</code> to display the name of the student in the dashboard.<br></p>
+</li>
+<li>
+<p>Finally, <code>InfoPanel</code> raises the <code>ShowMilestoneEvent</code> which is also handled by <code>DashboardPanel</code> to display the milestones of the student in the dashboard.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-dashboard-feature"><a class="link" href="#aspect-data-structure-to-support-the-dashboard-feature">Aspect: Data structure to support the dashboard feature</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Add a <code>Dashboard</code> association to <code>Student</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Able to access the dashboard of a student easily.</p>
+</li>
+<li>
+<p>Con: Since <code>Student</code> is immutable, a new <code>Student</code> object has to be created each time its <code>Dashboard</code> is modified.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: Add a new <code>UniqueDashboardList</code> association to <code>AddressBook</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Able to modify the dashboard easily if it is not made immutable.</p>
+</li>
+<li>
+<p>Con: We will have to sync the <code>UniqueDashboardList</code> with the <code>UniqueStudentList</code> since <code>Dashboard</code> will be associated to a <code>Student</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-10 02:46:55 UTC
+</div>
+</div>
+</body>
+</html>
