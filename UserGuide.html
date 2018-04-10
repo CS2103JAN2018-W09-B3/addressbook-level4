@@ -49,19 +49,21 @@
 <li><a href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.19. Deleting a lesson in your schedule: <code>deleteLesson</code></a></li>
 <li><a href="#full-information-page-for-each-student-code-moreinfo-code">3.20. Full information page for each student : <code>moreInfo</code></a></li>
 <li><a href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.21. Edit the profile picture of a student : <code>editPicture</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.22. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#syncing-with-your-google-account">3.26. Syncing with your Google Account</a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.27. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.28. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.29. Encrypting data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.30. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
+<li><a href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">3.22. Edit the miscellaneous info of a student : <code>editMisc</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.23. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.24. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.25. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.26. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#syncing-with-your-google-account">3.27. Syncing with your Google Account</a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.28. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.29. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.30. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.31. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#interacting-using-free-form-english">4. Interacting using free-form English</a></li>
+<li><a href="#faq">5. FAQ</a></li>
+<li><a href="#command-summary">6. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -1051,7 +1053,42 @@ Changes the profile photo of the 1st student in the current listing to the image
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.22. Listing entered commands : <code>history</code></a></h3>
+<h3 id="edit-the-miscellaneous-info-of-a-student-code-editmisc-code"><a class="link" href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">3.22. Edit the miscellaneous info of a student : <code>editMisc</code></a></h3>
+<div class="paragraph">
+<p>Edits the miscellaneous information of a student in the addressbook.<br>
+Format: <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the student&#8217;s miscellaneous info at the specified <code>INDEX</code>. The index refers to the index number shown in the last student listing. The index <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>At least one optional field must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to and overwritten by the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editMisc 1 al/Nuts r/Fast learner</code><br>
+Edits the allergies information and remarks information of the 1st student to be <code>Nuts</code> and <code>Fast learner</code> respectively.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.23. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -1072,7 +1109,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.24. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -1124,7 +1161,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.25. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -1156,21 +1193,21 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.26. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="syncing-with-your-google-account"><a class="link" href="#syncing-with-your-google-account">3.26. Syncing with your Google Account</a></h3>
+<h3 id="syncing-with-your-google-account"><a class="link" href="#syncing-with-your-google-account">3.27. Syncing with your Google Account</a></h3>
 <div class="paragraph">
 <p>Syncs your Schedule and AddressBook and uploads them to your Google Account.
 AddressBook is synced with Google Contacts: <a href="https://contacts.google.com/"><code>contacts.google.com</code></a>.
 Schedule is synced with Google Calendar: <a href="https://calendar.google.com/calendar/r/week"><code>calendar.google.com</code></a></p>
 </div>
 <div class="sect3">
-<h4 id="logging-in-to-your-google-account"><a class="link" href="#logging-in-to-your-google-account">3.26.1. Logging in to your Google Account</a></h4>
+<h4 id="logging-in-to-your-google-account"><a class="link" href="#logging-in-to-your-google-account">3.27.1. Logging in to your Google Account</a></h4>
 <div class="paragraph">
 <p>Logs in to your Google Account. Authorizes your Google Account to communicate with our app and gives
 Codeducator permission to modify your data.<br>
@@ -1193,7 +1230,7 @@ You must first be logged out to log in
 </div>
 </div>
 <div class="sect3">
-<h4 id="logging-out-of-your-google-account"><a class="link" href="#logging-out-of-your-google-account">3.26.2. Logging out of your Google Account</a></h4>
+<h4 id="logging-out-of-your-google-account"><a class="link" href="#logging-out-of-your-google-account">3.27.2. Logging out of your Google Account</a></h4>
 <div class="paragraph">
 <p>Logs out of your Google Account. Securely deletes the OAuth2 credential stored in the App.<br></p>
 </div>
@@ -1214,7 +1251,7 @@ You must first be logged in to log out
 </div>
 </div>
 <div class="sect3">
-<h4 id="syncing-data-with-your-google-account"><a class="link" href="#syncing-data-with-your-google-account">3.26.3. Syncing data with your Google Account</a></h4>
+<h4 id="syncing-data-with-your-google-account"><a class="link" href="#syncing-data-with-your-google-account">3.27.3. Syncing data with your Google Account</a></h4>
 <div class="paragraph">
 <p>Updates both Google Contacts and Google Calendar with Addressbook and Schedule. Deletes the old data that Codeducator
 has written before, and uploads the new updated copy, correct as of time of entering the <code>sync</code> command.+</p>
@@ -1237,33 +1274,124 @@ You must first be logged in to sync your data
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.27. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.28. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.28. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.29. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.29. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.30. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.30. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
+<h3 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.31. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="interacting-using-free-form-english"><a class="link" href="#interacting-using-free-form-english">4. Interacting using free-form English</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our application allows the user to use functions of the applications using everyday english sentences, without the need to remember specific command words.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only certain commands are covered: <code>Clear</code>,<code>Redo</code>,<code>Undo</code>,<code>Help</code>,<code>Exit</code>,<code>History</code>,<code>List</code>,<code>Schedule</code>,<code>Delete</code>,<code>Select</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples for each command:</p>
+</div>
+<div class="paragraph">
+<p><code>Clear</code>
+Examples: "Empty everything", "I want everyone to be gone"</p>
+</div>
+<div class="paragraph">
+<p><code>Redo</code>
+Examples: "do it again", "reuse previous"</p>
+</div>
+<div class="paragraph">
+<p><code>Undo</code>
+Examples: "revert", "negate the previous action"</p>
+</div>
+<div class="paragraph">
+<p><code>Help</code>
+Examples: "I am lost", "I need assistance"</p>
+</div>
+<div class="paragraph">
+<p><code>Exit</code>
+Examples: "I&#8217;m done here", "i wish to quit"</p>
+</div>
+<div class="paragraph">
+<p><code>History</code>
+Examples: "what are my previous commands", "archives of commands entered"</p>
+</div>
+<div class="paragraph">
+<p><code>List</code>
+Examples: "Show me all my students", "enumerate everyone"</p>
+</div>
+<div class="paragraph">
+<p>'Schedule'
+Examples: "what is my agenda", "show me my timetable"</p>
+</div>
+<div class="paragraph">
+<p><code>Delete</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only English names are detectable by the application
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples: "Erase Susan", "Remove Jason"</p>
+</div>
+<div class="paragraph">
+<p><code>Select</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only English names are detectable by the application
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples: "Choose Susan", "Single out Jason"</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">5. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
@@ -1272,7 +1400,7 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1365,6 +1493,10 @@ e.g. <code>deleteLesson 2</code></p>
 <p><strong>Edit the profile picture</strong> : <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code><br>
 e.g. <code>editPicture i/1 pa/C:/Users/User/Desktop/test.jpg</code></p>
 </li>
+<li>
+<p><strong>Edit the miscellaneous info of a student</strong> :  <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]
+e.g. `editMisc 2 al/seafood</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -1372,7 +1504,7 @@ e.g. <code>editPicture i/1 pa/C:/Users/User/Desktop/test.jpg</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 02:46:55 UTC
+Last updated 2018-04-10 03:39:43 UTC
 </div>
 </div>
 </body>
