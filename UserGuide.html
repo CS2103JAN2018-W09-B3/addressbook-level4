@@ -46,7 +46,11 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Codeducator is a desktop address book and scheduling application for private programming language tutors who <strong>prefer to use a desktop app for managing the contacts of students</strong>. You can also use Codeducator to track the progress of your students, manage your tutoring schedule and other important information about your students. More importantly, Codeducator is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Codeducator can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Codeducator is a desktop address book and scheduling application for private programming language tutors who <strong>prefer to use a desktop app for managing the contacts of students</strong>.<br></p>
+</div>
+<div class="paragraph">
+<p>You can also use Codeducator to track the progress of your students, manage your tutoring schedule and other important information about your students. More importantly, Codeducator is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Codeducator can get your contact management tasks done faster than traditional GUI apps.<br>
+Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -56,7 +60,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>1.8.0_60</code> or later installed in your Computer.</p>
+<p>Ensure you have Java version <code>1.8.0_60</code> or later installed in your Computer. You can download the latest Java release <a href="https://java.com/en/download/">here</a>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -72,13 +76,29 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/CS2103JAN2018-W09-B3/main/releases/releases">here</a>.</p>
+<p>Download the latest <code>W09-B3-Coeducator.jar</code> <a href="https://github.com/CS2103JAN2018-W09-B3/main/releases/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your Codeducator app.</p>
 </li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You may use create a folder called <code>Codeducator</code> on your <code>Desktop</code>, or in <code>My Documents</code> folder
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the file to start the app. You should see the application open in a appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
@@ -118,6 +138,15 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect1">
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Codeducator has many awesome features to help out coding tutors, it may be pretty scary for a first time user.<br></p>
+</div>
+<div class="paragraph">
+<p>Don&#8217;t fret! This user guide will show you the many simple commands that will help you go from zero to a Codeducator hero!<br></p>
+</div>
+<div class="paragraph">
+<p>The subsequent sections of the user guide provides a step by step walk-through of all the commands that Codeducator has to offer.</p>
+</div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
@@ -126,13 +155,13 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the <em>parameters</em> to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are <em>optional</em> e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times. In addition, the item be left out completely. e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code> or <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
@@ -141,12 +170,48 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>Got it? Good! Let&#8217;s get started on Codeducator!<br></p>
+</div>
 <div class="sect2">
 <h3 id="basic-commands"><a class="link" href="#basic-commands">3.1. Basic Commands</a></h3>
 <div class="sect3">
 <h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
+<p>Feeling lost and not sure what to do? Can&#8217;t remember the usage of the command?<br>
+You can type the help command and Codeducator will open this user guide in-application for your convenience. Don&#8217;t be afraid to ask for help!</p>
+</div>
+<div class="paragraph">
 <p>Format: <code>help</code></p>
+</div>
+<div class="paragraph">
+<p><span class="big">Steps Taken</span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type help into the command box, and press Enter to execute it.<br></p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/helpStep1.png" alt="helpStep1" width="790">
+</div>
+<div class="title">Figure 1. Typing help into command box<br></div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>The help window will appear as shown.<br></p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/helpResult.png" alt="helpResult" width="790">
+</div>
+<div class="title">Figure 2. Help box as shown.</div>
 </div>
 </div>
 <div class="sect3">
@@ -654,56 +719,90 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 </div>
 <div class="sect2">
 <h3 id="schedule"><a class="link" href="#schedule">3.3. Schedule</a></h3>
+<div class="paragraph">
+<p>Scheduling is a major feature of Codeducator. To help tutors manage their student lessons, Codeducator has implemented a Schedule component that keeps track of your student lessons on a weekly basis. Codeducator assumes you have regular lessons on a weekly basis.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/scheduleDiagramUG.png" alt="scheduleDiagramUG" width="790">
+</div>
+<div class="title">Figure 3. What you will see as a Schedule<br></div>
+</div>
+<div class="paragraph">
+<p>The Schedule comprises of Lessons. A Lesson represents the tutoring lesson session you will have with a Student in your Contacts List. <br></p>
+</div>
+<div class="paragraph">
+<p>The Lesson is displayed with<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The displayed Lesson Index</p>
+</li>
+<li>
+<p>The Student with whom you wil be having the Lesson with.</p>
+</li>
+</ol>
+</div>
 <div class="sect3">
 <h4 id="viewing-your-schedule-code-schedule-code"><a class="link" href="#viewing-your-schedule-code-schedule-code">3.3.1. Viewing your schedule : <code>schedule</code></a></h4>
 <div class="paragraph">
-<p>Shows your weekly schedule as a list of lessons. Displays lessons in chronological order.<br>
+<p>Need a quick refresh of what lessons you have in the week? Coming from another panel? You can easily view your Schedule with a simple command.<br>
 Format: <code>schedule</code></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Currently displayed in the CommandResult Dialogue box. UI will be added in coming weeks.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><strong class="large">Steps Taken</strong><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter <code>schedule</code> into the command box.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/scheduleResult.png" alt="scheduleResult" width="790">
+</div>
+<div class="title">Figure 4. Executing the <code>schedule</code> command<br></div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>See your schedule in full glory.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
 <h4 id="adding-a-lesson-to-your-schedule-code-addlesson-code"><a class="link" href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.3.2. Adding a lesson to your schedule: <code>addLesson</code></a></h4>
 <div class="paragraph">
-<p>Adds a lesson to your schedule for a student identified by the index number in the last student listing.<br>
-Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
+<p>Your Student needs extra lessons? Got new Students that want lessons? Codeducator will allow you to add Lessons to your schedule.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p>Adds a lesson for the student at the specified <code>INDEX</code>. The index refers to the index number shown in the last student listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The day for the input is the abbreviated first three letters (non-case sensitive) of the name of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
+<p>The day for the input is the abbreviated first three letters (<em>non-case sensitive</em>) of the name of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
 </li>
 <li>
 <p>The time input must be in the format <code>HH:MM</code>, seperated by a colon <code>:</code></p>
 </li>
 <li>
-<p>The time input must be a valid 24-hour time within the range of <code>00:00</code> to <code>23:59</code></p>
+<p>The time input must be a <em>valid 24-hour time</em> within the range of <code>00:00</code> to <code>23:59</code></p>
 </li>
 <li>
-<p>Input lesson cannot clash with existing lessons already in the <code>Schedule</code></p>
+<p>Input lesson <em>cannot clash</em> with existing lessons already in the <code>Schedule</code></p>
 </li>
 <li>
 <p>Lessons will be added in chronological order to your <code>Schedule</code></p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -712,7 +811,16 @@ Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Overnight lessons i.e. <code>st/23:30 et/00:30</code> cannot be held. It is assumed that people lead normal lives and work between 00:00 and 23:59 fo the same day.
+<div class="ulist">
+<ul>
+<li>
+<p>Overnight lessons i.e. <code>st/23:30 et/00:30</code> cannot be held. It is assumed that people lead normal lives and work between 00:00 and 23:59 of the same day.<br></p>
+</li>
+<li>
+<p>If you need to add a lesson that ends at midnight, enter <code>23:59</code>.</p>
+</li>
+</ul>
+</div>
 </td>
 </tr>
 </table>
@@ -733,6 +841,9 @@ Adds a lesson for the 1st student of the <code>list</code> command. Lesson will 
 Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson will be held on the day of <code>tue</code> and starting time will be <code>12:00</code> and ending time will be <code>13:30</code>.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>[</p>
 </div>
 </div>
 <div class="sect3">
@@ -1529,7 +1640,7 @@ e.g. `editMisc 2 al/seafood</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 17:42:41 UTC
+Last updated 2018-04-12 18:18:45 UTC
 </div>
 </div>
 </body>
