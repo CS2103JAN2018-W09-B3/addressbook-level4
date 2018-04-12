@@ -42,27 +42,52 @@ Users are able to track the progress of their students, manage their tutoring sc
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>a separate profile page for students and the ability to edit their miscellaneous details</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>a separate profile page for students and the ability to edit their miscellaneous details.</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The profile page allows the tutor to view a student&#8217;s full information paticulars on a separate page.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>This profile page includes the main information of a student (also displayed on the student card), miscellaneous information and profile picture (both not displayed on the student card)</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>The tutor will be able to edit all of the student&#8217;s information displayed on the profile page. This includes the profile picture which is done by proving a filepath to the new picture.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Justification: A tutor would wish to learn as much details as he/she can of a student before taking one in. In the Codeducator app, there is a panel of cards to display each student&#8217;s information.
+However, it is relatively small. Moreover, some details like Next-Of-Kin contact is important, yet not required very often. Thus this enhancement aids the tutor in viewing and keeping track of the full details of each student.</p>
 </li>
+<li>
+<p>Highlights: This feature was implemented partially using HTML and JavaScript and hence further changes to it will have to consider both the source code and the HTML/JavaScript files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added <strong>a 'ProgrammingLanguage' field to the student model.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the tutor to keep track of what programming language(s) are being used or taught to each student.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>**Justification: A tutor would want to keep track of what programming language a student is learning with or about, in order to better prepare lessons for that student.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
@@ -75,7 +100,10 @@ Users are able to track the progress of their students, manage their tutoring sc
 <div class="ulist">
 <ul>
 <li>
-<p>Managed release <code>v1.5rc</code> (1 release) on GitHub</p>
+<p>Setup Github organisation and repositories for the team.</p>
+</li>
+<li>
+<p>Managed release <code>v1.5rc</code> (1 release) on GitHub.</p>
 </li>
 </ul>
 </div>
@@ -87,9 +115,6 @@ Users are able to track the progress of their students, manage their tutoring sc
 <li>
 <p>Added Programming Language field to student model.</p>
 </li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
 </ul>
 </div>
 </li>
@@ -98,7 +123,7 @@ Users are able to track the progress of their students, manage their tutoring sc
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Corrected and improved on some language and grammar errors.</p>
 </li>
 </ul>
 </div>
@@ -111,27 +136,8 @@ Users are able to track the progress of their students, manage their tutoring sc
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
 <p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
 </li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
-</li>
 </ul>
 </div>
 </li>
@@ -139,9 +145,6 @@ Users are able to track the progress of their students, manage their tutoring sc
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -158,96 +161,6 @@ Users are able to track the progress of their students, manage their tutoring sc
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h4>
-<div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</li>
-<li>
-<p>The <code>undo</code> command currently does not supports reversing dashboard commands (<code>addMS</code>, <code>addTask</code>, <code>deleteMS</code>, <code>deleteTask</code> and <code>checkTask</code>)</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h4>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h4>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -563,19 +476,10 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-12 07:14:12 UTC
+Last updated 2018-04-12 10:09:49 UTC
 </div>
 </div>
 </body>
