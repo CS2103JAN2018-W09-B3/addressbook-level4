@@ -115,6 +115,7 @@
 <li><a href="#adding-a-task-to-a-milestone">F.9. Adding a task to a milestone</a></li>
 <li><a href="#deleting-a-task-from-a-milestone">F.10. Deleting a task from a milestone</a></li>
 <li><a href="#marking-a-task-as-completed">F.11. Marking a task as completed</a></li>
+<li><a href="#adding-a-lesson">F.12. Adding a lesson</a></li>
 </ul>
 </li>
 </ul>
@@ -3515,12 +3516,52 @@ Expected:</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-a-lesson"><a class="link" href="#adding-a-lesson">F.12. Adding a lesson</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a lesson while all students are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>list</code> command. Multiple students in the list. Your current schedule would preferably have no lessons starting before 7am or ending after 10pm.</p>
+</li>
+<li>
+<p>Test case: <code>addLesson 1 d/mon st/10:00 et/12:00</code><br>
+Expected: a lesson will be added for student at index 1, starting at 10:00am, ending at 12:00pm</p>
+</li>
+<li>
+<p>Test case (Maximum range): <code>addLesson 1 d/wed st/00:00 et/23:59</code><br>
+Expected: a lesson will be added for student at index 1, starting at 00:00pm, ending at 23:59pm (whole day).
+The schedule should resize to show the lesson in the whole day.</p>
+</li>
+<li>
+<p>Test case: <code>deleteLesson 0</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No lesson will be added due to invalid student index. Error details shown in results screen.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect deleteLessons to try: <code>deleteLesson</code>, <code>deleteLesson x</code> where x is larger than the index of the last lesson</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 17:21:19 UTC
+Last updated 2018-04-13 19:06:26 UTC
 </div>
 </div>
 </body>

@@ -5,6 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="author" content="By: `Team W09-B3` Since: `Mar 2018` Licence: `MIT`">
 <title>Codeducator - User Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -12,100 +13,136 @@
 </head>
 <body class="article">
 <div id="header">
-<h1>Codeducator - User Guide</h1>
+<h1><span class="image"><img src="images/CodeducatorTitle.png" alt="CodeducatorTitle" width="60px"></span> Codeducator - User Guide</h1>
+<div class="details">
+<span id="author" class="author">By: `Team W09-B3` Since: `Mar 2018` Licence: `MIT`</span><br>
+</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>By: <code>Team W09-B3</code>      Since: <code>Mar 2018</code>      Licence: <code>MIT</code></p>
-</div>
-</div>
-<div id="toc" class="toc">
-<div id="toctitle"></div>
-<ul class="sectlevel1">
-<li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
-<ul class="sectlevel2">
-<li><a href="#basic-commands">3.1. Basic Commands</a>
-<ul class="sectlevel3">
-<li><a href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.1.2. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.1.3. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.1.4. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.1.5. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.1.6. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.1.7. Encrypting data files <code>[coming in v2.0]</code></a></li>
-</ul>
-</li>
-<li><a href="#addressbook">3.2. AddressBook</a>
-<ul class="sectlevel3">
-<li><a href="#adding-a-student-code-add-code">3.2.1. Adding a student: <code>add</code></a></li>
-<li><a href="#listing-all-students-code-list-code">3.2.2. Listing all students : <code>list</code></a></li>
-<li><a href="#editing-a-student-code-edit-code">3.2.3. Editing a student : <code>edit</code></a></li>
-<li><a href="#locating-students-by-name-code-find-code">3.2.4. Locating students by name: <code>find</code></a></li>
-<li><a href="#locating-students-by-tags-code-findtag-code">3.2.5. Locating students by tags: <code>findTag</code></a></li>
-<li><a href="#adding-a-student-to-favourites-code-fav-code">3.2.6. Adding a student to favourites : <code>fav</code></a></li>
-<li><a href="#removing-a-student-from-favourites-code-unfav-code">3.2.7. Removing a student from favourites : <code>unfav</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.2.8. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#deleting-a-student-code-delete-code">3.2.9. Deleting a student : <code>delete</code></a></li>
-<li><a href="#selecting-a-student-code-select-code">3.2.10. Selecting a student : <code>select</code></a></li>
-</ul>
-</li>
-<li><a href="#schedule">3.3. Schedule</a>
-<ul class="sectlevel3">
-<li><a href="#viewing-your-schedule-code-schedule-code">3.3.1. Viewing your schedule : <code>schedule</code></a></li>
-<li><a href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.3.2. Adding a lesson to your schedule: <code>addLesson</code></a></li>
-<li><a href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.3.3. Deleting a lesson in your schedule: <code>deleteLesson</code></a></li>
-<li><a href="#syncing-with-your-google-account">3.3.4. Syncing with your Google Account</a></li>
-</ul>
-</li>
-<li><a href="#dashboard">3.4. Dashboard</a>
-<ul class="sectlevel3">
-<li><a href="#showing-the-dashboard-of-a-student-code-showdb-code">3.4.1. Showing the dashboard of a student: <code>showDB</code></a></li>
-<li><a href="#adding-a-milestone-to-a-student-s-dashboard-code-addms-code">3.4.2. Adding a milestone to a student&#8217;s dashboard: <code>addMS</code></a></li>
-<li><a href="#deleting-a-milestone-from-a-student-s-dashboard-code-deletems-code">3.4.3. Deleting a milestone from a student&#8217;s dashboard: <code>deleteMS</code></a></li>
-<li><a href="#adding-a-task-to-a-milestone-code-addtask-code">3.4.4. Adding a task to a milestone: <code>addTask</code></a></li>
-<li><a href="#deleting-a-task-from-a-milestone-code-deletetask-code">3.4.5. Deleting a task from a milestone: <code>deleteTask</code></a></li>
-<li><a href="#marking-a-task-as-completed-code-checktask-code">3.4.6. Marking a task as completed: <code>checkTask</code></a></li>
-</ul>
-</li>
-<li><a href="#student-profile-page">3.5. Student Profile Page</a>
-<ul class="sectlevel3">
-<li><a href="#displaying-profile-page-for-each-student-code-moreinfo-code">3.5.1. Displaying profile page for each student : <code>moreInfo</code></a></li>
-<li><a href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.5.2. Edit the profile picture of a student : <code>editPicture</code></a></li>
-<li><a href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">3.5.3. Edit the miscellaneous info of a student : <code>editMisc</code></a></li>
-</ul>
-</li>
-<li><a href="#coming-in-v2-0">3.6. Coming in v2.0</a>
-<ul class="sectlevel3">
-<li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.6.1. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
-<li><a href="#find-students-by-their-miscellaneous-information-code-coming-in-v2-0-code">3.6.2. Find students by their miscellaneous information <code>[coming in v2.0]</code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#interacting-using-free-form-english">4. Interacting using free-form English</a>
-<ul class="sectlevel2">
-<li><a href="#how-do-i-use-this">4.1. How do i use this?</a></li>
-<li><a href="#guidelines-for-using-this-feature">4.2. Guidelines for using this feature</a></li>
-</ul>
-</li>
-<li><a href="#faq">5. FAQ</a></li>
-<li><a href="#command-summary">6. Command Summary</a></li>
-</ul>
-</div>
-</div>
 <div class="sect1">
-<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
+<h2 id="welcome-to-codeducator"><a class="link" href="#welcome-to-codeducator">1. Welcome to Codeducator!</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Codeducator is a desktop address book and scheduling application for private programming language tutors who <strong>prefer to use a desktop app for managing the contacts of students</strong>.<br></p>
 </div>
 <div class="paragraph">
-<p>You can also use Codeducator to track the progress of your students, manage your tutoring schedule and other important information about your students. More importantly, Codeducator is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Codeducator can get your contact management tasks done faster than traditional GUI apps.<br>
-Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>You can also use Codeducator to track the progress of your students, manage your tutoring schedule and other important information about your students. More importantly, Codeducator is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Codeducator can get your contact management tasks done faster than traditional GUI apps.<br></p>
+</div>
+<div class="paragraph">
+<p>Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started.<br></p>
+</div>
+<div class="paragraph">
+<p>You may want to read <a href="#quick-overview">Section 1.1, &#8220;Quick Overview&#8221;</a> to check out the User Interface, or <a href="#how-to-use-this-user-guide">Section 1.2, &#8220;How to use this User Guide&#8221;</a> to find out about the format of our help guide</p>
+</div>
+<div class="paragraph">
+<p>Enjoy using Codeducator!</p>
+</div>
+<div class="sect2">
+<h3 id="quick-overview"><a class="link" href="#quick-overview">1.1. Quick Overview</a></h3>
+<div class="paragraph">
+<p>Codeducator’s user interface is split into a few sections. These sections are highlighted in the image below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CodeducatorTagged.png" alt="CodeducatorTagged" width="850">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Command Box</strong><br>
+Where you type your commands</p>
+</li>
+<li>
+<p><strong>Command Result Box</strong><br>
+The message result of executing your command</p>
+</li>
+<li>
+<p><strong>Contact List</strong><br>
+Where you keep your contacts</p>
+</li>
+<li>
+<p><strong>Infopanel</strong><br>
+A small but powerful multi-use window to view your Schedule, Full Information Page and Student Dashboards</p>
+</li>
+<li>
+<p><strong>Status Bar</strong><br>
+Tells you when you last updated Codeducator data</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Infopanel has three screens, depending on the task you are trying to execute.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Schedule</strong><br>
+Tasks related to your Schedule and Student Lessons</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/CodeducatorSchedule.png" alt="CodeducatorSchedule" width="790">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Full Information Page</strong><br>
+Tasks related to assigning additional information to your student</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/CodeducatorMoreInfo.png" alt="CodeducatorMoreInfo" width="790">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Student Dashboard</strong><br>
+Tasks related to assigning your Student milestones in terms of learning</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/CodeducatorDashboard.png" alt="CodeducatorDashboard" width="790">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-use-this-user-guide"><a class="link" href="#how-to-use-this-user-guide">1.2. How to use this User Guide</a></h3>
+<div class="paragraph">
+<p>Everything you need to know about Codeducator is in this user guide.</p>
+</div>
+<div class="paragraph">
+<p>You can quickly navigate the user guide by clicking on the links found in the table of contents at the top of the user guide.</p>
+</div>
+<div class="paragraph">
+<p>An example of the user guide for the features is shown below. You can identify the feature’s title, description, format and easy to follow step by step instructions. The instructions will follow this certain format</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UserGuideTagged.png" alt="UserGuideTagged" width="790">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Feature Title</strong><br>
+This is the name of the feature or command being explained</p>
+</li>
+<li>
+<p><strong>Description and use case</strong><br>
+This describes the potential situations that you might need to use this command.</p>
+</li>
+<li>
+<p><strong>Format of command</strong><br>
+The defined structure of the command. See <a href="#the-command-format">Section 3.1, &#8220;The Command Format&#8221;</a> for more information</p>
+</li>
+<li>
+<p><strong>Steps Taken</strong><br>
+A few example steps to show you how we might do things and what you will see
+You should have a similar user interface of Codeducator when following the step by step instructions.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
@@ -156,7 +193,7 @@ You may use create a folder called <code>Codeducator</code> on your <code>Deskto
 <p>Double-click the file to start the app. You should see the application open in a appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/UI.png" alt="UI" width="790">
 </div>
 </div>
 </li>
@@ -202,11 +239,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="paragraph">
 <p>The subsequent sections of the user guide provides a step by step walk-through of all the commands that Codeducator has to offer.</p>
 </div>
+<div class="sect2">
+<h3 id="the-command-format"><a class="link" href="#the-command-format">3.1. The Command Format</a></h3>
 <div class="exampleblock">
 <div class="content">
-<div class="paragraph">
-<p><strong>Command Format</strong></p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -228,49 +264,50 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="paragraph">
 <p>Got it? Good! Let&#8217;s get started on Codeducator!<br></p>
 </div>
+</div>
 <div class="sect2">
-<h3 id="basic-commands"><a class="link" href="#basic-commands">3.1. Basic Commands</a></h3>
+<h3 id="basic-user-interface-commands"><a class="link" href="#basic-user-interface-commands">3.2. Basic User Interface Commands</a></h3>
+<div class="paragraph">
+<p>Let&#8217;s start slow. This are the basic commands that Codeducator offers.</p>
+</div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1.1. Viewing help : <code>help</code></a></h4>
+<h4 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.2.1. Viewing help : <code>help</code></a></h4>
 <div class="paragraph">
 <p>Feeling lost and not sure what to do? Can&#8217;t remember the usage of the command?<br>
 You can type the help command and Codeducator will open this user guide in-application for your convenience. Don&#8217;t be afraid to ask for help!</p>
 </div>
-<div class="paragraph">
-<p>Format: <code>help</code></p>
+<div class="sect4">
+<h5 id="format-code-help-code"><a class="link" href="#format-code-help-code">Format: <code>help</code></a></h5>
+
 </div>
-<div class="paragraph">
-<p><span class="big">Steps Taken</span></p>
-</div>
+<div class="sect4">
+<h5 id="steps-taken"><a class="link" href="#steps-taken">Steps Taken</a></h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Type help into the command box, and press Enter to execute it.<br></p>
-</li>
-</ol>
-</div>
+<p>Type help into the command box, and press <kbd>Enter</kbd> to execute it.<br></p>
 <div class="imageblock">
 <div class="content">
 <img src="images/helpStep1.png" alt="helpStep1" width="790">
 </div>
 <div class="title">Figure 1. Typing help into command box<br></div>
 </div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
+</li>
 <li>
 <p>The help window will appear as shown.<br></p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/helpResult.png" alt="helpResult" width="790">
 </div>
 <div class="title">Figure 2. Help box as shown.</div>
 </div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.1.2. Listing entered commands : <code>history</code></a></h4>
+<h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.2.2. Listing entered commands : <code>history</code></a></h4>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -291,7 +328,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.1.3. Undoing previous command : <code>undo</code></a></h4>
+<h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.2.3. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -343,7 +380,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.1.4. Redoing the previously undone command : <code>redo</code></a></h4>
+<h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.2.4. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -375,30 +412,30 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect3">
-<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.1.5. Exiting the program : <code>exit</code></a></h4>
+<h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.2.5. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="saving-the-data"><a class="link" href="#saving-the-data">3.1.6. Saving the data</a></h4>
+<h4 id="saving-the-data"><a class="link" href="#saving-the-data">3.2.6. Saving the data</a></h4>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>Contact list and schedule data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.1.7. Encrypting data files <code>[coming in v2.0]</code></a></h4>
+<h4 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.2.7. Encrypting data files <code>[coming in v2.0]</code></a></h4>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="addressbook"><a class="link" href="#addressbook">3.2. AddressBook</a></h3>
+<h3 id="addressbook"><a class="link" href="#addressbook">3.3. AddressBook</a></h3>
 <div class="sect3">
-<h4 id="adding-a-student-code-add-code"><a class="link" href="#adding-a-student-code-add-code">3.2.1. Adding a student: <code>add</code></a></h4>
+<h4 id="adding-a-student-code-add-code"><a class="link" href="#adding-a-student-code-add-code">3.3.1. Adding a student: <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a student to the address book<br>
 Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pl/PROGRAMMING_LANGUAGE [t/TAG]&#8230;&#8203;</code></p>
@@ -430,7 +467,7 @@ A student can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-students-code-list-code"><a class="link" href="#listing-all-students-code-list-code">3.2.2. Listing all students : <code>list</code></a></h4>
+<h4 id="listing-all-students-code-list-code"><a class="link" href="#listing-all-students-code-list-code">3.3.2. Listing all students : <code>list</code></a></h4>
 <div class="paragraph">
 <p>Shows a list of all students in the address book.<br>
 Format: <code>list [-f]</code></p>
@@ -512,7 +549,7 @@ List all students</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.2.3. Editing a student : <code>edit</code></a></h4>
+<h4 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.3.3. Editing a student : <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing student in the address book.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [pl/PROGRAMMING_LANGUAGE] [t/TAG]&#8230;&#8203;</code></p>
@@ -569,7 +606,7 @@ Edits the name of the 2nd student to be <code>Betsy Crower</code> and clears all
 </div>
 </div>
 <div class="sect3">
-<h4 id="locating-students-by-name-code-find-code"><a class="link" href="#locating-students-by-name-code-find-code">3.2.4. Locating students by name: <code>find</code></a></h4>
+<h4 id="locating-students-by-name-code-find-code"><a class="link" href="#locating-students-by-name-code-find-code">3.3.4. Locating students by name: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds students whose names contain any of the given keywords.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
@@ -614,7 +651,7 @@ Returns any student having names <code>Betsy</code>, <code>Tim</code>, or <code>
 </div>
 </div>
 <div class="sect3">
-<h4 id="locating-students-by-tags-code-findtag-code"><a class="link" href="#locating-students-by-tags-code-findtag-code">3.2.5. Locating students by tags: <code>findTag</code></a></h4>
+<h4 id="locating-students-by-tags-code-findtag-code"><a class="link" href="#locating-students-by-tags-code-findtag-code">3.3.5. Locating students by tags: <code>findTag</code></a></h4>
 <div class="paragraph">
 <p>Finds students whose labels contain any of the given keywords.<br>
 Format: <code>findTag KEYWORD [MORE_KEYWORDS]</code></p>
@@ -655,7 +692,7 @@ Returns any student having tags <code>friends</code>, <code>owesMoney</code>, i.
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-student-to-favourites-code-fav-code"><a class="link" href="#adding-a-student-to-favourites-code-fav-code">3.2.6. Adding a student to favourites : <code>fav</code></a></h4>
+<h4 id="adding-a-student-to-favourites-code-fav-code"><a class="link" href="#adding-a-student-to-favourites-code-fav-code">3.3.6. Adding a student to favourites : <code>fav</code></a></h4>
 <div class="paragraph">
 <p>If you wish to access a student quickly, you can simply add the student as "favourite" using the <code>fav</code> command.</p>
 </div>
@@ -683,7 +720,7 @@ Returns any student having tags <code>friends</code>, <code>owesMoney</code>, i.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can view the list of your favourite students using the command <code>list -f</code> (see <a href="#listing-all-students-code-list-code">Section 3.2.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).
+You can view the list of your favourite students using the command <code>list -f</code> (see <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).
 </td>
 </tr>
 </table>
@@ -701,9 +738,9 @@ Adds the 1st student in the address book to favourites.</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken"><a class="link" href="#steps-taken">Steps taken</a></h5>
+<h5 id="steps-taken-2"><a class="link" href="#steps-taken-2">Steps taken</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, find the student you wish to add to favourites using the <code>list</code> command (See <a href="#listing-all-students-code-list-code">Section 3.2.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
+<p><strong>Step 1</strong>: First, find the student you wish to add to favourites using the <code>list</code> command (See <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you have found the student you want to add to your favourites, type <code>fav</code> into the command box, followed by the <code>INDEX</code> of the student in the list. Press <kbd>Enter</kbd> to execute it.</p>
@@ -744,7 +781,7 @@ The student <code>INDEX</code> provided must be valid. Otherwise, an error messa
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-a-student-from-favourites-code-unfav-code"><a class="link" href="#removing-a-student-from-favourites-code-unfav-code">3.2.7. Removing a student from favourites : <code>unfav</code></a></h4>
+<h4 id="removing-a-student-from-favourites-code-unfav-code"><a class="link" href="#removing-a-student-from-favourites-code-unfav-code">3.3.7. Removing a student from favourites : <code>unfav</code></a></h4>
 <div class="paragraph">
 <p>If you want to remove a student from favourites, you can simply use the <code>unfav</code> command.<br></p>
 </div>
@@ -778,9 +815,9 @@ Removes the 1st student in the address book from favourites.</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-2"><a class="link" href="#steps-taken-2">Steps taken</a></h5>
+<h5 id="steps-taken-3"><a class="link" href="#steps-taken-3">Steps taken</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, find the student you wish to remove from your favourites using the <code>list -f</code> command (See <a href="#listing-all-students-code-list-code">Section 3.2.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
+<p><strong>Step 1</strong>: First, find the student you wish to remove from your favourites using the <code>list -f</code> command (See <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you have found the student you want to remove from your favourites, type <code>unfav</code> into the command box, followed by the <code>INDEX</code> of the student in the list. Press <kbd>Enter</kbd> to execute it.</p>
@@ -821,14 +858,17 @@ The student <code>INDEX</code> provided must be valid. Otherwise, an error messa
 </div>
 </div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.2.8. Clearing all entries : <code>clear</code></a></h4>
+<h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.3.8. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>Clears all entries from the address book.<br></p>
+</div>
+<div class="sect4">
+<h5 id="format-code-clear-code"><a class="link" href="#format-code-clear-code">Format: <code>clear</code></a></h5>
+
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.2.9. Deleting a student : <code>delete</code></a></h4>
+<h4 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.3.9. Deleting a student : <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified student from the address book.<br>
 Format: <code>delete INDEX</code></p>
@@ -869,7 +909,7 @@ Deletes the 1st student in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.2.10. Selecting a student : <code>select</code></a></h4>
+<h4 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.3.10. Selecting a student : <code>select</code></a></h4>
 <div class="paragraph">
 <p>Selects the student identified by the index number used in the last student listing, and display their address on google maps.<br>
 Format: <code>select INDEX</code></p>
@@ -911,7 +951,7 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule"><a class="link" href="#schedule">3.3. Schedule</a></h3>
+<h3 id="schedule"><a class="link" href="#schedule">3.4. Schedule</a></h3>
 <div class="paragraph">
 <p>Scheduling is a major feature of Codeducator. To help tutors manage their student lessons, Codeducator has implemented a Schedule component that keeps track of your student lessons on a weekly basis. Codeducator assumes you have regular lessons on a weekly basis.<br></p>
 </div>
@@ -938,42 +978,43 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="viewing-your-schedule-code-schedule-code"><a class="link" href="#viewing-your-schedule-code-schedule-code">3.3.1. Viewing your schedule : <code>schedule</code></a></h4>
+<h4 id="viewing-your-schedule"><a class="link" href="#viewing-your-schedule">3.4.1. Viewing your Schedule</a></h4>
 <div class="paragraph">
-<p>Need a quick refresh of what lessons you have in the week? Coming from another panel? You can easily view your Schedule with a simple command.<br>
-Format: <code>schedule</code></p>
+<p>Need a quick refresh of what lessons you have in the week? Coming from another panel? You can easily view your Schedule with a simple command.<br></p>
 </div>
-<div class="paragraph">
-<p><strong class="large">Steps Taken</strong><br></p>
+<div class="sect4">
+<h5 id="format-code-schedule-code"><a class="link" href="#format-code-schedule-code">Format: <code>schedule</code></a></h5>
+
 </div>
+<div class="sect4">
+<h5 id="steps-taken-4"><a class="link" href="#steps-taken-4">Steps Taken</a></h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Enter <code>schedule</code> into the command box.</p>
-</li>
-</ol>
-</div>
+<p>Type <code>schedule</code> into the command box. Press <kbd>enter</kbd> to execute.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/scheduleResult.png" alt="scheduleResult" width="790">
 </div>
 <div class="title">Figure 14. Executing the <code>schedule</code> command<br></div>
 </div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
+</li>
 <li>
 <p>See your schedule in full glory.</p>
 </li>
 </ol>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="adding-a-lesson-to-your-schedule-code-addlesson-code"><a class="link" href="#adding-a-lesson-to-your-schedule-code-addlesson-code">3.3.2. Adding a lesson to your schedule: <code>addLesson</code></a></h4>
+<h4 id="adding-a-lesson-to-your-schedule"><a class="link" href="#adding-a-lesson-to-your-schedule">3.4.2. Adding a Lesson to your Schedule</a></h4>
 <div class="paragraph">
 <p>Your Student needs extra lessons? Got new Students that want lessons? Codeducator will allow you to add Lessons to your schedule.</p>
 </div>
+<div class="sect4">
+<h5 id="format-code-addlesson-index-d-day-st-start_time-et-end_time-code-br"><a class="link" href="#format-code-addlesson-index-d-day-st-start_time-et-end_time-code-br">Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code><br></a></h5>
 <div class="paragraph">
-<p>Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p>
+<p>Adds a lesson for the Student identified by their <code>INDEX</code>, for a certain <code>DAY</code>, starting at <code>START_TIME</code> and ending at <code>END_TIME</code><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1035,17 +1076,57 @@ Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson
 </li>
 </ul>
 </div>
+</div>
+<div class="sect4">
+<h5 id="steps-taken-5"><a class="link" href="#steps-taken-5">Steps Taken</a></h5>
 <div class="paragraph">
-<p>[</p>
+<p>Let&#8217;s say that you may want to add a Lesson for Bernice (<code>index 2</code>). The lesson time slot would be Sunday, 10:00am to 12:00pm.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>schedule</code> into the command box. Press <kbd>enter</kbd> to execute.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/addLessonStep1.png" alt="addLessonStep1" width="790">
+</div>
+<div class="title">Figure 15. Executing the <code>schedule</code> command<br></div>
+</div>
+</li>
+<li>
+<p>Visually find a free time slot. Sunday, 10:00 to 12:00 looks free!</p>
+</li>
+<li>
+<p>Type <code>addLesson 2 d/sun st/10:00 et/12:00</code>. Press <kbd>enter</kbd> to execute the command</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/addLessonStep2.png" alt="addLessonStep2" width="790">
+</div>
+<div class="title">Figure 16. Type out the command as shown</div>
+</div>
+</li>
+<li>
+<p>The lesson will be added to your Schedule!</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/addLessonResult.png" alt="addLessonResult" width="790">
+</div>
+<div class="title">Figure 17. Result of the <code>addLesson</code> command</div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-lesson-in-your-schedule-code-deletelesson-code"><a class="link" href="#deleting-a-lesson-in-your-schedule-code-deletelesson-code">3.3.3. Deleting a lesson in your schedule: <code>deleteLesson</code></a></h4>
+<h4 id="deleting-a-lesson-in-your-schedule"><a class="link" href="#deleting-a-lesson-in-your-schedule">3.4.3. Deleting a Lesson in your Schedule</a></h4>
+<div class="paragraph">
+<p>Need to remove lessons because Students drop out? Let&#8217;s use Codeducator&#8217;s <code>deleteLesson</code> command to do that for you.</p>
+</div>
+<div class="sect4">
+<h5 id="format-code-deletelesson-index-code-br"><a class="link" href="#format-code-deletelesson-index-code-br">Format: <code>deleteLesson INDEX</code><br></a></h5>
 <div class="paragraph">
 <p>Deletes an existing lesson in your schedule identified by the index number in the last schedule listing. of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>deleteLesson INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1055,34 +1136,93 @@ Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson
 <p>Deletes a lesson for the student at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the last schedule listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The index refers to the displayed Lesson Index shown in the title. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>Examples:</p>
 </div>
+<div class="sect4">
+<h5 id="examples"><a class="link" href="#examples">Examples:</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><code>schedule</code><br>
-<code>deleteLesson 2</code><br>
+<p><code>deleteLesson 2</code><br>
 Deletes the 2nd lesson listing in the schedule</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="syncing-with-your-google-account"><a class="link" href="#syncing-with-your-google-account">3.3.4. Syncing with your Google Account</a></h4>
+<div class="sect4">
+<h5 id="steps-taken-6"><a class="link" href="#steps-taken-6">Steps Taken</a></h5>
 <div class="paragraph">
-<p>Syncs your Schedule and AddressBook and uploads them to your Google Account.
-AddressBook is synced with Google Contacts: <a href="https://contacts.google.com/"><code>contacts.google.com</code></a>.
-Schedule is synced with Google Calendar: <a href="https://calendar.google.com/calendar/r/week"><code>calendar.google.com</code></a></p>
+<p>Let&#8217;s say you want to delete Charlotte&#8217;s Lesson, on Tuesday, 10:00am-12:00pm</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>schedule</code> into the command box. Press <kbd>enter</kbd> to execute.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/deleteLessonStep1.png" alt="deleteLessonStep1" width="790">
+</div>
+<div class="title">Figure 18. After executing the <code>schedule</code> command. The Lesson is identified by <code>INDEX:2</code><br></div>
+</div>
+</li>
+<li>
+<p>Type <code>deleteLesson</code> into the command box. Press <kbd>enter</kbd> to execute the command</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/deleteLessonStep2.png" alt="deleteLessonStep2" width="790">
+</div>
+<div class="title">Figure 19. Type out the command as shown</div>
+</div>
+</li>
+<li>
+<p>The lesson will be removed from your schedule!</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/deleteLessonResult.png" alt="deleteLessonResult" width="790">
+</div>
+<div class="title">Figure 20. Result of executing the <code>deleteLesson</code> command</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="syncing-with-your-google-account"><a class="link" href="#syncing-with-your-google-account">3.5. Syncing with your Google Account</a></h3>
+<div class="paragraph">
+<p>You probably want to view your contacts and schedule across your devices. With today&#8217;s pervasive use of cloud services, Codeducator takes advantage of Google&#8217;s Contacts and Calendar.
+Outside of Codeducator, you may view your contacts and schedule data in Google&#8217;s mobile and web applications.</p>
+</div>
+<div class="paragraph">
+<p>Codeducator uploads both contact list and schedule data to your Google Account.
+Your contact list is synced with Google Contacts: <a href="https://contacts.google.com/">contacts.google.com</a>.
+Your schedule is synced with Google Calendar: <a href="https://calendar.google.com/calendar/r/week">calendar.google.com</a></p>
+</div>
+<div class="sect3">
+<h4 id="logging-in-to-your-google-account"><a class="link" href="#logging-in-to-your-google-account">3.5.1. Logging in to your Google Account</a></h4>
+<div class="paragraph">
+<p>Associate your Google account with Codeducator and authorise Codeducator to upload data to your Google account&#8217;s cloud services</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Ensure you have a Google account! Take advantage of Google&#8217;s cloud services
+</td>
+</tr>
+</table>
 </div>
 <div class="sect4">
-<h5 id="logging-in-to-your-google-account"><a class="link" href="#logging-in-to-your-google-account">Logging in to your Google Account</a></h5>
+<h5 id="format-code-login-code"><a class="link" href="#format-code-login-code">Format: <code>login</code></a></h5>
 <div class="paragraph">
 <p>Logs in to your Google Account. Authorizes your Google Account to communicate with our app and gives
 Codeducator permission to modify your data.<br>
@@ -1100,14 +1240,63 @@ You must first be logged out to log in
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Format: <code>login</code></p>
-</div>
 </div>
 <div class="sect4">
-<h5 id="logging-out-of-your-google-account"><a class="link" href="#logging-out-of-your-google-account">Logging out of your Google Account</a></h5>
+<h5 id="steps-taken-7"><a class="link" href="#steps-taken-7">Steps Taken</a></h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>login</code> in the command box. We will use the <code>schedule</code> screen, but it will work from any screen.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/loginStep1.png" alt="loginStep1" width="790">
+</div>
+<div class="title">Figure 21. Type <code>login</code> into the command box (Codeducator window)</div>
+</div>
+</li>
+<li>
+<p>Execute the command using <kbd>enter</kbd>.</p>
+</li>
+<li>
+<p>Your default browser will redirect to Google&#8217;s login screen. Follow the OAuth2 procedure by typing your Google username and password into the login screen.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/loginStep3.png" alt="loginStep3" width="790">
+</div>
+<div class="title">Figure 22. Google&#8217;s login screen (Your browser window)</div>
+</div>
+</li>
+<li>
+<p>After logging in, you will see this window. Authorise Codeducator by clicking "Allow"</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/loginStep4.png" alt="loginStep4" width="790">
+</div>
+<div class="title">Figure 23. Google&#8217;s OAuth/authentication window (Your browser window)</div>
+</div>
+</li>
+<li>
+<p>If you have successfully logged in. Your browser will display this message as a sign of login success.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/loginStep5.png" alt="loginStep5" width="790">
+</div>
+<div class="title">Figure 24. Google&#8217;s login success message (Your browser window)</div>
+</div>
+</li>
+<li>
+<p>Open the Codeducator window again. You will see that the message displays that you are logged in</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/loginStep6.png" alt="loginStep6" width="790">
+</div>
+<div class="title">Figure 25. Codeducator&#8217;s login success message (Codeducator window)</div>
+</div>
 <div class="paragraph">
-<p>Logs out of your Google Account. Securely deletes the OAuth2 credential stored in the App.<br></p>
+<p>You are now ready to sync your account!<br></p>
+</div>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1116,29 +1305,93 @@ You must first be logged out to log in
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You must first be logged in to log out
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>There is a <strong>45 second timeout</strong> for the login process. If you do not login successfully (due to closing the window unexpectedly or poor network connection), the login process will timeout.</p>
+</li>
+<li>
+<p>Authorising Codeducator is important! Denying access will stop Codeducator from uploading data to your account.</p>
+</li>
+<li>
+<p>If you have already logged in before without logging out, you may skip the Google login process by just simply typing in <code>login</code>.</p>
+</li>
+<li>
+<p>If you do not successfully login , don&#8217;t worry! Just repeat the steps to login again.</p>
+</li>
+<li>
+<p>Your stored credential may expire after a long period of not using Codeducator. Simply logout and re-login to re-authenticate. See <a href="#logging-out-of-your-google-account">Section 3.5.3, &#8220;Logging out of your Google Account&#8221;</a></p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="syncing-data-with-your-google-account"><a class="link" href="#syncing-data-with-your-google-account">3.5.2. Syncing data with your Google Account</a></h4>
+<div class="paragraph">
+<p>Updates both Google Contacts and Google Calendar with Addressbook and Schedule. Deletes the old data that Codeducator
+has uploaded previously, and uploads the updated data, correct as of time of entering the <code>sync</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Google Contacts will create a new Contact Label group called "Students". Contacts from your Codeducator app will be uploaded here.
+Your Student&#8217;s Name, Phone Number and Address will be uploaded.<br></p>
+</div>
+<div class="paragraph">
+<p>Google Calendar will create a Calendar group called "Student Lessons". Lessons from your Calendar will be uploaded here.
+The name of the event will be "Lesson with &lt;Student&gt;", using the Start and End times of the Lesson, location will be using the address associated with the Student.
+The Calendar will only start syncing from the <strong>first Lesson occurring after the current day</strong> that you perform the sync.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you have synced before, future syncs will<br></p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Look for "Students" label in Google Contacts and delete contacts in those groups before reuploading your Student data</p>
+</li>
+<li>
+<p>Look for "Student Lessons" calendar and delete the events in that Calendar before reuploading your Schedule data.</p>
+</li>
+</ol>
+</div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Format: <code>logout</code></p>
+<p>Currently, Google Calendar will create a recurring weekly event per lesson, repeated over 4 weeks. If you have no edits to your Schedule within the month, do a sync at the end of the month to refresh your Calendar data.</p>
 </div>
-</div>
-<div class="sect4">
-<h5 id="syncing-data-with-your-google-account"><a class="link" href="#syncing-data-with-your-google-account">Syncing data with your Google Account</a></h5>
-<div class="paragraph">
-<p>Updates both Google Contacts and Google Calendar with Addressbook and Schedule. Deletes the old data that Codeducator
-has written before, and uploads the new updated copy, correct as of time of entering the <code>sync</code> command.+</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-You must first be logged in to sync your data
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You must first be logged in to sync your data</p>
+</li>
+<li>
+<p>Do not change the name of the Students label. Codeducator will not be able to delete those contacts in future syncs.</p>
+</li>
+<li>
+<p>Likewise, do not change the name of the Calendar "Student Lessons" as it will be similarly used for future syncs</p>
+</li>
+</ol>
+</div>
 </td>
 </tr>
 </table>
@@ -1146,11 +1399,149 @@ You must first be logged in to sync your data
 <div class="paragraph">
 <p>Format: <code>sync</code></p>
 </div>
+<div class="sect4">
+<h5 id="steps-taken-8"><a class="link" href="#steps-taken-8">Steps Taken</a></h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure that you have logged in to your account. See <a href="#logging-in-to-your-google-account">Section 3.5.1, &#8220;Logging in to your Google Account&#8221;</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Example Google Calendar and Contacts, account, I&#8217;ll be starting with empty Google Contacts and Calendar</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/syncStep00.png" alt="syncStep00" width=""790">
+</div>
+<div class="title">Figure 26. What my Google Contacts and Calendar look like before the sync</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>View the schedule that you want to sync. See <a href="#Viewing your schedule">[Viewing your schedule]</a></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/syncStep0.png" alt="syncStep0" width=""790">
+</div>
+<div class="title">Figure 27. We will be using this example schedule</div>
+</div>
+</li>
+<li>
+<p>Type <code>sync</code> in the command box. Press <kbd>enter</kbd> to execute</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/syncStep1.png" alt="syncStep1" width="790">
+</div>
+<div class="title">Figure 28. Type <code>sync</code> into the command box</div>
+</div>
+</li>
+<li>
+<p>Codeducator will now try to upload the current data. If you had previously used <code>sync</code>,
+Codeducator will delete the old data in you Google Contacts and Calendar</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/syncResult1.png" alt="syncResult1" width="790">
+</div>
+<div class="title">Figure 29. Viewing your schedule in Week and Month View in <a href="https://calendar.google.com/calendar/r/week">calendar.google.com</a>. Note the new Calendar "Student Lessons"</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/syncResult2.png" alt="syncResult2" width="790">
+</div>
+<div class="title">Figure 30. Viewing your contacts list in Google Contacts in <a href="https://contacts.google.com/">contacts.google.com</a>. Note the new Label "Students"</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/syncResult3.png" alt="syncResult3" width="790">
+</div>
+<div class="title">Figure 31. You will see this message if you successfully synced your account!</div>
+</div>
+</li>
+<li>
+<p>Congrats, your data has been synchronised! You are free to use them across your devices in anyway that Google Contacts and Calendar supports!</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you have many contacts or lessons, it will take some time to synchronise your data. Be patient as Codeducator uploads your data!</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logging-out-of-your-google-account"><a class="link" href="#logging-out-of-your-google-account">3.5.3. Logging out of your Google Account</a></h4>
+<div class="paragraph">
+<p>For security purposes, Codeducator allows you to log out of your Google Account. Codeducator will ecurely delete the OAuth2 credential stored in the App.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You must first be logged in to log out.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>logout</code></p>
+</div>
+<div class="sect4">
+<h5 id="steps-taken-9"><a class="link" href="#steps-taken-9">Steps taken</a></h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure that you are logged in. See <a href="#logging-in-to-your-google-account">Section 3.5.1, &#8220;Logging in to your Google Account&#8221;</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If you are not logged in, you are already logged out!</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Type <code>logout</code> in the command box. Press <kbd>enter</kbd> to execute the command.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/logoutStep1.png" alt="logoutStep1" width="790">
+</div>
+<div class="title">Figure 32. Type <code>logout</code> in the command box.</div>
+</div>
+</li>
+<li>
+<p>You should see the following window</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/logoutResult.png" alt="logoutResult" width="790">
+</div>
+<div class="title">Figure 33. Result of executing <code>logout</code> command</div>
+</div>
+</li>
+<li>
+<p>You have successfully logged out of your account! Log in again if you want to sync your contacts and schedule.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="dashboard"><a class="link" href="#dashboard">3.4. Dashboard</a></h3>
+<h3 id="dashboard"><a class="link" href="#dashboard">3.6. Dashboard</a></h3>
 <div class="paragraph">
 <p>In Codeducator, you can <strong>track the learning progress</strong> of your students easily by utilising our Dashboard feature.
 Each of your student in your contact list has their own dashboard which you can view and manage easily.<br></p>
@@ -1176,10 +1567,10 @@ Codeducator allows you to create and add tasks to each milestone so that you can
 <div class="content">
 <img src="images/dashboardScreenshot.png" alt="dashboardScreenshot" width="800">
 </div>
-<div class="title">Figure 15. An example of a student&#8217;s dashboard</div>
+<div class="title">Figure 34. An example of a student&#8217;s dashboard</div>
 </div>
 <div class="sect3">
-<h4 id="showing-the-dashboard-of-a-student-code-showdb-code"><a class="link" href="#showing-the-dashboard-of-a-student-code-showdb-code">3.4.1. Showing the dashboard of a student: <code>showDB</code></a></h4>
+<h4 id="showing-the-dashboard-of-a-student-code-showdb-code"><a class="link" href="#showing-the-dashboard-of-a-student-code-showdb-code">3.6.1. Showing the dashboard of a student: <code>showDB</code></a></h4>
 <div class="paragraph">
 <p>You can view the dashboard of a student by using the <code>showDB</code> command.<br></p>
 </div>
@@ -1213,9 +1604,9 @@ Shows the dashboard of the 1st student in the address book.</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-3"><a class="link" href="#steps-taken-3">Steps taken</a></h5>
+<h5 id="steps-taken-10"><a class="link" href="#steps-taken-10">Steps taken</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, find the student whose dashboard you wish to view using the <code>list</code> command (See <a href="#listing-all-students-code-list-code">Section 3.2.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
+<p><strong>Step 1</strong>: First, find the student whose dashboard you wish to view using the <code>list</code> command (See <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you have found the student, type <code>showDB</code> into the command box, followed by the <code>STUDENT_INDEX</code> of the student in the list. Press <kbd>Enter</kbd> to execute it.</p>
@@ -1224,7 +1615,7 @@ Shows the dashboard of the 1st student in the address book.</p>
 <div class="content">
 <img src="images/showDB1_screenshot.png" alt="showDB1 screenshot" width="800">
 </div>
-<div class="title">Figure 16. Entering the <code>showDB</code> command followed by the <code>STUDENT_INDEX</code> of the student whose dashboard you wish to view</div>
+<div class="title">Figure 35. Entering the <code>showDB</code> command followed by the <code>STUDENT_INDEX</code> of the student whose dashboard you wish to view</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in viewing the student&#8217;s dashboard if you see the message "Selected Dashboard of Student: <code>STUDENT_INDEX</code> " in the result box, with the dashboard containing the student&#8217;s name appearing on the right panel.</p>
@@ -1233,7 +1624,7 @@ Shows the dashboard of the 1st student in the address book.</p>
 <div class="content">
 <img src="images/showDB2_screenshot.png" alt="showDB2 screenshot" width="800">
 </div>
-<div class="title">Figure 17. Success in showing the dashboard of Alex Yeoh who has the index 1 on the students list</div>
+<div class="title">Figure 36. Success in showing the dashboard of Alex Yeoh who has the index 1 on the students list</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1251,12 +1642,12 @@ The student <code>INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="content">
 <img src="images/showDB3_screenshot.png" alt="showDB3 screenshot" width="800">
 </div>
-<div class="title">Figure 18. Error message displayed when an invalid student index is entered</div>
+<div class="title">Figure 37. Error message displayed when an invalid student index is entered</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-milestone-to-a-student-s-dashboard-code-addms-code"><a class="link" href="#adding-a-milestone-to-a-student-s-dashboard-code-addms-code">3.4.2. Adding a milestone to a student&#8217;s dashboard: <code>addMS</code></a></h4>
+<h4 id="adding-a-milestone-to-a-student-s-dashboard-code-addms-code"><a class="link" href="#adding-a-milestone-to-a-student-s-dashboard-code-addms-code">3.6.2. Adding a milestone to a student&#8217;s dashboard: <code>addMS</code></a></h4>
 <div class="paragraph">
 <p>If you want to keep track of a learning objective you want your student to fulfil, you can add a milestone to your student&#8217;s dashboard using the <code>addMS</code> command.<br></p>
 </div>
@@ -1297,7 +1688,7 @@ Adds a milestone to the dashboard of the 1st student in the address book. The mi
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-4"><a class="link" href="#steps-taken-4">Steps taken</a></h5>
+<h5 id="steps-taken-11"><a class="link" href="#steps-taken-11">Steps taken</a></h5>
 <div class="paragraph">
 <p><strong>Step 1</strong>: First, view the dashboard of the student where you want to add the milestone to (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
@@ -1308,7 +1699,7 @@ Adds a milestone to the dashboard of the 1st student in the address book. The mi
 <div class="content">
 <img src="images/addMS1_screenshot.png" alt="addMS1 screenshot" width="800">
 </div>
-<div class="title">Figure 19. Entering the <code>addMS</code> command, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_DUE_DATE</code> and <code>DESCRIPTION_OF_MILESTONE</code></div>
+<div class="title">Figure 38. Entering the <code>addMS</code> command, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_DUE_DATE</code> and <code>DESCRIPTION_OF_MILESTONE</code></div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in adding the milestone to the student&#8217;s dashboard if you see the message "Milestone added to Student&#8217;s Dashboard:" followed by the description of the milestone you have added in the result box.
@@ -1318,7 +1709,7 @@ The new milestone will also appear on the student&#8217;s dashboard.</p>
 <div class="content">
 <img src="images/addMS2_screenshot.png" alt="addMS2 screenshot" width="800">
 </div>
-<div class="title">Figure 20. Success in adding the milestone with the description "Learn Arrays" which is due on "23/05/2018 23:59" to the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
+<div class="title">Figure 39. Success in adding the milestone with the description "Learn Arrays" which is due on "23/05/2018 23:59" to the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1336,7 +1727,7 @@ The <code>STUDENT_INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="content">
 <img src="images/addMS3_screenshot.png" alt="addMS3 screenshot" width="800">
 </div>
-<div class="title">Figure 21. Error message displayed when an invalid <code>STUDENT_INDEX</code> is entered</div>
+<div class="title">Figure 40. Error message displayed when an invalid <code>STUDENT_INDEX</code> is entered</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1354,12 +1745,12 @@ The <code>MILESTONE_DUE_DATE</code> provided must have a valid calendar date and
 <div class="content">
 <img src="images/addMS4_screenshot.png" alt="addMS4 screenshot" width="800">
 </div>
-<div class="title">Figure 22. Error message displayed when an invalid <code>MILESTONE_DUE_DATE</code> is entered</div>
+<div class="title">Figure 41. Error message displayed when an invalid <code>MILESTONE_DUE_DATE</code> is entered</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-milestone-from-a-student-s-dashboard-code-deletems-code"><a class="link" href="#deleting-a-milestone-from-a-student-s-dashboard-code-deletems-code">3.4.3. Deleting a milestone from a student&#8217;s dashboard: <code>deleteMS</code></a></h4>
+<h4 id="deleting-a-milestone-from-a-student-s-dashboard-code-deletems-code"><a class="link" href="#deleting-a-milestone-from-a-student-s-dashboard-code-deletems-code">3.6.3. Deleting a milestone from a student&#8217;s dashboard: <code>deleteMS</code></a></h4>
 <div class="paragraph">
 <p>If you wish to remove a milestone you no longer need from a student&#8217;s dashboard, you can use the <code>deleteMS</code> command.<br></p>
 </div>
@@ -1400,7 +1791,7 @@ Deletes the 1st milestone from the dashboard of the 1st student in the address b
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-5"><a class="link" href="#steps-taken-5">Steps taken</a></h5>
+<h5 id="steps-taken-12"><a class="link" href="#steps-taken-12">Steps taken</a></h5>
 <div class="paragraph">
 <p><strong>Step 1</strong>: First, view the dashboard of the student where you want to remove the milestone from (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
@@ -1411,7 +1802,7 @@ Deletes the 1st milestone from the dashboard of the 1st student in the address b
 <div class="content">
 <img src="images/deleteMS1_screenshot.png" alt="deleteMS1 screenshot" width="800">
 </div>
-<div class="title">Figure 23. Entering the <code>deleteMS</code> command, followed by the <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code></div>
+<div class="title">Figure 42. Entering the <code>deleteMS</code> command, followed by the <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code></div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in deleting the milestone if you see the message "Deleted milestone:" followed by the description of the milestone in the result box. The milestone will also no longer be on the dashboard of the student.</p>
@@ -1420,7 +1811,7 @@ Deletes the 1st milestone from the dashboard of the 1st student in the address b
 <div class="content">
 <img src="images/deleteMS2_screenshot.png" alt="deleteMS2 screenshot" width="800">
 </div>
-<div class="title">Figure 24. Success in deleting the milestone of index 1 in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
+<div class="title">Figure 43. Success in deleting the milestone of index 1 in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1438,12 +1829,12 @@ The <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> provided must be
 <div class="content">
 <img src="images/deleteMS3_screenshot.png" alt="deleteMS3 screenshot" width="800">
 </div>
-<div class="title">Figure 25. Error message displayed when invalid <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> are entered</div>
+<div class="title">Figure 44. Error message displayed when invalid <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> are entered</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-task-to-a-milestone-code-addtask-code"><a class="link" href="#adding-a-task-to-a-milestone-code-addtask-code">3.4.4. Adding a task to a milestone: <code>addTask</code></a></h4>
+<h4 id="adding-a-task-to-a-milestone-code-addtask-code"><a class="link" href="#adding-a-task-to-a-milestone-code-addtask-code">3.6.4. Adding a task to a milestone: <code>addTask</code></a></h4>
 <div class="paragraph">
 <p>If you wish to keep track of a piece of work that needs to be done to complete a milestone&#8217;s objective, you can add a task to the milestone in the student&#8217;s dashboard using the <code>addTask</code> command.<br></p>
 </div>
@@ -1484,7 +1875,7 @@ Adds a task to the 1st milestone in the dashboard of the 1st student in the addr
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-6"><a class="link" href="#steps-taken-6">Steps taken</a></h5>
+<h5 id="steps-taken-13"><a class="link" href="#steps-taken-13">Steps taken</a></h5>
 <div class="paragraph">
 <p><strong>Step 1</strong>: First, view the dashboard of the student where you want to add the task to (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
@@ -1495,7 +1886,7 @@ Adds a task to the 1st milestone in the dashboard of the 1st student in the addr
 <div class="content">
 <img src="images/addTask1_screenshot.png" alt="addTask1 screenshot" width="800">
 </div>
-<div class="title">Figure 26. Entering the command <code>addTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, <code>NAME_OF_TASK</code> and <code>DESCRIPTION_OF_TASK</code></div>
+<div class="title">Figure 45. Entering the command <code>addTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, <code>NAME_OF_TASK</code> and <code>DESCRIPTION_OF_TASK</code></div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in adding the task to the milestone if you see the message "New task added:" followed by the description of the task you have added in the result box. The new task will also appear in the task list of the milestone.</p>
@@ -1504,7 +1895,7 @@ Adds a task to the 1st milestone in the dashboard of the 1st student in the addr
 <div class="content">
 <img src="images/addTask2_screenshot.png" alt="addTask2 screenshot" width="800">
 </div>
-<div class="title">Figure 27. Success in adding a task with the name "Learn Array Syntax" and description "Student to refer to the textbook" to the 1st milestone in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
+<div class="title">Figure 46. Success in adding a task with the name "Learn Array Syntax" and description "Student to refer to the textbook" to the 1st milestone in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1522,12 +1913,12 @@ The <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> provided must be
 <div class="content">
 <img src="images/addTask3_screenshot.png" alt="addTask3 screenshot" width="800">
 </div>
-<div class="title">Figure 28. Error message displayed when invalid <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> are entered</div>
+<div class="title">Figure 47. Error message displayed when invalid <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> are entered</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-task-from-a-milestone-code-deletetask-code"><a class="link" href="#deleting-a-task-from-a-milestone-code-deletetask-code">3.4.5. Deleting a task from a milestone: <code>deleteTask</code></a></h4>
+<h4 id="deleting-a-task-from-a-milestone-code-deletetask-code"><a class="link" href="#deleting-a-task-from-a-milestone-code-deletetask-code">3.6.5. Deleting a task from a milestone: <code>deleteTask</code></a></h4>
 <div class="paragraph">
 <p>If you wish to remove a task you no longer need in a milestone of a dashboard, you can use the <code>deleteTask</code> command.<br></p>
 </div>
@@ -1574,7 +1965,7 @@ Deletes the 1st task in the 1st milestone. The milestone is in the dashboard of 
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-7"><a class="link" href="#steps-taken-7">Steps taken</a></h5>
+<h5 id="steps-taken-14"><a class="link" href="#steps-taken-14">Steps taken</a></h5>
 <div class="paragraph">
 <p><strong>Step 1</strong>: First, view the dashboard of the student where you want to delete the task from (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
@@ -1585,7 +1976,7 @@ Deletes the 1st task in the 1st milestone. The milestone is in the dashboard of 
 <div class="content">
 <img src="images/deleteTask1_screenshot.png" alt="deleteTask1 screenshot" width="800">
 </div>
-<div class="title">Figure 29. Entering the command <code>deleteTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code></div>
+<div class="title">Figure 48. Entering the command <code>deleteTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code></div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in deleting the task from the milestone if you see the message: "Deleted task:" followed by the description of the task you deleted in the result box. The task will also no longer be in the task list of the milestone.</p>
@@ -1594,7 +1985,7 @@ Deletes the 1st task in the 1st milestone. The milestone is in the dashboard of 
 <div class="content">
 <img src="images/deleteTask2_screenshot.png" alt="deleteTask2 screenshot" width="800">
 </div>
-<div class="title">Figure 30. Success in deleting the task of index 1 from the 1st milestone in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
+<div class="title">Figure 49. Success in deleting the task of index 1 from the 1st milestone in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1612,12 +2003,12 @@ The <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, and <code>TASK_IND
 <div class="content">
 <img src="images/deleteTask3_screenshot.png" alt="deleteTask3 screenshot" width="800">
 </div>
-<div class="title">Figure 31. Error message displayed when invalid <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code> are entered</div>
+<div class="title">Figure 50. Error message displayed when invalid <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code> are entered</div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="marking-a-task-as-completed-code-checktask-code"><a class="link" href="#marking-a-task-as-completed-code-checktask-code">3.4.6. Marking a task as completed: <code>checkTask</code></a></h4>
+<h4 id="marking-a-task-as-completed-code-checktask-code"><a class="link" href="#marking-a-task-as-completed-code-checktask-code">3.6.6. Marking a task as completed: <code>checkTask</code></a></h4>
 <div class="paragraph">
 <p>If your student has completed a task and you wish to mark it as completed, you can use the <code>checkTask</code> command.<br></p>
 </div>
@@ -1676,7 +2067,7 @@ Marks the 1st task in the 1st milestone as completed. The milestone is in the da
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-8"><a class="link" href="#steps-taken-8">Steps taken</a></h5>
+<h5 id="steps-taken-15"><a class="link" href="#steps-taken-15">Steps taken</a></h5>
 <div class="paragraph">
 <p><strong>Step 1</strong>: First, view the dashboard of the student where the task is (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
@@ -1687,7 +2078,7 @@ Marks the 1st task in the 1st milestone as completed. The milestone is in the da
 <div class="content">
 <img src="images/checkTask1_screenshot.png" alt="checkTask1 screenshot" width="800">
 </div>
-<div class="title">Figure 32. Entering the command <code>checkTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code></div>
+<div class="title">Figure 51. Entering the command <code>checkTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code></div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in marking the task as completed if you see the message "Task <code>TASK_INDEX</code> marked as completed in milestone <code>MILESTONE_INDEX</code> ".
@@ -1697,7 +2088,7 @@ The task&#8217;s "Completed" field will become "Yes" and the progress of the mil
 <div class="content">
 <img src="images/checkTask2_screenshot.png" alt="checkTask2 screenshot" width="800">
 </div>
-<div class="title">Figure 33. Success in marking the task of index 1 from the 1st milestone in the dashboard of Alex Yeoh as completed. Alex Yeoh has the index 1 on the students list. The task&#8217;s "Completed" field is now "Yes" and the milestone&#8217;s progress is updated to 100%.</div>
+<div class="title">Figure 52. Success in marking the task of index 1 from the 1st milestone in the dashboard of Alex Yeoh as completed. Alex Yeoh has the index 1 on the students list. The task&#8217;s "Completed" field is now "Yes" and the milestone&#8217;s progress is updated to 100%.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1715,7 +2106,7 @@ Marking an already completed task as complete will cause the message "Task is al
 <div class="content">
 <img src="images/checkTask4_screenshot.png" alt="checkTask4 screenshot" width="800">
 </div>
-<div class="title">Figure 34. Error message displayed when specified task is already marked as completed</div>
+<div class="title">Figure 53. Error message displayed when specified task is already marked as completed</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1733,15 +2124,15 @@ The <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, and <code>TASK_IND
 <div class="content">
 <img src="images/checkTask3_screenshot.png" alt="checkTask3 screenshot" width="800">
 </div>
-<div class="title">Figure 35. Error message displayed when invalid <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code> are entered</div>
+<div class="title">Figure 54. Error message displayed when invalid <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code> are entered</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="student-profile-page"><a class="link" href="#student-profile-page">3.5. Student Profile Page</a></h3>
+<h3 id="student-profile-page"><a class="link" href="#student-profile-page">3.7. Student Profile Page</a></h3>
 <div class="sect3">
-<h4 id="displaying-profile-page-for-each-student-code-moreinfo-code"><a class="link" href="#displaying-profile-page-for-each-student-code-moreinfo-code">3.5.1. Displaying profile page for each student : <code>moreInfo</code></a></h4>
+<h4 id="displaying-profile-page-for-each-student-code-moreinfo-code"><a class="link" href="#displaying-profile-page-for-each-student-code-moreinfo-code">3.7.1. Displaying profile page for each student : <code>moreInfo</code></a></h4>
 <div class="paragraph">
 <p>Displays the full information of a student on the browser panel. The full information of a student consists of 3 elements, main information, miscellaneous information and his/her profile picture. You will be able to view his/her profile picture if one exists.<br></p>
 </div>
@@ -1779,7 +2170,7 @@ The <code>moreInfo</code> command <em><strong>cannot</strong></em> work if there
 <div class="content">
 <img src="images/moreInfoCommand.png" alt="width:400">
 </div>
-<div class="title">Figure 36. Command to be entered to display the 1st student&#8217;s profile page.</div>
+<div class="title">Figure 55. Command to be entered to display the 1st student&#8217;s profile page.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="2">
@@ -1792,7 +2183,7 @@ The <code>moreInfo</code> command <em><strong>cannot</strong></em> work if there
 <div class="content">
 <img src="images/moreInfoResult.png" alt="width:800">
 </div>
-<div class="title">Figure 37. Executing the command <code>moreInfo 1</code> displays the 1st student (Alex Yeoh&#8217;s) profile page</div>
+<div class="title">Figure 56. Executing the command <code>moreInfo 1</code> displays the 1st student (Alex Yeoh&#8217;s) profile page</div>
 </div>
 <div class="paragraph">
 <p><br>
@@ -1826,7 +2217,7 @@ You will be able to attain the profile page style in <code>Figure 5</code> if yo
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-the-profile-picture-of-a-student-code-editpicture-code"><a class="link" href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.5.2. Edit the profile picture of a student : <code>editPicture</code></a></h4>
+<h4 id="edit-the-profile-picture-of-a-student-code-editpicture-code"><a class="link" href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.7.2. Edit the profile picture of a student : <code>editPicture</code></a></h4>
 <div class="paragraph">
 <p>Allows you to edit the current profile picture of a student to a new picture from a specific file path indicated by you.<br></p>
 </div>
@@ -1870,7 +2261,7 @@ The file path you entered can be relative to the current folder of the <code>jar
 <div class="content">
 <img src="images/editPictureCommand.png" alt="width:400">
 </div>
-<div class="title">Figure 38. Command to be entered to edit a student&#8217;s profile picture</div>
+<div class="title">Figure 57. Command to be entered to edit a student&#8217;s profile picture</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="2">
@@ -1883,7 +2274,7 @@ The file path you entered can be relative to the current folder of the <code>jar
 <div class="content">
 <img src="images/editPictureSuccess.png" alt="width:400">
 </div>
-<div class="title">Figure 39. Command to edit the student&#8217;s profile picture success!</div>
+<div class="title">Figure 58. Command to edit the student&#8217;s profile picture success!</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="3">
@@ -1896,7 +2287,7 @@ The file path you entered can be relative to the current folder of the <code>jar
 <div class="content">
 <img src="images/editedPicture.png" alt="width:800">
 </div>
-<div class="title">Figure 40. The profile page of the selected student is shown with the new profile picture!</div>
+<div class="title">Figure 59. The profile page of the selected student is shown with the new profile picture!</div>
 </div>
 <div class="paragraph">
 <p><br>
@@ -1933,7 +2324,7 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-the-miscellaneous-info-of-a-student-code-editmisc-code"><a class="link" href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">3.5.3. Edit the miscellaneous info of a student : <code>editMisc</code></a></h4>
+<h4 id="edit-the-miscellaneous-info-of-a-student-code-editmisc-code"><a class="link" href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">3.7.3. Edit the miscellaneous info of a student : <code>editMisc</code></a></h4>
 <div class="paragraph">
 <p>Allows you to edit the miscellaneous information of a student. This includes his/her allergies, Next-Of-Kin name, Next-Of-Kin contact number and remarks for the student.<br></p>
 </div>
@@ -1957,7 +2348,7 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 <div class="content">
 <img src="images/editMiscCommand.png" alt="width 400">
 </div>
-<div class="title">Figure 41. Command to be entered to edit the allergies information of a student.</div>
+<div class="title">Figure 60. Command to be entered to edit the allergies information of a student.</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="2">
@@ -1970,7 +2361,7 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 <div class="content">
 <img src="images/editPictureSuccess.png" alt="][width:400">
 </div>
-<div class="title">Figure 42. Command to edit the allergies portion of the student&#8217;s miscellaneous information success!</div>
+<div class="title">Figure 61. Command to edit the allergies portion of the student&#8217;s miscellaneous information success!</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="3">
@@ -1983,7 +2374,7 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 <div class="content">
 <img src="images/editMiscSuccess.png" alt="width:800">
 </div>
-<div class="title">Figure 43. The profile page of the selected student is shown with the newly updated allergies information!</div>
+<div class="title">Figure 62. The profile page of the selected student is shown with the newly updated allergies information!</div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -2005,13 +2396,13 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 </div>
 </div>
 <div class="sect2">
-<h3 id="coming-in-v2-0"><a class="link" href="#coming-in-v2-0">3.6. Coming in v2.0</a></h3>
+<h3 id="coming-in-v2-0"><a class="link" href="#coming-in-v2-0">3.8. Coming in v2.0</a></h3>
 <div class="sect3">
-<h4 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.6.1. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h4>
+<h4 id="track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code"><a class="link" href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.8.1. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></h4>
 
 </div>
 <div class="sect3">
-<h4 id="find-students-by-their-miscellaneous-information-code-coming-in-v2-0-code"><a class="link" href="#find-students-by-their-miscellaneous-information-code-coming-in-v2-0-code">3.6.2. Find students by their miscellaneous information <code>[coming in v2.0]</code></a></h4>
+<h4 id="find-students-by-their-miscellaneous-information-code-coming-in-v2-0-code"><a class="link" href="#find-students-by-their-miscellaneous-information-code-coming-in-v2-0-code">3.8.2. Find students by their miscellaneous information <code>[coming in v2.0]</code></a></h4>
 
 </div>
 </div>
@@ -2186,109 +2577,160 @@ Spelling errors can be mis-interpreted and the wrong command might be invoked!
 <div class="sect1">
 <h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pl/PROGRAMMING_LANGUAGE [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pl/HTML t/friend t/1stYear</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [pl/PROGRAMMING_LANGUAGE] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
-<li>
-<p><strong>Show Dashboard</strong>: <code>showDB INDEX</code><br>
-e.g. <code>showDB 3</code></p>
-</li>
-<li>
-<p><strong>Add Milestone</strong> : <code>addMS i/STUDENT_INDEX d/MILESTONE_DUE_DATE o/DESCRIPTION_OF_MILESTONE</code><br>
-e.g. <code>addMS i/1 d/23/11/2018 23:59 o/Arrays</code></p>
-</li>
-<li>
-<p><strong>Delete Milestone</strong> : <code>deleteMS i/STUDENT_INDEX m/MILESTONE_INDEX</code><br>
-e.g. <code>deleteMS i/1 m/2</code></p>
-</li>
-<li>
-<p><strong>Add Task</strong> : <code>addTask i/STUDENT_INDEX m/MILESTONE_INDEX n/NAME_OF_TASK o/DESCRIPTION_OF_TASK</code><br>
-e.g. <code>addTask i/1 m/2 n/Learn arrays syntax o/Refer to textbook</code></p>
-</li>
-<li>
-<p><strong>Delete Task</strong> : <code>deleteTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code><br>
-e.g. <code>deleteTask i/1 m/2 tk/3</code></p>
-</li>
-<li>
-<p><strong>Mark Task As Completed</strong> : <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code><br>
-e.g. <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p>
-</li>
-<li>
-<p><strong>View your Schedule</strong> : <code>schedule</code></p>
-</li>
-<li>
-<p><strong>Add a Lesson</strong> : <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code><br>
-e.g. <code>addLesson 1 d/mon st/10:00 et/10:30</code></p>
-</li>
-<li>
-<p><strong>Delete a Lesson</strong> : <code>deleteLesson INDEX</code><br>
-e.g. <code>deleteLesson 2</code></p>
-</li>
-<li>
-<p><strong>Login to your Google Account</strong> : <code>login</code></p>
-</li>
-<li>
-<p><strong>Logout of your Google Account</strong> : <code>logout</code></p>
-</li>
-<li>
-<p><strong>Synchronize data with Google Account</strong> : <code>sync</code></p>
-</li>
-<li>
-<p><strong>Full information page</strong> : <code>moreInfo INDEX</code></p>
-</li>
-<li>
-<p><strong>Edit the profile picture</strong> : <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code><br>
-e.g. <code>editPicture i/1 pa/C:/Users/User/Desktop/test.jpg</code></p>
-</li>
-<li>
-<p><strong>Edit the miscellaneous info of a student</strong> :  <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]
-e.g. `editMisc 2 al/seafood</code></p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all" style="width: 60%;">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Purpose</th>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><strong><em>Contact List Commands</em></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adding a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pl/PROGRAMMING_LANGUAGE [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pl/HTML t/friend t/1stYear</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clearing your entire contact list</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>clear</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deleting a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete 3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [pl/PROGRAMMING_LANGUAGE] [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit 2 n/James Lee e/jameslee@example.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find James Jake</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>list</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Help</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>help</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select 2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">History</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>history</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>undo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redo</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>redo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><strong><em>Dashboard Commands</em></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show Dashboard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showDB INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showDB 3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add Milestone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addMS i/STUDENT_INDEX d/MILESTONE_DUE_DATE o/DESCRIPTION_OF_MILESTONE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addMS i/1 d/23/11/2018 23:59 o/Arrays</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete Milestone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteMS i/STUDENT_INDEX m/MILESTONE_INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g. <code>deleteMS i/1 m/2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add Task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addTask i/STUDENT_INDEX m/MILESTONE_INDEX n/NAME_OF_TASK o/DESCRIPTION_OF_TASK</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g. <code>addTask i/1 m/2 n/Learn arrays syntax o/Refer to textbook</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete Task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g. <code>deleteTask i/1 m/2 tk/3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mark Task As Completed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g. <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><strong><em>Schedule related commands</em></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View your Schedule</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>schedule</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a Lesson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g. <code>addLesson 1 d/mon st/10:00 et/10:30</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete a Lesson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteLesson INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g. <code>deleteLesson 2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Login to your Google Account</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>login</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Synchronize data with Google Account</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>sync</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logout of your Google Account</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>logout</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock"><strong><em>Full information page Commands</em></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full information page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>moreInfo INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>moreInfo 1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit the profile picture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g. <code>editPicture i/1 pa/C:/Users/User/Desktop/test.jpg</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit the miscellaneous info of a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e.g. <code>editMisc 2 al/seafood</code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 17:21:19 UTC
+Last updated 2018-04-13 19:06:26 UTC
 </div>
 </div>
 </body>
