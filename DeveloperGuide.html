@@ -1355,13 +1355,16 @@ The picture file to be changed to must be a valid and existing file with extensi
 * <code>editPicture</code> : Edits the profile picture of a student with a valid picture file(refer to note above). The user will have to provide the filepath to this file.</p>
 </div>
 <div class="paragraph">
+<p><strong class="large"><code>moreInfo</code> Command</strong></p>
+</div>
+<div class="paragraph">
 <p>For the command <code>moreInfo</code>, the model manager calls upon the data storage (addressbook) to raise an event for the Browser Panel to display the profile page of a student.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 The <code>moreInfo</code> command <strong>cannot</strong> function if there is no real existing XML data of students. Thus, the sample student data provided at the initial start up will not work with this command. A warning will be mentioned if the command is called without existing data.
@@ -1409,10 +1412,23 @@ can only read data from XML files and hence, an external XML file containing the
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="type">void</span> handleStudentInfoDisplayEvent(StudentInfoDisplayEvent event) {
                 <span class="comment">//... logging process...</span>
+
                 loadStudentInfoPage();
-                raise(<span class="keyword">new</span> ShowStudentProfileEvent());
+
+                <span class="comment">//... raising event to switch panels...</span>
         }</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the event is handled in the <code>BrowserPanel</code> :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/moreInfoCommandSD.png" alt="width:500">
+</div>
+</div>
+<div class="paragraph">
+<p><strong class="large"><code>editMisc</code> Command</strong></p>
 </div>
 <div class="paragraph">
 <p>For the command <code>editMisc</code>, this is similar to the edit function, except it takes on different optional parameters. These are [ALLERGIES], [NEXTOFKINNAME], [NEXTOFKINPHONE], [REMARKS].
@@ -3504,7 +3520,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 17:07:46 UTC
+Last updated 2018-04-13 17:21:19 UTC
 </div>
 </div>
 </body>

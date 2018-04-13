@@ -73,7 +73,7 @@
 </li>
 <li><a href="#student-profile-page">3.5. Student Profile Page</a>
 <ul class="sectlevel3">
-<li><a href="#full-information-page-for-each-student-code-moreinfo-code">3.5.1. Full information page for each student : <code>moreInfo</code></a></li>
+<li><a href="#displaying-profile-page-for-each-student-code-moreinfo-code">3.5.1. Displaying profile page for each student : <code>moreInfo</code></a></li>
 <li><a href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.5.2. Edit the profile picture of a student : <code>editPicture</code></a></li>
 <li><a href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">3.5.3. Edit the miscellaneous info of a student : <code>editMisc</code></a></li>
 </ul>
@@ -81,7 +81,7 @@
 <li><a href="#coming-in-v2-0">3.6. Coming in v2.0</a>
 <ul class="sectlevel3">
 <li><a href="#track-student-s-homework-in-the-dashboard-code-coming-in-v2-0-code">3.6.1. Track student&#8217;s homework in the dashboard <code>[coming in v2.0]</code></a></li>
-<li><a href="#find-student-s-by-their-miscellaneous-information-code-coming-in-v2-0-code">3.6.2. Find student&#8217;s by their miscellaneous information <code>[coming in v2.0]</code></a></li>
+<li><a href="#find-students-by-their-miscellaneous-information-code-coming-in-v2-0-code">3.6.2. Find students by their miscellaneous information <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 </ul>
@@ -1741,10 +1741,74 @@ The <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, and <code>TASK_IND
 <div class="sect2">
 <h3 id="student-profile-page"><a class="link" href="#student-profile-page">3.5. Student Profile Page</a></h3>
 <div class="sect3">
-<h4 id="full-information-page-for-each-student-code-moreinfo-code"><a class="link" href="#full-information-page-for-each-student-code-moreinfo-code">3.5.1. Full information page for each student : <code>moreInfo</code></a></h4>
+<h4 id="displaying-profile-page-for-each-student-code-moreinfo-code"><a class="link" href="#displaying-profile-page-for-each-student-code-moreinfo-code">3.5.1. Displaying profile page for each student : <code>moreInfo</code></a></h4>
 <div class="paragraph">
-<p>Displays the full information of a student on the browser panel. This includes his/her profile picture if one exists.<br>
-Format: <code>moreInfo INDEX</code></p>
+<p>Displays the full information of a student on the browser panel. The full information of a student consists of 3 elements, main information, miscellaneous information and his/her profile picture. You will be able to view his/her profile picture if one exists.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>moreInfo INDEX</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The <code>moreInfo</code> command <em><strong>cannot</strong></em> work if there is no existing XML data of students. Should you encounter this warning,you can either:<br>
+1) Simply enter <code>clear</code> and start out with an empty student list.<br>
+2) Add, edit or delete a student using their corresponding commands to generate XML data of the students.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong class="large">Steps Taken</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Suppose you wish to view the profile page of the 1st student of the current student list</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/moreInfoCommand.png" alt="width:400">
+</div>
+<div class="title">Figure 36. Command to be entered to display the 1st student&#8217;s profile page.</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>You will then be able to view the profile page of the student. Enter the same command with a different number for viewing the profile page of other students (e.g. <code>moreInfo 2</code>).</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/moreInfoResult.png" alt="width:800">
+</div>
+<div class="title">Figure 37. Executing the command <code>moreInfo 1</code> displays the 1st student (Alex Yeoh&#8217;s) profile page</div>
+</div>
+<div class="paragraph">
+<p><br>
+<br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You will be able to attain the profile page style in <code>Figure 5</code> if your OS zoom scale is set to <code>125%</code>. The profile photo may seem of a different size for other configurations. Search you computer settings should you wish to change this.
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1760,23 +1824,95 @@ Format: <code>moreInfo INDEX</code></p>
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>moreInfo 2</code>
-Displays the full information of the 2nd student in the current listing.</p>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect3">
 <h4 id="edit-the-profile-picture-of-a-student-code-editpicture-code"><a class="link" href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.5.2. Edit the profile picture of a student : <code>editPicture</code></a></h4>
 <div class="paragraph">
-<p>Edits the current profile picture of a student to a new picture from a specific file path indicated by the user.<br>
-Format: <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code></p>
+<p>Allows you to edit the current profile picture of a student to a new picture from a specific file path indicated by you.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The image file you wish to use must exist and have extensions either of <code>.jpg</code> or <code>.png</code>.<br>
+The file path you entered can be relative to the current folder of the <code>jar</code> file or the absolute path e.g. <code>C:/Users/User/Desktop/photo.jpg</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong class="large">Steps Taken</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Suppose you wish to have this picture, with the file name of <code>animal.jpg</code>  as a new profile picture as your student:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/animal.jpg" alt="width:200">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/editPictureCommand.png" alt="width:400">
+</div>
+<div class="title">Figure 38. Command to be entered to edit a student&#8217;s profile picture</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>You will edit the profile picture of the 1st student of the latest student list to a picture existing in the same folder as the jar file with the name <code>animal.jpg</code>. You will then see the following:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/editPictureSuccess.png" alt="width:400">
+</div>
+<div class="title">Figure 39. Command to edit the student&#8217;s profile picture success!</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>By calling the <code>moreInfo</code> command (found in the section above), you will be able to view the student&#8217;s profile page with the updated picture as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/editedPicture.png" alt="width:800">
+</div>
+<div class="title">Figure 40. The profile page of the selected student is shown with the new profile picture!</div>
+</div>
+<div class="paragraph">
+<p><br>
+<br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The ideal aspect ratio of the picture is 1.25 from height to width.
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1795,38 +1931,59 @@ Format: <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code></p>
 </div>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Image files must exist and have extensions either of <code>.jpg</code> or <code>.png</code>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>editPicture i/1 pa/C:/Users/User/Desktop/test.jpg</code><br>
-Changes the profile photo of the 1st student in the current listing to the image found at the specific file path.</p>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect3">
 <h4 id="edit-the-miscellaneous-info-of-a-student-code-editmisc-code"><a class="link" href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">3.5.3. Edit the miscellaneous info of a student : <code>editMisc</code></a></h4>
 <div class="paragraph">
-<p>Edits the miscellaneous information of a student in the addressbook.<br>
-Format: <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]</code></p>
+<p>Allows you to edit the miscellaneous information of a student. This includes his/her allergies, Next-Of-Kin name, Next-Of-Kin contact number and remarks for the student.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]</code></p>
+</div>
+<div class="paragraph">
+<p><strong class="large">Steps Taken</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Suppose you wish to edit the allergies information of a student to <code>Allergic to nuts</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/editMiscCommand.png" alt="width 400">
+</div>
+<div class="title">Figure 41. Command to be entered to edit the allergies information of a student.</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>You will edit the <code>allergies</code> portion of the miscellaneous information of the 1st student of the student list to "Allergic to nuts". You will then see the following:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/editPictureSuccess.png" alt="][width:400">
+</div>
+<div class="title">Figure 42. Command to edit the allergies portion of the student&#8217;s miscellaneous information success!</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>By calling the <code>moreInfo</code> command (found in the section above), you will be able to view the student&#8217;s profile page with the updated allergies information as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/editMiscSuccess.png" alt="width:800">
+</div>
+<div class="title">Figure 43. The profile page of the selected student is shown with the newly updated allergies information!</div>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1845,17 +2002,6 @@ Format: <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_O
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editMisc 1 al/Nuts r/Fast learner</code><br>
-Edits the allergies information and remarks information of the 1st student to be <code>Nuts</code> and <code>Fast learner</code> respectively.</p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -1865,7 +2011,7 @@ Edits the allergies information and remarks information of the 1st student to be
 
 </div>
 <div class="sect3">
-<h4 id="find-student-s-by-their-miscellaneous-information-code-coming-in-v2-0-code"><a class="link" href="#find-student-s-by-their-miscellaneous-information-code-coming-in-v2-0-code">3.6.2. Find student&#8217;s by their miscellaneous information <code>[coming in v2.0]</code></a></h4>
+<h4 id="find-students-by-their-miscellaneous-information-code-coming-in-v2-0-code"><a class="link" href="#find-students-by-their-miscellaneous-information-code-coming-in-v2-0-code">3.6.2. Find students by their miscellaneous information <code>[coming in v2.0]</code></a></h4>
 
 </div>
 </div>
@@ -2142,7 +2288,7 @@ e.g. `editMisc 2 al/seafood</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 17:07:46 UTC
+Last updated 2018-04-13 17:21:19 UTC
 </div>
 </div>
 </body>
