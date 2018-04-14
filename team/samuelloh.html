@@ -258,43 +258,43 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 28.5714%;">
-<col style="width: 14.2857%;">
-<col style="width: 28.5715%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Aspect</th>
-<th class="tableblock halign-left valign-top">Alternative 1 (Current choice)</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
 <th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
-<th class="tableblock halign-left valign-top">Alternative 2</th>
-<th class="tableblock halign-left valign-top">Pros(+) / Cons(-)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to store <code>ProgrammingLanguage</code> for a <code>Student</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Store as an attribute of Student.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ Easy to keep track of as well as modify. <br>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><strong>How to store <code>ProgrammingLanguage</code> for a <code>Student</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Store as an attribute of Student. (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Easy to keep track of as well as modify. <br>
 <br>
-- Coupling increases as more classes (<code>ProgrammingLanguage</code> and <code>Student</code>) are associated with each other.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Store as a separate list and have each student index in the UniqueStudentsList be mapped to each item in the list.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+  Less coupling so less need to refactor code<br>
-<br>
-- Might be messier to implement, especially if the UniqueStudentsList have it&#8217;s students swapping indexes.</p></td>
+- : Coupling increases as more classes (<code>ProgrammingLanguage</code> and <code>Student</code>) are associated with each other.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>What command to add <code>ProgrammingLanguage</code> to <code>Student</code></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Implement it through the existing <code>add</code> command.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ Intuitive and the user does not have to learn an additional command<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store as a separate list and have each student index in the UniqueStudentsList be mapped to each item in the list.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Less coupling so less need to refactor code<br>
 <br>
-- User will have to type a longer string for add command to include the programming language used by the student.</p></td>
+- : Might be messier to implement, especially if the UniqueStudentsList have it&#8217;s students swapping indexes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><strong>What command to add <code>ProgrammingLanguage</code> to <code>Student</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Implement it through the existing <code>add</code> command. (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Intuitive and the user does not have to learn an additional command<br>
+<br>
+- : User will have to type a longer string for add command to include the programming language used by the student.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Implement it as a new command.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ User will be able to add or modify <code>ProgrammingLanguage</code> one or possibly even a few students at their own discretion.<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : User will be able to add or modify <code>ProgrammingLanguage</code> one or possibly even a few students at their own discretion.<br>
 <br>
-- User will have to learn a new specific command and might also be slightly difficult to implement.</p></td>
+- : User will have to learn a new specific command and might also be slightly difficult to implement.</p></td>
 </tr>
 </tbody>
 </table>
@@ -498,43 +498,43 @@ The method <code>createEditedStudent</code> creates the student wi</p>
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 28.5714%;">
-<col style="width: 14.2857%;">
-<col style="width: 28.5715%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Aspect</th>
-<th class="tableblock halign-left valign-top">Alternative 1 (Current choice)</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
 <th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
-<th class="tableblock halign-left valign-top">Alternative 2</th>
-<th class="tableblock halign-left valign-top">Pros(+) / Cons(-)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Displaying and styling the profile page of a student</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have it as a JavaScript function in the HTML file of the student&#8217;s profile page.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ Able to directly read the XML data of students from the file. <br>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><strong>Displaying and styling the profile page of a student</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Have it as a JavaScript function in the HTML file of the student&#8217;s profile page.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ Able to directly read the XML data of students from the file. (current choice)*<br>
 <br>
 - Have to export the required files and folder out of the jar file as the JavaScript is unable to retrieve files outside of the Jar folder.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have it as a JavaFX file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ Able to read the student&#8217;s data from the UniqueStudentList.<br>
-<br>
-- Might be more difficult and messy to implement in code.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Editing the profile picture</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Copy the picture file into the local jar directory.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ Ensures that the picture can still be loaded even when the original picture file is deleted.<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have it as a JavaFX file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Able to read the student&#8217;s data from the UniqueStudentList.<br>
+<br>
+- : Might be more difficult and messy to implement in code.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><strong>Editing the profile picture</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Copy the picture file into the local jar directory. (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Ensures that the picture can still be loaded even when the original picture file is deleted.<br>
 <br>
 - Requires more code to copy the files over and ensure their validity</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Read from the direct location of the original picture file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ Less code of copying is required and any modifications to the original photo is immediately updated.<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Less code of copying is required and any modifications to the original photo is immediately updated.<br>
 <br>
-- If the picture is deleted or corrupted, the profile picture would not be able to display.</p></td>
+- : If the picture is deleted or corrupted, the profile picture would not be able to display.</p></td>
 </tr>
 </tbody>
 </table>
@@ -544,8 +544,21 @@ The method <code>createEditedStudent</code> creates the student wi</p>
 <h3 id="schedule-feature"><a class="link" href="#schedule-feature">Schedule feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="adding-a-lesson"><a class="link" href="#adding-a-lesson">Adding a lesson</a></h5>
 <div class="paragraph">
 <p>To get better control of one&#8217;s weekly schedule, we will now attach a component called <code>Schedule</code> to <code>Model</code>.</p>
+</div>
+<div class="paragraph">
+<p>At startup, a new <code>Schedule</code> object is instantiated in <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>A <code>Schedule</code> has a <code>LessonList</code>, it contains an <code>ObservableList&lt;Lesson&gt;</code> internalList attribute, which stores all the <code>Lesson</code> objects that describes your schedule.
+The UI is bounded to this <code>LessonList</code> so that it can automatically update when data changes.</p>
+</div>
+<div class="paragraph">
+<p>A <code>Lesson</code> has a <code>UniqueKey</code> attribute, a <code>Day</code> attribute, a starting <code>TIME START_TIME</code> and an ending <code>TIME END_TIME</code> attribute.
+<code>Lesson</code> objects are created by the <code>addLesson</code> command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -553,12 +566,12 @@ The method <code>createEditedStudent</code> creates the student wi</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A <code>Schedule</code> is a list of <code>Lessons</code>. A <code>Lesson</code> has a <code>UniqueKey</code> attribute, a <code>Day</code> attribute, a starting <code>TIME START_TIME</code> and an ending <code>TIME END_TIME</code> attribute</p>
+<p>A <code>Schedule</code> has a list of <code>Lesson</code> objects. A <code>Lesson</code> has a <code>UniqueKey</code> attribute, a <code>Day</code> attribute, a starting <code>TIME START_TIME</code> and an ending <code>TIME END_TIME</code> attribute</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Students have a unique UniqueKey field, which we will now use in Lesson to create a relation to Student objects.</p>
+<p>Students have a unique <code>UniqueKey</code> field, which we will now use in <code>Lesson</code> to create a relation to Student objects.</p>
 </li>
 <li>
 <p>A <code>Lesson</code> object called <code>newLesson</code> will be created by <code>ModelManager.addLesson(UniqueKey key, Day day, Time startTime, Time endTime)</code>, which is implemented as such:</p>
@@ -567,11 +580,12 @@ The method <code>createEditedStudent</code> creates the student wi</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    public void addLesson(UniqueKey key, Day day, Time startTime, Time endTime)
-            throws DuplicateLessonException, StudentNotFoundException, InvalidLessonTimeSlotException {
-        //Check for Duplicate Lesson, StudentNotFound, invalid input ime
-
+<pre>    public void addLesson(Student studentToAddLesson, Day day, Time startTime, Time endTime) {
+        requireAllNonNull(studentToAddLesson, day, startTime, endTime);
+        UniqueKey studentKey = studentToAddLesson.getUniqueKey();
+        Lesson newLesson = new Lesson(studentKey, day, startTime, endTime);
         schedule.addLesson(newLesson);
+        indicateScheduleChanged();
     }</pre>
 </div>
 </div>
@@ -592,41 +606,42 @@ If you have a future implementation that requires the addition of a new attribut
 </table>
 </div>
 </div>
+<div class="sect4">
+<h5 id="viewing-lessons-in-schedule"><a class="link" href="#viewing-lessons-in-schedule">Viewing lessons in schedule</a></h5>
+
+</div>
+</div>
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-implementation-of-code-schedule-code"><a class="link" href="#aspect-implementation-of-code-schedule-code">Aspect: Implementation of <code>Schedule</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice)</strong>: <code>Schedule</code> contains <code>Lesson</code> classes that is made up of one layer, with attributes directly attached to <code>Lesson</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: It is easier implement, just add <code>Lesson</code> to a <code>Schedule</code>, which is a list of <code>Lessons</code></p>
-</li>
-<li>
-<p>Con: Results in more coupling, attributes could have been furthur separated out. It is inefficient to search by <code>Day</code>. Searching for empty slot requires linear searching.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2</strong>: <code>Lesson</code> contains two layers of classes, <code>Day</code> is attached to <code>Schedule</code> and <code>Lesson</code> is attached to <code>Day</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: Less coupling and more cohesive design</p>
-</li>
-<li>
-<p>Con: Much harder to implement and gets overly complicated</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Aspect: Implementation of <code>Schedule</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>Schedule</code> contains <code>Lesson</code> objects, schedule is made up of only one layer, with attributes directly attached to <code>Lesson</code> (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : It is easier implement, just add <code>Lesson</code> to a <code>Schedule</code>, which is a list of <code>Lessons</code><br>
+<br>
+ - : Results in more coupling, attributes could have been furthur separated out. It is inefficient to search by <code>Day</code>. Searching for empty slot requires linear searching.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Lesson</code> contains two layers of classes, <code>Day</code> is attached to <code>Schedule</code> and <code>Lesson</code> is attached to <code>Day</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Less coupling and more cohesive design<br>
+ <br>
+ - : Much harder to implement and gets overly complicated</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -638,39 +653,35 @@ If you have a future implementation that requires the addition of a new attribut
 </div>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-implementation-of-code-gservicemanager-code"><a class="link" href="#aspect-implementation-of-code-gservicemanager-code">Aspect: Implementation of <code>GServiceManager</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice)</strong>: Separate out 2 Google Services into two classes</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: Less coupling</p>
-</li>
-<li>
-<p>Con: More files and more code</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2</strong>: All services are in <code>GServiceManager</code> class. Synchronize runs the upload for both Contacts and Calendar classes.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: Fewer files and code to read</p>
-</li>
-<li>
-<p>Con: More coupling</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Aspect: Implementation of <code>GServiceManager</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Separate out 2 Google Services into two classes (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Less coupling<br>
+ <br>
+ - : More files and more code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All services are in <code>GServiceManager</code> class. Synchronize runs the upload for both Contacts and Calendar classes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Fewer files and code to read<br>
+<br>
+ - : More coupling</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -799,39 +810,35 @@ A common implementation for commands that modify the dashboard (e.g. <code>AddMi
 </div>
 <div class="sect3">
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-dashboard-feature"><a class="link" href="#aspect-data-structure-to-support-the-dashboard-feature">Aspect: Data structure to support the dashboard feature</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice)</strong>: Add a <code>Dashboard</code> association to <code>Student</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: Able to access the dashboard of a student easily.</p>
-</li>
-<li>
-<p>Con: Since <code>Student</code> is immutable, a new <code>Student</code> object has to be created each time its <code>Dashboard</code> is modified.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2</strong>: Add a new <code>UniqueDashboardList</code> association to <code>AddressBook</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: Able to modify the dashboard easily if it is not made immutable.</p>
-</li>
-<li>
-<p>Con: We will have to sync the <code>UniqueDashboardList</code> with the <code>UniqueStudentList</code> since <code>Dashboard</code> will be associated to a <code>Student</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Aspect: Data structure to support the dashboard feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add a <code>Dashboard</code> association to <code>Student</code> (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Able to access the dashboard of a student easily.<br>
+<br>
+- : Since <code>Student</code> is immutable, a new <code>Student</code> object has to be created each time its <code>Dashboard</code> is modified.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a new <code>UniqueDashboardList</code> association to <code>AddressBook</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Able to modify the dashboard easily if it is not made immutable.<br>
+<br>
+ - : We will have to sync the <code>UniqueDashboardList</code> with the <code>UniqueStudentList</code> since <code>Dashboard</code> will be associated to a <code>Student</code>.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -934,53 +941,42 @@ passing any <strong>entities</strong> as parameters to the feature&#8217;s metho
 </div>
 <div class="sect3">
 <h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
-<div class="sect4">
-<h5 id="aspect-selection-of-an-appropriate-third-party-apis-to-implement-nlp"><a class="link" href="#aspect-selection-of-an-appropriate-third-party-apis-to-implement-nlp">Aspect: Selection of an appropriate third-party APIs to implement NLP</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Alternative 1 (current choice): IBM Watson™ Assistant service</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Offers extensive NLP functions which are easy to implement. User-friendly interface allows ease of training of the model, which has high scalability</p>
-</li>
-<li>
-<p>Cons: Lite version offers a limited number of API calls per month (10,000).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Alternative 2: Stanford CoreNLP</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Possesses a powerful and comprehensive API, comprising of a set of stable and well-tested natural language processing tools, widely used by various groups in academia, industry, and government.</p>
-</li>
-<li>
-<p>Cons: Highly modularised and requires in-depth knowledge of Machine-learning and Deep-learning to use effectively.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Alternative 3:Google Cloud Natural Language</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Offers a variety of functions (Syntax Analysis, Entity Recognition, Sentiment Analysis etc.) and integrates REST API,
-powerful enough to analyse texts properly and texts can be uploaded in the request or integrated with Google Cloud Storage.</p>
-</li>
-<li>
-<p>Cons: difficult to implement and integrate properly into the application</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Aspect: Selection of an appropriate third-party APIs to implement NLP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>IBM Watson™ Assistant service (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Offers extensive NLP functions which are easy to implement. User-friendly interface allows ease of training of the model, which has high scalability<br>
+<br>
+ - : Lite version offers a limited number of API calls per month (10,000).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stanford CoreNLP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Possesses a powerful and comprehensive API, comprising of a set of stable and well-tested natural language processing tools, widely used by various groups in academia, industry, and government.<br>
+<br>
+  - : Highly modularised and requires in-depth knowledge of Machine-learning and Deep-learning to use effectively.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Google Cloud Natural Language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Offers a variety of functions (Syntax Analysis, Entity Recognition, Sentiment Analysis etc.) and integrates REST API,
+ powerful enough to analyse texts properly and texts can be uploaded in the request or integrated with Google Cloud Storage.<br>
+ <br>
+  - : Difficult to implement and integrate properly into the application</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -1390,7 +1386,7 @@ E.g. Next of kin contact and an optional profile picture</p>
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * <strong></code>, Medium (nice to have) - <code></strong> <strong></code>, Low (unlikely to have) - <code></strong></code></p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
+<table class="tableblock frame-all grid-all" style="width: 80%;">
 <colgroup>
 <col style="width: 22%;">
 <col style="width: 23%;">
@@ -1445,14 +1441,14 @@ E.g. Next of kin contact and an optional profile picture</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">search a student by label</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search a student by label/tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so I can easily categorize my students as per my personal preferences</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">indicate a student&#8217;s programming language when adding one</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so I can know which programming language to prepare before my lesson</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1471,6 +1467,12 @@ E.g. Next of kin contact and an optional profile picture</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list students added to favourites</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view students I&#8217;m keeping tack</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upload my contacts to Google Contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sync my contacts list with Google Contacts, being able to easily view my data across devices</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1516,27 +1518,33 @@ E.g. Next of kin contact and an optional profile picture</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit a lesson for a student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of timing changes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor who adds lessons in odd hours(very early or very late)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see my schedule resize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">can view my lessons in full and have a better user experience.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tutor with a filled timetable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check free slot</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">easily find a free timeslot to allocate to students</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit a lesson for a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">make changes to lessons when required</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tutor with a filled timetable</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sync with cloud storage calenders</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">easily sync my timetable to my schedule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upload my lessons to Google Calendars</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily sync my schedule with Google Calendars, being able to view them across all my devices</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get an overview of my student&#8217;s progress</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">so that I can see what they don&#8217;t know and tutor them better</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">can see what they don&#8217;t know and tutor them better</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1549,12 +1557,6 @@ E.g. Next of kin contact and an optional profile picture</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sort the contact list by programming language</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">easily recognise which and how many students are taking a particular programming language</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view hours spent teaching</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see how much money I should collect</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -1594,13 +1596,13 @@ E.g. Next of kin contact and an optional profile picture</p>
 <p>User requests to list students</p>
 </li>
 <li>
-<p>Scheduler shows a list of students</p>
+<p>Schedule shows a list of students</p>
 </li>
 <li>
 <p>User requests to delete a specific student in the list</p>
 </li>
 <li>
-<p>Scheduler deletes the student</p>
+<p>Schedule deletes the student</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2756,24 +2758,147 @@ Expected</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-lesson"><a class="link" href="#adding-a-lesson">Adding a lesson</a></h3>
+<h3 id="adding-a-lesson-2"><a class="link" href="#adding-a-lesson-2">Adding a lesson</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Adding a lesson while all students are listed</p>
+<p>Adding a lesson while all students are listed.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all students using the <code>list</code> command. Multiple students in the list. Your current schedule would preferably have no lessons starting before 7am or ending after 10pm.</p>
+<p>Prerequisites: View schedule using <code>schedule</code> command.
+List all students using the <code>list</code> command.
+Multiple students in the list.
+Your current schedule would preferably have no lessons starting before 7am or ending after 10pm.</p>
 </li>
 <li>
 <p>Test case: <code>addLesson 1 d/mon st/10:00 et/12:00</code><br>
-Expected: a lesson will be added for student at index 1, starting at 10:00am, ending at 12:00pm</p>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A lesson will be added for student at index 1, starting at 10:00am, ending at 12:00pm.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Test case (Maximum range): <code>addLesson 1 d/wed st/00:00 et/23:59</code><br>
-Expected: a lesson will be added for student at index 1, starting at 00:00pm, ending at 23:59pm (whole day).
-The schedule should resize to show the lesson in the whole day.</p>
+<p>Test case: <code>addLesson 1 d/wed st/00:00 et/23:59</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A lesson will be added for student at index 1, on Wednesday, starting at 00:00pm, ending at 23:59pm (whole day).</p>
+</li>
+<li>
+<p>The schedule should resize (change start and end times) to show the lesson in the whole day.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>addLesson 0 d/mon st/10:00 et/12:00</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No lesson added.</p>
+</li>
+<li>
+<p>Error message showing invalid student index.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Adding a lesson with invalid time.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>addLesson 1 d/thu st/10:90 et/15:00</code> or <code>addLesson 1 d/thu st/24:00 et/26:00</code>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No lesson added.</p>
+</li>
+<li>
+<p>Error message shows invalid time format.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Adding a lesson with invalid day</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>addLesson 1 d/monday st/10:00 et/15:00</code> or <code>addLesson 1 d/mo st/10:00 et/15:00</code>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No lesson added.</p>
+</li>
+<li>
+<p>Error message shows invalid day format.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Adding a lesson for a filtered list after using <code>find</code> or <code>findTag</code> command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List a filtered list of students using the <code>find</code> or <code>findTag</code> command.
+Single or multiple students in the list. Your current schedule would preferably have no lessons starting before 7am or ending after 10pm.</p>
+</li>
+<li>
+<p>Same test cases as when all students are listed, but should work for a smaller index range due to a smaller list of filtered students.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-lesson"><a class="link" href="#deleting-a-lesson">Deleting a Lesson</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a lesson from schedule</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Add a few lessons into the schedule. Take note of display lesson indexes of your lessons.</p>
+</li>
+<li>
+<p>Test case: <code>deleteLesson 1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The lesson with displayed lesson index 1 will be deleted.</p>
+</li>
+<li>
+<p>Schedule will resize to between 07:00 and 22:00 if no lesson on any day ends later than that.</p>
+</li>
+<li>
+<p>Message shows lesson deleted.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Test case: <code>deleteLesson 0</code><br>
@@ -2787,7 +2912,7 @@ Expected:</p>
 </div>
 </li>
 <li>
-<p>Other incorrect deleteLessons to try: <code>deleteLesson</code>, <code>deleteLesson x</code> where x is larger than the index of the last lesson</p>
+<p>Other incorrect deleteLessons to try: <code>deleteLesson</code>, <code>deleteLesson x</code> where x is larger than the index of the last lesson.</p>
 </li>
 </ol>
 </div>
@@ -2800,7 +2925,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:32:10 UTC
+Last updated 2018-04-14 16:38:11 UTC
 </div>
 </div>
 </body>

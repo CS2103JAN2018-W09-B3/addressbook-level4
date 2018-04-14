@@ -329,39 +329,35 @@ Spelling errors can be mis-interpreted and the wrong command might be invoked!
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-implementation-of-displaying-student-locations"><a class="link" href="#aspect-implementation-of-displaying-student-locations">Aspect: Implementation of displaying student locations</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice)</strong>: display it on the embedded browser</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement, simply alter the default webpage</p>
-</li>
-<li>
-<p>Cons: Might not be able to display student information and location simultaneously</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2</strong>: creating a new window to display the location</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: This would allow concurrent display of locations of many students</p>
-</li>
-<li>
-<p>Cons: the UI would be messy and user has to navigate between 2 different windows</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Implementation of displaying student locations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Display it on the embedded browser (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Easy to implement, simply alter the default webpage<br>
+ <br>
+ - : Might not be able to display student information and location simultaneously</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creating a new window to display the location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : This would allow concurrent display of locations of many students<br>
+<br>
+  - : the UI would be messy and user has to navigate between 2 different windows</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -464,53 +460,42 @@ passing any <strong>entities</strong> as parameters to the feature&#8217;s metho
 </div>
 <div class="sect3">
 <h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
-<div class="sect4">
-<h5 id="aspect-selection-of-an-appropriate-third-party-apis-to-implement-nlp"><a class="link" href="#aspect-selection-of-an-appropriate-third-party-apis-to-implement-nlp">Aspect: Selection of an appropriate third-party APIs to implement NLP</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p>Alternative 1 (current choice): IBM Watson™ Assistant service</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Offers extensive NLP functions which are easy to implement. User-friendly interface allows ease of training of the model, which has high scalability</p>
-</li>
-<li>
-<p>Cons: Lite version offers a limited number of API calls per month (10,000).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Alternative 2: Stanford CoreNLP</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Possesses a powerful and comprehensive API, comprising of a set of stable and well-tested natural language processing tools, widely used by various groups in academia, industry, and government.</p>
-</li>
-<li>
-<p>Cons: Highly modularised and requires in-depth knowledge of Machine-learning and Deep-learning to use effectively.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Alternative 3:Google Cloud Natural Language</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Offers a variety of functions (Syntax Analysis, Entity Recognition, Sentiment Analysis etc.) and integrates REST API,
-powerful enough to analyse texts properly and texts can be uploaded in the request or integrated with Google Cloud Storage.</p>
-</li>
-<li>
-<p>Cons: difficult to implement and integrate properly into the application</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Aspect: Selection of an appropriate third-party APIs to implement NLP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>IBM Watson™ Assistant service (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Offers extensive NLP functions which are easy to implement. User-friendly interface allows ease of training of the model, which has high scalability<br>
+<br>
+ - : Lite version offers a limited number of API calls per month (10,000).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stanford CoreNLP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Possesses a powerful and comprehensive API, comprising of a set of stable and well-tested natural language processing tools, widely used by various groups in academia, industry, and government.<br>
+<br>
+  - : Highly modularised and requires in-depth knowledge of Machine-learning and Deep-learning to use effectively.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Google Cloud Natural Language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Offers a variety of functions (Syntax Analysis, Entity Recognition, Sentiment Analysis etc.) and integrates REST API,
+ powerful enough to analyse texts properly and texts can be uploaded in the request or integrated with Google Cloud Storage.<br>
+ <br>
+  - : Difficult to implement and integrate properly into the application</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -518,7 +503,7 @@ powerful enough to analyse texts properly and texts can be uploaded in the reque
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:32:10 UTC
+Last updated 2018-04-14 16:38:11 UTC
 </div>
 </div>
 </body>

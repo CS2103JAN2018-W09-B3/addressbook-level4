@@ -999,39 +999,35 @@ To mark a <code>Student</code> object called "studentToFavourite" as favourite:<
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-implementation-of-favouritecommand"><a class="link" href="#aspect-implementation-of-favouritecommand">Aspect: Implementation of 'FavouriteCommand'</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice)</strong>: Add a <code>Favourite</code> attribute to <code>Student</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: It is easy to mark a student as favourite since we can make use of the current <code>Model.updateStudent(Student, Student)</code> method by creating a copy of the target <code>Student</code> object, with the value of its <code>Favourite</code> attribute set to "true"</p>
-</li>
-<li>
-<p>Con: Creating a copy of the <code>Student</code> object can be inefficient</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2</strong>: Create a new <code>UniqueFavouriteStudentsList</code> that contains the list of students in favourites and store this list in the Address Book</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: Students that are currently in favourites can be managed more easily since there is a direct overview of which student is in favourites</p>
-</li>
-<li>
-<p>Con: Students in the <code>UniqueFavouriteStudentsList</code> have to be synced with the <code>UniqueStudentsList</code>. For example, we have to ensure that deleting a student in the <code>UniqueStudentList</code> deletes the student in the <code>UniqueFavouriteStudentsList</code> too</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Implementation of 'FavouriteCommand'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add a <code>Favourite</code> attribute to <code>Student</code> (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : It is easy to mark a student as favourite since we can make use of the current <code>Model.updateStudent(Student, Student)</code> method by creating a copy of the target <code>Student</code> object, with the value of its <code>Favourite</code> attribute set to "true"<br>
+<br>
+  - : Creating a copy of the <code>Student</code> object can be inefficient</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new <code>UniqueFavouriteStudentsList</code> that contains the list of students in favourites and store this list in the Address Book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Students that are currently in favourites can be managed more easily since there is a direct overview of which student is in favourites<br>
+<br>
+ - : Students in the <code>UniqueFavouriteStudentsList</code> have to be synced with the <code>UniqueStudentsList</code>. For example, we have to ensure that deleting a student in the <code>UniqueStudentList</code> deletes the student in the <code>UniqueFavouriteStudentsList</code> too</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1160,39 +1156,35 @@ A common implementation for commands that modify the dashboard (e.g. <code>AddMi
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-dashboard-feature"><a class="link" href="#aspect-data-structure-to-support-the-dashboard-feature">Aspect: Data structure to support the dashboard feature</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice)</strong>: Add a <code>Dashboard</code> association to <code>Student</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: Able to access the dashboard of a student easily.</p>
-</li>
-<li>
-<p>Con: Since <code>Student</code> is immutable, a new <code>Student</code> object has to be created each time its <code>Dashboard</code> is modified.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2</strong>: Add a new <code>UniqueDashboardList</code> association to <code>AddressBook</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pro: Able to modify the dashboard easily if it is not made immutable.</p>
-</li>
-<li>
-<p>Con: We will have to sync the <code>UniqueDashboardList</code> with the <code>UniqueStudentList</code> since <code>Dashboard</code> will be associated to a <code>Student</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Aspect: Data structure to support the dashboard feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add a <code>Dashboard</code> association to <code>Student</code> (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Able to access the dashboard of a student easily.<br>
+<br>
+- : Since <code>Student</code> is immutable, a new <code>Student</code> object has to be created each time its <code>Dashboard</code> is modified.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a new <code>UniqueDashboardList</code> association to <code>AddressBook</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Able to modify the dashboard easily if it is not made immutable.<br>
+<br>
+ - : We will have to sync the <code>UniqueDashboardList</code> with the <code>UniqueStudentList</code> since <code>Dashboard</code> will be associated to a <code>Student</code>.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1795,7 +1787,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:32:10 UTC
+Last updated 2018-04-14 16:38:11 UTC
 </div>
 </div>
 </body>
