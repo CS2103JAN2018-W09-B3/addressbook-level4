@@ -256,65 +256,575 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternative 1 (Current choice)</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+<th class="tableblock halign-left valign-top">Pros(+) / Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>How to store <code>ProgrammingLanguage</code> for a <code>Student</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store as an attribute of Student.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ Easy to keep track of as well as modify. <br>
+<br>
+- Coupling increases as more classes (<code>ProgrammingLanguage</code> and <code>Student</code>) are associated with each other.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Store as a separate list and have each student index in the UniqueStudentsList be mapped to each item in the list.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+  Less coupling so less need to refactor code<br>
+<br>
+- Might be messier to implement, especially if the UniqueStudentsList have it&#8217;s students swapping indexes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>What command to add <code>ProgrammingLanguage</code> to <code>Student</code></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implement it through the existing <code>add</code> command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ Intuitive and the user does not have to learn an additional command<br>
+<br>
+- User will have to type a longer string for add command to include the programming language used by the student.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Implement it as a new command.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ User will be able to add or modify <code>ProgrammingLanguage</code> one or possibly even a few students at their own discretion.<br>
+<br>
+- User will have to learn a new specific command and might also be slightly difficult to implement.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="profile-page-feature"><a class="link" href="#profile-page-feature">Profile Page feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The profile page feature allows the user to view the full information of contacts(students) kept in their data. This page has each student&#8217;s main info, miscellaneous info, and their profle picture.
+Users will also be able to edit the miscellaneous information of a student as well as his/her profile picture. The profile picture is changed by providing a file path to the actual picture file.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The picture file to be changed to must be a valid and existing file with extensions of <code>.png</code> or <code>.jpg</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the student model including the primary attributes as well as the miscellaneous information attributes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StudentWithMiscInfoDiagram.png" alt="StudentWithMiscInfoDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>When a student is added by the <code>addCommand</code>, the <code>MiscellaneousInfo</code> and <code>ProfilePicturePath</code> of the student will be set to these default values:
+* Allergies, NextOfKinName, Remarks will be set to <code>Not updated</code>.
+* NextOfKinPhone will be set to <code>000</code>.
+* ProfilePicturePath will be set to the path of a profile photo placeholder within the app.</p>
+</div>
+<div class="paragraph">
+<p>This feature revolves mainly around 3 commands:
+* <code>moreInfo</code> : Shows the actual profile page on the web browser.
+* <code>editMisc</code> : Edits the miscellaneous information of a student.
+* <code>editPicture</code> : Edits the profile picture of a student with a valid picture file(refer to note above). The user will have to provide the filepath to this file.</p>
+</div>
+<div class="paragraph">
+<p><strong class="large"><code>moreInfo</code> Command</strong></p>
+</div>
+<div class="paragraph">
+<p>For the command <code>moreInfo</code>, the model manager calls upon the data storage (addressbook) to raise an event for the Browser Panel to display the profile page of a student.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The <code>moreInfo</code> command <strong>cannot</strong> function if there is no real existing XML data of students. Thus, the sample student data provided at the initial start up will not work with this command. A warning will be mentioned if the command is called without existing data.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The code below shows how the the method is called with the parameter of the required <code>Student</code> functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="type">void</span> displayStudentDetailsOnBrowserPanel(Student target) <span class="directive">throws</span> StudentNotFoundException,
+            StorageFileMissingException {
+        addressBook.checkForStudentInAdressBook(target);
+        checkIfStorageFileExists();
+        indicateRequiredStudentIndexChange(filteredStudents.indexOf(target));
+        indicateBrowserPanelToDisplayStudent(target);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The method <code>checkIfStorageFileExists()</code> checks if there is any real XML data of students at the moment. If none exists, then an exception is thrown and the command will not perform (as mentioned in the note above).</p>
+</div>
+<div class="paragraph">
+<p>The method <code>indicateRequiredStudentIndexChange(Index indexOfStudent)</code> calls the modifying of XML data of which student is needed to display his/her profile page. This is because the HTML files
+can only read data from XML files and hence, an external XML file containing the index of the student whose profile page is required to be shown is needed. The code snippet to update the file is as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> updateData(<span class="type">int</span> newIndex, <span class="predefined-type">String</span> filePath) <span class="directive">throws</span> <span class="exception">IOException</span> {
+                <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(filePath);
+                RequiredStudentIndex ris = <span class="keyword">new</span> RequiredStudentIndex(newIndex);
+                <span class="keyword">try</span> {
+                        XmlUtil.saveDataToFile(file, ris);
+                } <span class="keyword">catch</span> (JAXBException e) {
+                        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unexpected exception </span><span class="delimiter">&quot;</span></span> + e.getMessage());
+                }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lastly, indicating the browser panel to display a student will raise a <code>StudentInfoDisplayEvent</code> which is handled in the <code>BrowserPanel</code> with the following code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="type">void</span> handleStudentInfoDisplayEvent(StudentInfoDisplayEvent event) {
+                <span class="comment">//... logging process...</span>
+
+                loadStudentInfoPage();
+
+                <span class="comment">//... raising event to switch panels...</span>
+        }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the event is handled in the <code>BrowserPanel</code> :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/moreInfoCommandSD.png" alt="width:500">
+</div>
+</div>
+<div class="paragraph">
+<p><strong class="large"><code>editMisc</code> Command</strong></p>
+</div>
+<div class="paragraph">
+<p>For the command <code>editMisc</code>, this is similar to the edit function, except it takes on different optional parameters. These are [ALLERGIES], [NEXTOFKINNAME], [NEXTOFKINPHONE], [REMARKS].
+The code snippet below shows how the <code>studentToEdit</code> is created when the <code>editMisc command</code> is called.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student studentToEdit, EditMiscDescriptor editMiscDescriptor) {
+                <span class="keyword">assert</span> studentToEdit != <span class="predefined-constant">null</span>;
+
+                <span class="comment">//... main information of the student is copied over...</span>
+
+                Allergies allergies = editMiscDescriptor.getAllergies()
+                                .orElse(studentToEdit.getMiscellaneousInfo().getAllergies());
+                NextOfKinName nextOfKinName = editMiscDescriptor.getNextOfKinName()
+                                .orElse(studentToEdit.getMiscellaneousInfo().getNextOfKinName());
+                NextOfKinPhone nextOfKinPhone = editMiscDescriptor.getNextOfKinPhone()
+                                .orElse(studentToEdit.getMiscellaneousInfo().getNextOfKinPhone());
+                Remarks remarks = editMiscDescriptor.getRemarks()
+                                .orElse(studentToEdit.getMiscellaneousInfo().getRemarks());
+
+                MiscellaneousInfo miscellaneousInfo = <span class="keyword">new</span> MiscellaneousInfo(allergies, nextOfKinName, nextOfKinPhone, remarks);
+
+                <span class="keyword">return</span> <span class="keyword">new</span> Student(uniqueKey, name, phone, email, address,
+                                programmingLanguage, tags, isFavourite, dashboard, profilePicturePath, miscellaneousInfo);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After that, the student will be updated with the new details for his/her miscellaneous information.</p>
+</div>
+<div class="paragraph">
+<p><strong class="large"><code>editPicture</code> Command</strong></p>
+</div>
+<div class="paragraph">
+<p>For the command <code>editPicture</code>, the student&#8217;s index will have to be provided by the user again. The next parameter for this is the required file path of the picture file.
+This can be in the form of an absolute file path (starting from a hardrive like <code>C:/Users/&#8230;&#8203;/picture.png</code>) or relative to the folder that the jar application is in.</p>
+</div>
+<div class="paragraph">
+<p>This command uses the similar method of the <code>edit</code> command and the <code>editMisc</code> command where a new <code>Student</code> with the edited details is created to overwrite the current existing student.
+In this case, the <code>ProfilePicturePath</code> of the student is edited. When this command is called, a <code>ProfilePictureChangeEvent</code> will be raised and the Storage Manager will call a method to save the data of the profile picture from its original location to a location in the jar folder.</p>
+</div>
+<div class="paragraph">
+<p>The code below shows how the saving of the file is done:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="type">void</span> saveProfilePicture(ProfilePicturePath pathToChangeTo, Student student) <span class="directive">throws</span> <span class="exception">IOException</span> {
+                <span class="comment">//... ensuring that the picture's filepath exists</span>
+
+                <span class="comment">//... getting the extension of the provided filepath of the picture</span>
+
+                deleteExistingProfilePicture(studentPictureFilePath);
+                Path studentPictureFilePathWithExtension = Paths.get(studentPictureFilePath.toString() + extension);
+                logger.fine(<span class="string"><span class="delimiter">&quot;</span><span class="content">Attempting to write to data file: data/</span><span class="delimiter">&quot;</span></span> + student.getUniqueKey().toString());
+
+
+                Files.copy(newPath, studentPictureFilePathWithExtension);
+
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thus, the HTML file for displaying the student&#8217;s profile page will be able to show the new image, which is copied to the local jar folder.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates the process of calling the <code>editPicture</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/editPictureCommandSD.png" alt="width:800">
+</div>
+<div class="title">Figure 1. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
+</div>
+<div class="paragraph">
+<p>As seen from the above diagram, the <code>createFinalEditedStudent()</code> method ensures that the correct profile picture path is saved onto the student&#8217;s XML data in order to be read by the HTML file which displays the student profile page.
+The method <code>createEditedStudent</code> creates the student wi</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternative 1 (Current choice)</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+<th class="tableblock halign-left valign-top">Alternative 2</th>
+<th class="tableblock halign-left valign-top">Pros(+) / Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Displaying and styling the profile page of a student</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have it as a JavaScript function in the HTML file of the student&#8217;s profile page.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ Able to directly read the XML data of students from the file. <br>
+<br>
+- Have to export the required files and folder out of the jar file as the JavaScript is unable to retrieve files outside of the Jar folder.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have it as a JavaFX file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ Able to read the student&#8217;s data from the UniqueStudentList.<br>
+<br>
+- Might be more difficult and messy to implement in code.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Editing the profile picture</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Copy the picture file into the local jar directory.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ Ensures that the picture can still be loaded even when the original picture file is deleted.<br>
+<br>
+- Requires more code to copy the files over and ensure their validity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read from the direct location of the original picture file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ Less code of copying is required and any modifications to the original photo is immediately updated.<br>
+<br>
+- If the picture is deleted or corrupted, the profile picture would not be able to display.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="schedule-feature"><a class="link" href="#schedule-feature">Schedule feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>To get better control of one&#8217;s weekly schedule, we will now attach a component called <code>Schedule</code> to <code>Model</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LessonClassDiagram.png" alt="LessonClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>Schedule</code> is a list of <code>Lessons</code>. A <code>Lesson</code> has a <code>UniqueKey</code> attribute, a <code>Day</code> attribute, a starting <code>TIME START_TIME</code> and an ending <code>TIME END_TIME</code> attribute</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Students have a unique UniqueKey field, which we will now use in Lesson to create a relation to Student objects.</p>
+</li>
+<li>
+<p>A <code>Lesson</code> object called <code>newLesson</code> will be created by <code>ModelManager.addLesson(UniqueKey key, Day day, Time startTime, Time endTime)</code>, which is implemented as such:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    public void addLesson(UniqueKey key, Day day, Time startTime, Time endTime)
+            throws DuplicateLessonException, StudentNotFoundException, InvalidLessonTimeSlotException {
+        //Check for Duplicate Lesson, StudentNotFound, invalid input ime
+
+        schedule.addLesson(newLesson);
+    }</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The student will be selected by the Index of the last seen list of students.
+The UniqueKey is retrieved from the Student. A new <code>Lesson</code> will now be added for that student at the specific <code>Day</code>, <code>startTime</code> and <code>endTime</code>, associated with the Student by the <code>key</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have a future implementation that requires the addition of a new attribute in the <code>Schedule</code> class, you must take note of updating the <code>Model.addLesson(Student, Day, Time START_TIME, Time END_TIME)</code> method to reflect the new attribute.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-to-store-code-programminglanguage-code-for-a-code-student-code"><a class="link" href="#aspect-how-to-store-code-programminglanguage-code-for-a-code-student-code">Aspect: How to store <code>ProgrammingLanguage</code> for a <code>Student</code></a></h5>
+<h5 id="aspect-implementation-of-code-schedule-code"><a class="link" href="#aspect-implementation-of-code-schedule-code">Aspect: Implementation of <code>Schedule</code></a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Store as an attribute of Student.</p>
+<p><strong>Alternative 1 (current choice)</strong>: <code>Schedule</code> contains <code>Lesson</code> classes that is made up of one layer, with attributes directly attached to <code>Lesson</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to keep track of as well as modify.</p>
+<p>Pro: It is easier implement, just add <code>Lesson</code> to a <code>Schedule</code>, which is a list of <code>Lessons</code></p>
 </li>
 <li>
-<p>Cons: Coupling increases as more classes (<code>ProgrammingLanguage</code> and <code>Student</code>) are associated with each other.</p>
+<p>Con: Results in more coupling, attributes could have been furthur separated out. It is inefficient to search by <code>Day</code>. Searching for empty slot requires linear searching.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Store as a separate list and have each student index in the UniqueStudentsList be mapped to each item in the list.</p>
+<p><strong>Alternative 2</strong>: <code>Lesson</code> contains two layers of classes, <code>Day</code> is attached to <code>Schedule</code> and <code>Lesson</code> is attached to <code>Day</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Less coupling so less need to refactor code</p>
+<p>Pro: Less coupling and more cohesive design</p>
 </li>
 <li>
-<p>Cons: Might be messier to implement, especially if the UniqueStudentsList have it&#8217;s students swapping indexes.</p>
+<p>Con: Much harder to implement and gets overly complicated</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-service-integration"><a class="link" href="#google-service-integration">Google Service Integration</a></h3>
+<div class="paragraph">
+<p>To sync with Google Contacts and Google Calendar, a <code>GServiceManager</code> class is implemented to handle the 2 services.
+<code>GServiceManager</code> contains a <code>GContactsService</code> and <code>GCalendarService</code> objects. <code>GServiceManager.synchronize</code> calls <code>GContactsService.synchronize</code> and
+<code>GCalendarService.synchronize</code></p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-gservicemanager-code"><a class="link" href="#aspect-implementation-of-code-gservicemanager-code">Aspect: Implementation of <code>GServiceManager</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Separate out 2 Google Services into two classes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Less coupling</p>
+</li>
+<li>
+<p>Con: More files and more code</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2</strong>: All services are in <code>GServiceManager</code> class. Synchronize runs the upload for both Contacts and Calendar classes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Fewer files and code to read</p>
+</li>
+<li>
+<p>Con: More coupling</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dashboard-feature"><a class="link" href="#dashboard-feature">Dashboard feature</a></h3>
+<div class="paragraph">
+<p>The dashboard feature aims to help users keep track of their students' learning progress.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
+<div class="paragraph">
+<p>To have a dashboard for each student, an association with a new <code>Dashboard</code> class is added to the <code>Student</code> class. We have also created new classes associated with the <code>Dashboard</code> class to facilitate the different capabilities of the dashboard.
+The following diagram shows the class diagram of the components that facilitate the dashboard feature:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width="500">
+</div>
+<div class="title">Figure 2. Class diagram of the components that facilitate the dashboard feature</div>
+</div>
+<div class="paragraph">
+<p>Both <code>UniqueMilestoneList</code> and <code>UniqueTaskList</code> contain an attribute called "internalList" which are <code>ObservableList&lt;Milestone&gt;</code> and <code>ObservableList&lt;Task&gt;</code> respectively.
+This means that the UI can be bound to both of the lists so that it can automatically update when the data in any of the lists change.</p>
+</div>
+<div class="paragraph">
+<p>A new <code>Dashboard</code> object is created every time a new <code>Student</code> is being created. The <code>Dashboard</code> object will contain an empty milestone list until the user adds new milestones to the dashboard.
+This enforces 1-to-1 association between <code>Student</code> and <code>Dashboard</code>, as well as between <code>Dashboard</code> and <code>UniqueMilestoneList</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, the constructor for <code>Student</code> is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> Student(<span class="predefined-type">Name</span> name, Phone phone, Email email, Address address, ProgrammingLanguage programmingLanguage, <span class="predefined-type">Set</span>&lt;Tag&gt; tags) {
+        requireAllNonNull(name, phone, email, address, tags);
+        <span class="local-variable">this</span>.name = name;
+        <span class="local-variable">this</span>.phone = phone;
+        <span class="comment">// ... initialise the rest of the attributes ...</span>
+        <span class="local-variable">this</span>.dashboard = <span class="keyword">new</span> Dashboard();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The constructor for <code>Dashboard</code> is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> Dashboard() {
+        milestoneList = <span class="keyword">new</span> UniqueMilestoneList();
+    }</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-what-command-to-add-code-programminglanguage-code-to-code-student-code"><a class="link" href="#aspect-what-command-to-add-code-programminglanguage-code-to-code-student-code">Aspect: What command to add <code>ProgrammingLanguage</code> to <code>Student</code></a></h5>
-<div class="ulist">
-<ul>
+<h5 id="implementation-for-commands-that-modify-the-dashboard"><a class="link" href="#implementation-for-commands-that-modify-the-dashboard">Implementation for commands that modify the Dashboard</a></h5>
+<div class="paragraph">
+<p>The <code>AddMilestoneCommand</code>, <code>AddTaskCommand</code>, <code>CheckTaskCommand</code> and <code>ShowDashboardCommand</code> commands facilitate operations to the dashboard.
+A common implementation for commands that modify the dashboard (e.g. <code>AddMilestoneCommand</code>) is that a new copy of <code>Dashboard</code> is created with the new modification.</p>
+</div>
+<div class="paragraph">
+<p>For example, in the <code>AddMilestoneCommand</code>, to add a new milestone object to the dashboard of a <code>Student</code> Object called "targetStudent":</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Implement it through the existing <code>add</code> command.</p>
-<div class="ulist">
-<ul>
+<p><code>AddMilestoneCommand.preprocessUndoableCommand()</code> calls the <code>AddMilestoneCommand.createEditedStudent()</code> method which will create a <code>Student</code> object called "editedStudent".
+"editedStudent" is created with the same attributes of "targetStudent", but with a new <code>Dashboard</code> object containing the new milestone.<br>
+<code>AddMilestoneCommand.createEditedStudent()</code> is implemented as such:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">void</span> createEditedStudent() <span class="directive">throws</span> DuplicateMilestoneException {
+        requireAllNonNull(studentToEdit, newMilestone);
+        editedStudent = <span class="keyword">new</span> StudentBuilder(targetStudent).withNewMilestone(newMilestone).build();
+    }</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
 <li>
-<p>Pros: Intuitive and the user does not have to learn an additional command</p>
+<p>In the <code>AddMilestoneCommand.executeUndoableCommand()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "targetStudent" with "editedStudent" in the Address Book in-memory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="implementation-for-displaying-the-dashboard"><a class="link" href="#implementation-for-displaying-the-dashboard">Implementation for displaying the dashboard</a></h5>
+<div class="paragraph">
+<p>The <code>ShowDashboardCommand</code> facilitates the displaying of a student&#8217;s dashboard. The <code>ShowDashboardCommand.execute()</code> method is implemented this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+        <span class="comment">// ... check whether targetIndex is valid ...</span>
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ShowStudentDashboardEvent(lastShownList.get(targetIndex.getZeroBased())));
+        <span class="comment">// ... return command result ...</span>
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As seen from the above code snippet, <code>ShowDashboardCommand.execute()</code> raises a <code>ShowStudentDashboardEvent</code>. The sequence diagram below shows how the <code>EventsCenter</code> reacts to that event.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ShowDashboardCommandSequenceDiagram.png" alt="ShowDashboardCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 3. Sequence diagram showing how the the <code>EventsCenter</code> and the Ui components react to the <code>ShowDashboardCommand</code></div>
+</div>
+<div class="paragraph">
+<p>As seen from the above diagram,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>InfoPanel</code> handles the <code>ShowStudentInDashboard</code> event.<br></p>
 </li>
 <li>
-<p>Cons: User will have to type a longer string for add command to include the programming language used by the student.</p>
+<p><code>InfoPanel</code> then raises the <code>ShowStudentNameInDashboard</code> which is handled by <code>DashboardPanel</code> to display the name of the student in the dashboard.<br></p>
+</li>
+<li>
+<p>Finally, <code>InfoPanel</code> raises the <code>ShowMilestoneEvent</code> which is also handled by <code>DashboardPanel</code> to display the milestones of the student in the dashboard.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-dashboard-feature"><a class="link" href="#aspect-data-structure-to-support-the-dashboard-feature">Aspect: Data structure to support the dashboard feature</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice)</strong>: Add a <code>Dashboard</code> association to <code>Student</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pro: Able to access the dashboard of a student easily.</p>
+</li>
+<li>
+<p>Con: Since <code>Student</code> is immutable, a new <code>Student</code> object has to be created each time its <code>Dashboard</code> is modified.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Implement it as a new command.</p>
+<p><strong>Alternative 2</strong>: Add a new <code>UniqueDashboardList</code> association to <code>AddressBook</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User will be able to add or modify <code>ProgrammingLanguage</code> one or possibly even a few students at their own discretion.</p>
+<p>Pro: Able to modify the dashboard easily if it is not made immutable.</p>
 </li>
 <li>
-<p>Cons: User will have to learn a new specific command and might also be slightly difficult to implement.</p>
+<p>Con: We will have to sync the <code>UniqueDashboardList</code> with the <code>UniqueStudentList</code> since <code>Dashboard</code> will be associated to a <code>Student</code>.</p>
 </li>
 </ul>
 </div>
@@ -322,6 +832,1973 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </ul>
 </div>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="natural-language-processing-capabilities"><a class="link" href="#natural-language-processing-capabilities">Natural Language Processing capabilities</a></h3>
+<div class="paragraph">
+<p>Allows users to invoke features using free-form english, apart from keywords specific to each feature.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">Current implementation</a></h4>
+<div class="paragraph">
+<p>An AI bot(agent) that is trained to process sentences based on the features integrated is into the application.
+Its primary goal is to identify the user&#8217;s intention of the input and match it with a corresponding feature which the
+user wishes to use.</p>
+</div>
+<div class="paragraph">
+<p>A new class <code>ConversationCommand</code> is written to process sentences that do not match the syntax of any features.</p>
+</div>
+<div class="sect4">
+<h5 id="making-api-calls-via-the-rest-api"><a class="link" href="#making-api-calls-via-the-rest-api">Making API calls via the REST API</a></h5>
+<div class="paragraph">
+<p>The method below, written using the IBM Watson™ Assistant service API, is used to make the API call to the agent.
+The <code>userInput</code> field contains the sentence that the user inputs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    public static MessageResponse getMessageResponse(String userInput) {
+        MessageResponse response = null;
+
+        InputData input = new InputData.Builder(userInput).build();
+        MessageOptions option = new MessageOptions.Builder("19f7b6f4-7944-419d-83a0-6bf9837ec333").input(input).build();
+        response = service.message(option).execute();
+
+        return response;
+    }</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="intents-and-entities"><a class="link" href="#intents-and-entities">Intents and Entities</a></h5>
+<div class="paragraph">
+<p><strong>Intents</strong> refers to the intention behind the input of the user and <strong>entities</strong> refer to objects of interest e.g. name, address, location</p>
+</div>
+<div class="paragraph">
+<p>The agent is integrated into the <code>AddressBookParser</code> class and the following code snippet deciphers the <strong>intents</strong>
+and the <strong>entity</strong> embedded in the user&#8217;s input.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>            //processes the userInput
+            response = ConversationCommand.getMessageResponse(userInput);
+            intents = response.getIntents();
+            entities = response.getEntities();
+
+            for (int i = 0; i &lt; intents.size(); i++) {
+                intention = intents.get(i).getIntent();
+            }
+
+            if (entities.size() != 0) {
+                for (int i = 0; i &lt; intents.size(); i++) {
+                    entity = entities.get(i).getValue();
+                }
+            }</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Every single input always has an <strong>intent</strong>, but that is not the case for <strong>entities</strong>!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For further clarification, refer to the screenshot below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/debug_message.PNG" alt="debug message" width="700">
+</div>
+<div class="title">Figure 4. Example of an intention and an entity, with its corresponding value. The intention is <code>Select</code> and the entity refers to the name of a person, which takes on a value of <code>Jason</code> in this particular case.</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="matching-the-desired-command"><a class="link" href="#matching-the-desired-command">Matching the desired command</a></h5>
+<div class="paragraph">
+<p>After identifying the <strong>intent</strong> and <strong>entities</strong> (if present) in the user&#8217;s input, the corresponding features matching intent is called,
+passing any <strong>entities</strong> as parameters to the feature&#8217;s method.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Select(after).PNG" alt="Select(after)" width="650">
+</div>
+<div class="title">Figure 5. Following the example in Figure 12, the <code>select</code> command is invoked, passing <code>Jason</code> as a parameter, after the intent and entity is identified.</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
+<div class="sect4">
+<h5 id="aspect-selection-of-an-appropriate-third-party-apis-to-implement-nlp"><a class="link" href="#aspect-selection-of-an-appropriate-third-party-apis-to-implement-nlp">Aspect: Selection of an appropriate third-party APIs to implement NLP</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): IBM Watson™ Assistant service</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Offers extensive NLP functions which are easy to implement. User-friendly interface allows ease of training of the model, which has high scalability</p>
+</li>
+<li>
+<p>Cons: Lite version offers a limited number of API calls per month (10,000).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Stanford CoreNLP</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Possesses a powerful and comprehensive API, comprising of a set of stable and well-tested natural language processing tools, widely used by various groups in academia, industry, and government.</p>
+</li>
+<li>
+<p>Cons: Highly modularised and requires in-depth knowledge of Machine-learning and Deep-learning to use effectively.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 3:Google Cloud Natural Language</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Offers a variety of functions (Syntax Analysis, Entity Recognition, Sentiment Analysis etc.) and integrates REST API,
+powerful enough to analyse texts properly and texts can be uploaded in the request or integrated with Google Cloud Storage.</p>
+</li>
+<li>
+<p>Cons: difficult to implement and integrate properly into the application</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentation"><a class="link" href="#documentation">Documentation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We use asciidoc for writing documentation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We chose asciidoc over Markdown because asciidoc, although a bit more complex than Markdown, provides more flexibility in formatting.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">Editing Documentation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
+Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">Publishing Documentation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">Converting Documentation to PDF format</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
+</div>
+<div class="paragraph">
+<p>Here are the steps to convert the project documentation files to PDF format.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Follow the instructions in <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to convert the AsciiDoc files in the <code>docs/</code> directory to HTML format.</p>
+</li>
+<li>
+<p>Go to your generated HTML files in the <code>build/docs</code> folder, right click on them and select <code>Open with</code> &#8594; <code>Google Chrome</code>.</p>
+</li>
+<li>
+<p>Within Chrome, click on the <code>Print</code> option in Chrome&#8217;s menu.</p>
+</li>
+<li>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot below.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
+</div>
+<div class="title">Figure 6. Saving documentation as PDF files in Chrome</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Testing"><a class="link" href="#Testing">Testing</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="running-tests"><a class="link" href="#running-tests">Running Tests</a></h3>
+<div class="paragraph">
+<p>There are three ways to run tests.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Method 1: Using IntelliJ JUnit test runner</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
+</li>
+<li>
+<p>To run a subset of tests, you can right-click on a test package, test class, or a test and choose <code>Run 'ABC'</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Method 2: Using Gradle</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open a console and run the command <code>gradlew clean allTests</code> (Mac/Linux: <code>./gradlew clean allTests</code>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run tests using Gradle.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Method 3: Using Gradle (headless)</strong></p>
+</div>
+<div class="paragraph">
+<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX</a> library we use, our GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.</p>
+</div>
+<div class="paragraph">
+<p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">Types of tests</a></h3>
+<div class="paragraph">
+<p>We have two types of tests:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include,</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
+</li>
+<li>
+<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include,</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
+e.g. <code>seedu.address.commons.StringUtilTest</code></p>
+</li>
+<li>
+<p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
+e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
+</li>
+<li>
+<p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
+e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">Troubleshooting Testing</a></h3>
+<div class="paragraph">
+<p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reason: One of its dependencies, <code>UserGuide.html</code> in <code>src/main/resources/docs</code> is missing.</p>
+</li>
+<li>
+<p>Solution: Execute Gradle task <code>processResources</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dev-ops"><a class="link" href="#dev-ops">Dev Ops</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="build-automation"><a class="link" href="#build-automation">Build Automation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">Continuous Integration</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">Coverage Reporting</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">Documentation Previews</a></h3>
+<div class="paragraph">
+<p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="making-a-release"><a class="link" href="#making-a-release">Making a Release</a></h3>
+<div class="paragraph">
+<p>Here are the steps to create a new release.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update the version number in <a href="{repoURL}/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+</li>
+<li>
+<p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
+</li>
+<li>
+<p>Tag the repo with the version number. e.g. <code>v0.1</code></p>
+</li>
+<li>
+<p><a href="https://help.github.com/articles/creating-releases/">Create a new release using GitHub</a> and upload the JAR file you created.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">Managing Dependencies</a></h3>
+<div class="paragraph">
+<p>A project often depends on third-party libraries. For example, Address Book depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
+a. Include those libraries in the repo (this bloats the repo size)<br>
+b. Require developers to download those libraries manually (this creates extra work for developers)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="product-scope"><a class="link" href="#product-scope">Product Scope</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Target user profile</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>has a need to plan tuition slots for large number of students</p>
+</li>
+<li>
+<p>wants to store students' profile information and pictures</p>
+</li>
+<li>
+<p>wants to keep a progress log for students</p>
+</li>
+<li>
+<p>is able to reference common important student details like contact number</p>
+</li>
+<li>
+<p>prefer desktop apps over other types</p>
+</li>
+<li>
+<p>can type fast</p>
+</li>
+<li>
+<p>prefers typing over mouse input</p>
+</li>
+<li>
+<p>is reasonably comfortable using CLI apps</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Value proposition</strong>: improve the planning process for scheduling time slots for all tutees</p>
+</div>
+<div class="sect2">
+<h3 id="feature-contribution"><a class="link" href="#feature-contribution">Feature Contribution</a></h3>
+<div class="paragraph">
+<p><strong>Samuel Loh:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>(Minor)</strong> Added programmingLanguage field to student model and modified add/edit commands to fit enhancement</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor to identify what programming language is being used by each student to learn coding.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Major)</strong> Create a profile page storing other important details of the students including a profile picture.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor store more information about students, which are not referenced as often, in another portion and thus are not displayed on the student card.
+E.g. Next of kin contact and an optional profile picture</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tan Wei Hao:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>(Minor)</strong> Added a findTag command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This allows the tutor to find a student by tag labels.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Major)</strong> Syncing timetable with Google calendar</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor keep track of lessons better by syncing with his Google calendar. It also allows the use of Google calendar features.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Tan Chee Wee:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>(Minor)</strong> Selecting a student via 'select' commands renders their location on google maps</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This allows the tutor to easily plan a route to the student&#8217;s home.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Major)</strong> Add a functionality that enables tutor to use free-form english to execute commands instead of conforming to the specific syntax</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This makes the app more user-friendly without the need to memorise the syntax of respective commands and able to execute them more intuitively.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Yap Ni:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>(Minor)</strong> Favourites feature where tutors can add or remove students from favourites and list students that are in their favourites</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor to remember or view the list of prominent students they want to take note of easily.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>(Major)</strong> Dashboard feature where each student has their own dashboard</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This helps the tutor to better plan out lessons for each student and track their learning progress.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix A: User Stories</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Priorities: High (must have) - <code>* * <strong></code>, Medium (nice to have) - <code></strong> <strong></code>, Low (unlikely to have) - <code></strong></code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to view misc info of my students on a different page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have an easier viewing of them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view the profile pictures of each student(if it exists)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">learn to recognise them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to add/change a profile picture for my students</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to edit the miscellaneous information of a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have the most updated version of a student&#8217;s information</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have a remarks column included in the misc info for each student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add specific remarks for each particular student that may be important to note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new student</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">indicate a student&#8217;s programming language when adding one</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a student by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of students without having to go through the entire list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a student by programming language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of students of a certain programming language</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view timetable of lessons by week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily view my schedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a lesson for a student</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete a lesson for a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove lessons that the student cancels</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit a lesson for a student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of timing changes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with a filled timetable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check free slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily find a free timeslot to allocate to students</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with a filled timetable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sync with cloud storage calenders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily sync my timetable to my schedule</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort the contact list by programming language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily recognise which and how many students are taking a particular programming language</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a student to favourites</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of that student</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">list students added to favourites</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view students I&#8217;m keeping tack</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search a student by label</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view the address of a student in the maps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know where the student lives</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a programming language for a student</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get an overview of my student&#8217;s progress</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that I can see what they don&#8217;t know and tutor them better</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type little but get the command I want</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to save time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">send emails to my student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to send reminders for upcoming lessons or payments owed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">submit feedback to the developers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to improve my user experience</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view hours spent teaching</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see how much money I should collect</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with many students in the address book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort students by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate a student easily</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix B: Use Cases</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is the <code>Scheduler</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+</div>
+<h3 id="use-case-delete-student" class="discrete">Use case: Delete student</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list students</p>
+</li>
+<li>
+<p>Scheduler shows a list of students</p>
+</li>
+<li>
+<p>User requests to delete a specific student in the list</p>
+</li>
+<li>
+<p>Scheduler deletes the student</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-student-2" class="discrete">Use case: Delete student</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a lesson</p>
+</li>
+<li>
+<p>Scheduler shows a list of free slots</p>
+</li>
+<li>
+<p>User requests to add a lesson to a slot</p>
+</li>
+<li>
+<p>Scheduler adds that lesson to that slot</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The timetable is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>2b. The timetable is full.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. Scheduler shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Scheduler shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix C: Non Functional Requirements</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>1.8.0_60</code> or higher installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 1000 students without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+<li>
+<p>Should receive feedback after executing commands.</p>
+</li>
+<li>
+<p>Should have correct error handling and not crash from unexpected behavior.</p>
+</li>
+<li>
+<p>Should have its functions and commands easily understood and readable for first time users.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix D: Glossary</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
+<dd>
+<p>Windows, Linux, Unix, OS-X</p>
+</dd>
+<dt class="hdlist1"><a id="timetable"></a> Timetable</dt>
+<dd>
+<p>A weekly timetable that shows status of all timeslots in one hour divisions</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix E: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test the app manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
+</li>
+<li>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">Deleting a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a student while all students are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>list</code> command. Multiple students in the list.</p>
+</li>
+<li>
+<p>Test case: <code>delete 1</code><br>
+Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete 0</code><br>
+Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-student-to-favourites"><a class="link" href="#adding-a-student-to-favourites">Adding a student to favourites</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a student to favourites while all students are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>list</code> command and there are multiple students in the list. The first student contact is not in favourites.</p>
+</li>
+<li>
+<p>Test case: <code>fav 1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The name of the first student contact in the student list will turn orange in color.</p>
+</li>
+<li>
+<p>The name of the first student contact will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Executing the command <code>list -f</code> will show the student in the favourites list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>fav 0</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No student is added to favourites due to the invalid student index.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect favourite commands to try: <code>fav</code>, <code>fav x</code> (where x is larger than the list size)<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the previous test case</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-a-student-from-favourites"><a class="link" href="#removing-a-student-from-favourites">Removing a student from favourites</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removing a student from favourites while all students are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>list</code> command and there are multiple students in the list. The first student contact is in favourites.</p>
+</li>
+<li>
+<p>Test case: <code>unfav 1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The name of the first student contact in the student list will no longer be orange in color.</p>
+</li>
+<li>
+<p>The name of the first student contact will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Executing the command <code>list -f</code> will no longer show the student in the favourites list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>unfav 0</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No student is removed from favourites due to the invalid student index.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect unfavourite commands to try: <code>unfav</code>, <code>unfav x</code> (where x is larger than the list size)<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the previous test case</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Removing a student from favourites while only students in favourites are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List only students in favourites using the <code>list -f</code> command and there are multiple students in the list.</p>
+</li>
+<li>
+<p>Test case: <code>unfav 1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>First student contact in the favourites list will be removed.</p>
+</li>
+<li>
+<p>The name of the first student contact will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="showing-the-dashboard-of-a-student"><a class="link" href="#showing-the-dashboard-of-a-student">Showing the dashboard of a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Showing the dashboard of a student while all students are listed and the right panel is showing the schedule</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>list</code> command and there are multiple students in the list. The schedule is being displayed on the right panel using the <code>schedule</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>showDB 1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The dashboard of the first student contact in the student list replaces the schedule in the right panel.</p>
+</li>
+<li>
+<p>The index 1 is shown in the result box.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>showDB 0</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The schedule remains in the right panel due to the invalid student index.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect show dashboard commands to try: <code>showDB</code>, <code>showDB x</code> (where x is larger than the list size)<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the previous test case.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Showing the dashboard of a student while all students are listed and the right panel is showing the browser panel</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>list</code> command and there are multiple students in the list. The 1st student in the list is being selected and the browser is being displayed on the right panel using the <code>select</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>showDB 1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The dashboard of the first student contact in the student list replaces the browser in the right panel.</p>
+</li>
+<li>
+<p>The index 1 is shown in the result box.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-milestone-to-a-student-s-dashboard"><a class="link" href="#adding-a-milestone-to-a-student-s-dashboard">Adding a milestone to a student&#8217;s dashboard</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a milestone to a student&#8217;s dashboard while the dashboard is being shown</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The dashboard of the 1st student in the list is being shown with the <code>showDB 1</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>addMS i/1 d/23/05/2018 23:59 o/Learn Arrays</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A milestone with the due date "23/05/2018 23:59" and description "Learn Arrays" is added to the dashboard.</p>
+</li>
+<li>
+<p>The milestone details is shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>addMS i/0 d/23/05/2018 23:59 o/Learn Arrays</code><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Milestone is not added to the dashboard due to the invalid student index.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>addMS i/1 d/31/02/2018 23:59 o/Learn Arrays</code><br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Milestone is not added to the dashboard due to the invalid date.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect add milestone commands to try: <code>addMS</code>, <code>addMS i/1</code>, <code>addMS d/23/05/2018</code>, <code>addMS o/Learn Arrays</code>, <code>addMS i/1 d/23/05/2018 23:59</code>, <code>addMS i/1 d/23/05/2018 o/Learn Arrays</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the previous test case.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-milestone-from-a-student-s-dashboard"><a class="link" href="#deleting-a-milestone-from-a-student-s-dashboard">Deleting a milestone from a student&#8217;s dashboard</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a milestone from a student&#8217;s dashboard while the dashboard is being shown</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The dashboard of the 1st student in the list is being shown with the <code>showDB 1</code> command. The dashboard contains at least 1 milestone.</p>
+</li>
+<li>
+<p>Test case: <code>deleteMS i/1 m/1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 1st milestone in the dashboard is being deleted.</p>
+</li>
+<li>
+<p>The milestone details is shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>deleteMS i/1 m/x</code> (where x is larger than the size of the milestone list) <br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No milestone is deleted due to the invalid milestone index.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect delete milestone commands to try: <code>deleteMS</code>, <code>deleteMS i/1</code>, <code>deleteMS m/1</code>, <code>deleteMS i/0 m/1</code>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the previous test case.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-task-to-a-milestone"><a class="link" href="#adding-a-task-to-a-milestone">Adding a task to a milestone</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a task to a milestone in a student&#8217;s dashboard while the dashboard is being shown</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The dashboard of the 1st student in the list is being shown with the <code>showDB 1</code> command. The dashboard contains at least 1 milestone.</p>
+</li>
+<li>
+<p>Test case: <code>addTask i/1 m/1 n/Learn Array Syntax o/Student to refer to the textbook</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A task with the name "Learn Array Syntax" and description "Student to refer to the textbook" is added to the 1st milestone in the dashboard.</p>
+</li>
+<li>
+<p>The task details are shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>addTask i/1 m/x n/Learn Array Syntax o/Student to refer to the textbook</code> (where x larger than the size of the milestone list)<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Task is not added to the milestone due to the invalid milestone index.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect add task commands to try: <code>addTask</code>, <code>addTask i/1 m/1</code>, <code>addTask i/1 m/1 n/Learn Array Syntax</code>, <code>addTask n/Learn Array Syntax o/Student to refer to the textbook</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the previous test case.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-task-from-a-milestone"><a class="link" href="#deleting-a-task-from-a-milestone">Deleting a task from a milestone</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a task from a milestone in a student&#8217;s dashboard while the dashboard is being shown</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The dashboard of the 1st student in the list is being shown with the <code>showDB 1</code> command. The dashboard contains at least 1 milestone with at least 1 task.</p>
+</li>
+<li>
+<p>Test case: <code>deleteTask i/1 m/1 tk/1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 1st task in the 1st milestone is being deleted.</p>
+</li>
+<li>
+<p>The task details are shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>deleteTask i/1 m/1 tk/x</code> (where x is larger than the size of the task list)<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No task is deleted due to the invalid task index.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect delete task commands to try: <code>deleteTask</code>, <code>deleteTask tk/1</code>, <code>deleteTask m/1 tk/1</code>, <code>deleteTask i/0 m/1 tk/1</code>, <code>deleteTask i/1 m/0 tk/1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the previous test case.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="marking-a-task-as-completed"><a class="link" href="#marking-a-task-as-completed">Marking a task as completed</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Marking an <em>incomplete</em> task from a milestone in a student&#8217;s dashboard as completed while the dashboard is being shown</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The dashboard of the 1st student in the list is being shown with the <code>showDB 1</code> command. The dashboard contains at least 1 milestone with the 1st task not marked as completed.</p>
+</li>
+<li>
+<p>Test case: <code>checkTask i/1 m/1 tk/1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 1st task in the 1st milestone is marked as completed with the "Completed" field turning from "No" to "Yes".</p>
+</li>
+<li>
+<p>The progress of the 1st milestone is updated.</p>
+</li>
+<li>
+<p>The task index and milestone index are shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>checkTask i/1 m/1 tk/x</code> (where x is larger than the size of the task list)<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No task is marked as completed due to the invalid task index.</p>
+</li>
+<li>
+<p>Error details will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect marking task as completed command to try: <code>checkTask</code>, <code>checkTask tk/1</code>, <code>checkTask m/1 tk/1</code>, <code>checkTask i/0 m/1 tk/1</code>, <code>checkTask i/1 m/0 tk/1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Similar to the previous test case.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Marking a <em>completed</em> task from a milestone in a student&#8217;s dashboard as completed while the dashboard is being shown</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: The dashboard of the 1st student in the list is being shown with the <code>showDB 1</code> command. The dashboard contains at least 1 milestone with the 1st task already marked as completed.</p>
+</li>
+<li>
+<p>Test case: <code>checkTask i/1 m/1 tk/1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 1st task in the 1st milestone remains marked as completed with the "Completed" field being "Yes".<br></p>
+</li>
+<li>
+<p>The progress in the 1st milestone remains the same.</p>
+</li>
+<li>
+<p>A message saying that the task is already marked as completed will be shown in the result box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="displaying-the-profile-page-of-a-student"><a class="link" href="#displaying-the-profile-page-of-a-student">Displaying the profile page of a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Showing the profile page of a student with the student list on the left and the browser panel is showing currently.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There is at least 1 student in the contacts data and the last shown filtered list. There exists XML data of that particular student.</p>
+</li>
+<li>
+<p>Test case: <code>moreInfo 1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The profile page of a student is shown.</p>
+</li>
+<li>
+<p>The student&#8217;s main information is shown, including <code>Name</code>, <code>Phone</code>, <code>Address</code> , <code>Email</code>, <code>ProgrammingLanguage</code> and <code>tags</code>.</p>
+</li>
+<li>
+<p>The student&#8217;s miscellaneous information is shown, including <code>Allergies</code>, <code>Next Of Kin Name</code>, <code>Next Of Kin Phone</code> and <code>Remarks</code>.</p>
+</li>
+<li>
+<p>The student&#8217;s profile picture is displayed. Note: if he/she does not have a custom profile picture, they are assigned a placeholder picture in its place.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>moreInfo 0</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There is no student whose index is 0. Thus the main panel on the right remains unchanged.</p>
+</li>
+<li>
+<p>An error message is shown in the command box.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>moreInfo 1</code> with no XML data of Students<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No profile page will be shown as this command only works when there is existing XML data( as mentioned in the prerequisites)</p>
+</li>
+<li>
+<p>An error message is shown in the command box.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Showing the profile page of a student with the student list on the left and the dashboard panel is showing currently</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>moreInfo 1</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The dashboard panel is switched with the browser panel.</p>
+</li>
+<li>
+<p>The profile page of a student is loaded.</p>
+</li>
+<li>
+<p>The student&#8217;s main information is shown, including <code>Name</code>, <code>Phone</code>, <code>Address</code> , <code>Email</code>, <code>ProgrammingLanguage</code> and <code>tags</code>.</p>
+</li>
+<li>
+<p>The student&#8217;s miscellaneous information is shown, including <code>Allergies</code>, <code>Next Of Kin Name</code>, <code>Next Of Kin Phone</code> and <code>Remarks</code>.</p>
+</li>
+<li>
+<p>The student&#8217;s profile picture is displayed. Note: if he/she does not have a custom profile picture, they are assigned a placeholder picture in its place.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>moreInfo 0</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There is no student whose index is 0. Thus, the dashboard panel will still be on display and will not switch with the browser panel.</p>
+</li>
+<li>
+<p>An error message is shown in the command box.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>moreInfo 1</code> with no XML data of Students<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No profile page will be shown as this command only works when there is existing XML data( as mentioned in the prerequisites)</p>
+</li>
+<li>
+<p>The dashboard panel will still be on display and will not switch with the browser panel.</p>
+</li>
+<li>
+<p>An error message is shown in the command box.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-the-miscellaneous-information-of-a-student"><a class="link" href="#editing-the-miscellaneous-information-of-a-student">Editing the miscellaneous information of a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing the miscellaneous information of a student while the student&#8217;s profile page is being shown on the main browser panel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>editMisc 1 al/Nuts</code><br>
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The student&#8217;s allergies portion of his/her miscellaneous information is overwritten with the string "Nuts".</p>
+</li>
+<li>
+<p>The profile page refreshes and displays the latest updated information of the student.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>editMisc 1 al/Nuts r/Naughty</code>
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The student&#8217;s allergies portion, as well as the remarks portion, of his/her miscellaneous information is overwritten with "Nuts" and "Naughty" respectively.</p>
+</li>
+<li>
+<p>The profile page refreshes and displays the latest updated information of the student.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>editMisc 0 al/Nuts</code><br>
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There is no student whose index is 0. Thus, the miscellaneous information of the student is not changed.</p>
+</li>
+<li>
+<p>Information of the student on the browser panel is not changed.</p>
+</li>
+<li>
+<p>An error message is shown in the command box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: `editMisc 1 al/ `
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Fields entered cannot take in empty values. Thus, the miscellaneous information of the student is not changed.</p>
+</li>
+<li>
+<p>Information of the student on the browser panel is not changed.</p>
+</li>
+<li>
+<p>An error message is shown in the command box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-the-profile-picture-of-a-student"><a class="link" href="#editing-the-profile-picture-of-a-student">Editing the profile picture of a student</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing the profile picture of a student while his/her profile page is on display on the browser panel.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>editPicture i/1 pa/test.jpg</code> given "test.jpg" is a valid picture file that exists
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The student&#8217;s profile picture is overwritten with the new profile picture.</p>
+</li>
+<li>
+<p>The picture from the filepath indicated by the user is copied onto the local data folder.</p>
+</li>
+<li>
+<p>The profile page refreshes and displays the latest updated information of the student.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>editPicture i/1 pa/C:/Users/User/Desktop/test.jpg</code> given the file path is a valid picture file that exists
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The student&#8217;s profile picture is overwritten with the new profile picture.</p>
+</li>
+<li>
+<p>The picture from the filepath indicated by the user is copied onto the local data folder.</p>
+</li>
+<li>
+<p>The profile page refreshes and displays the latest updated information of the student.</p>
+</li>
+<li>
+<p>Timestamp in the status bar is updated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>editPicture i/1 pa/missingFile.jpg</code> given the file path is a picture file that <strong>does not</strong> exists
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As the file does not exist, the profile picture of the student will not be modified.</p>
+</li>
+<li>
+<p>The profile picture of the student displayed on the browser panel is not changed.</p>
+</li>
+<li>
+<p>An error message is shown in the command box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: <code>editPicture i/1 pa/wrongFile.exe</code> given the file path is a <strong>not</strong> a picture file but it does exist.
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As the file does not end with an extension of <code>.jpg</code> or <code>png</code>, the profile picture of the student will not be modified.</p>
+</li>
+<li>
+<p>The profile picture of the student displayed on the browser panel is not changed.</p>
+</li>
+<li>
+<p>An error message is shown in the command box.</p>
+</li>
+<li>
+<p>Timestamp in the status bar remains the same.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-lesson"><a class="link" href="#adding-a-lesson">Adding a lesson</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a lesson while all students are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all students using the <code>list</code> command. Multiple students in the list. Your current schedule would preferably have no lessons starting before 7am or ending after 10pm.</p>
+</li>
+<li>
+<p>Test case: <code>addLesson 1 d/mon st/10:00 et/12:00</code><br>
+Expected: a lesson will be added for student at index 1, starting at 10:00am, ending at 12:00pm</p>
+</li>
+<li>
+<p>Test case (Maximum range): <code>addLesson 1 d/wed st/00:00 et/23:59</code><br>
+Expected: a lesson will be added for student at index 1, starting at 00:00pm, ending at 23:59pm (whole day).
+The schedule should resize to show the lesson in the whole day.</p>
+</li>
+<li>
+<p>Test case: <code>deleteLesson 0</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No lesson will be added due to invalid student index. Error details shown in results screen.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other incorrect deleteLessons to try: <code>deleteLesson</code>, <code>deleteLesson x</code> where x is larger than the index of the last lesson</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -329,7 +2806,7 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-13 19:06:26 UTC
+Last updated 2018-04-14 07:13:04 UTC
 </div>
 </div>
 </body>
