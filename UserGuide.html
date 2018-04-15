@@ -42,7 +42,6 @@
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.2.4. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.2.5. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.2.6. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.2.7. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#addressbook">3.3. AddressBook</a>
@@ -371,7 +370,7 @@ You can type the help command and Codeducator will open this user guide in-appli
 
 </div>
 <div class="sect4">
-<h5 id="steps-taken"><a class="link" href="#steps-taken">Steps Taken</a></h5>
+<h5 id="steps-taken-to-use-the-help-command"><a class="link" href="#steps-taken-to-use-the-help-command">Steps taken to use the help command</a></h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -399,8 +398,10 @@ You can type the help command and Codeducator will open this user guide in-appli
 <div class="sect3">
 <h4 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.2.2. Listing entered commands : <code>history</code></a></h4>
 <div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+<p>If you wish to execute a command you have entered before, you can use the <code>history</code> command to lists all the commands that you have entered in reverse chronological order.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>history</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -420,8 +421,10 @@ Format: <code>history</code></p>
 <div class="sect3">
 <h4 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.2.3. Undoing previous command : <code>undo</code></a></h4>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+<p>If you have mistakenly entered a command and wish to revert it, you can use the <code>undo</code> command to restore the address book to the state before.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -472,8 +475,10 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <div class="sect3">
 <h4 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.2.4. Redoing the previously undone command : <code>redo</code></a></h4>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+<p>If you have mistakenly used the <code>undo</code> command to revert a previous command, you can execute that command again by using the <code>redo</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -504,21 +509,16 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect3">
 <h4 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.2.5. Exiting the program : <code>exit</code></a></h4>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>If you wish to exit Codeducator, you can use the <code>exit</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="saving-the-data"><a class="link" href="#saving-the-data">3.2.6. Saving the data</a></h4>
 <div class="paragraph">
-<p>Contact list and schedule data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.2.7. Encrypting data files <code>[coming in v2.0]</code></a></h4>
-<div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>You will not need to save your address book and schedule data manually as Codeducator helps you save these data in the hard disk automatically after any command that changes those data.<br></p>
 </div>
 </div>
 </div>
@@ -527,8 +527,10 @@ There is no need to save manually.</p>
 <div class="sect3">
 <h4 id="adding-a-student-code-add-code"><a class="link" href="#adding-a-student-code-add-code">3.3.1. Adding a student: <code>add</code></a></h4>
 <div class="paragraph">
-<p>Adds a student to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pl/PROGRAMMING_LANGUAGE [t/TAG]&#8230;&#8203;</code></p>
+<p>If you wish to add a student to your address book, you can use the <code>add</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pl/PROGRAMMING_LANGUAGE [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -559,8 +561,10 @@ A student can have any number of tags (including 0)
 <div class="sect3">
 <h4 id="listing-all-students-code-list-code"><a class="link" href="#listing-all-students-code-list-code">3.3.2. Listing all students : <code>list</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all students in the address book.<br>
-Format: <code>list [-f]</code></p>
+<p>If you wish to view a list of all your students in the address book, you can use the <code>list</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list [-f]</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -589,9 +593,8 @@ List all students</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>Steps taken to view all students in the address book</strong>:<br></p>
-</div>
+<div class="sect4">
+<h5 id="steps-taken-to-view-all-students-in-the-address-book"><a class="link" href="#steps-taken-to-view-all-students-in-the-address-book">Steps taken to view all students in the address book:</a></h5>
 <div class="paragraph">
 <p><strong>Step 1</strong>: Type <code>list</code> into the command box and press <kbd>Enter</kbd> to execute it.</p>
 </div>
@@ -638,11 +641,14 @@ List all students</p>
 <div class="title">Figure 6. The left panel shows a list of student contacts in favourites</div>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.3.3. Editing a student : <code>edit</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing student in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [pl/PROGRAMMING_LANGUAGE] [t/TAG]&#8230;&#8203;</code></p>
+<p>If you wish to edit the information of your student in the address book, you can use the <code>edit</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [pl/PROGRAMMING_LANGUAGE] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -698,8 +704,10 @@ Edits the name of the 2nd student to be <code>Betsy Crower</code> and clears all
 <div class="sect3">
 <h4 id="locating-students-by-name-code-find-code"><a class="link" href="#locating-students-by-name-code-find-code">3.3.4. Locating students by name: <code>find</code></a></h4>
 <div class="paragraph">
-<p>Finds students whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>If you wish to locate a student in your address book, you can use the <code>find</code> command to find and list students whose names contain any of the given keywords.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -724,6 +732,18 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you wish to locate a student by their tag instead, you can use the <code>findTag</code> command (see <a href="#locating-students-by-tags-code-findtag-code">Section 3.3.5, &#8220;Locating students by tags: <code>findTag</code>&#8221;</a>)
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -743,8 +763,10 @@ Returns any student having names <code>Betsy</code>, <code>Tim</code>, or <code>
 <div class="sect3">
 <h4 id="locating-students-by-tags-code-findtag-code"><a class="link" href="#locating-students-by-tags-code-findtag-code">3.3.5. Locating students by tags: <code>findTag</code></a></h4>
 <div class="paragraph">
-<p>Finds students whose labels contain any of the given keywords.<br>
-Format: <code>findTag KEYWORD [MORE_KEYWORDS]</code></p>
+<p>If you wish to locate a student in your address book by their tag, you can use the <code>findTag</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>findTag KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -769,6 +791,18 @@ student with tags <code>friends</code> and <code>rich</code>, as well as a stude
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you wish to locate a student by their name instead, you can use the <code>find</code> command (see <a href="#locating-students-by-name-code-find-code">Section 3.3.4, &#8220;Locating students by name: <code>find</code>&#8221;</a>)
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -828,9 +862,9 @@ Adds the 1st student in the address book to favourites.</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-2"><a class="link" href="#steps-taken-2">Steps taken</a></h5>
+<h5 id="steps-taken-to-add-a-student-to-favourites"><a class="link" href="#steps-taken-to-add-a-student-to-favourites">Steps taken to add a student to favourites</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, find the student you wish to add to favourites using the <code>list</code> command (See <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
+<p><strong>Step 1</strong>: First, find the student you wish to add to favourites using the <code>list</code> command (see <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you have found the student you want to add to your favourites, type <code>fav</code> into the command box, followed by the <code>INDEX</code> of the student in the list. Press <kbd>Enter</kbd> to execute it.</p>
@@ -905,9 +939,9 @@ Removes the 1st student in the address book from favourites.</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-3"><a class="link" href="#steps-taken-3">Steps taken</a></h5>
+<h5 id="steps-taken-to-remove-a-student-from-favourites"><a class="link" href="#steps-taken-to-remove-a-student-from-favourites">Steps taken to remove a student from favourites</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, find the student you wish to remove from your favourites using the <code>list -f</code> command (See <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
+<p><strong>Step 1</strong>: First, find the student you wish to remove from your favourites using the <code>list -f</code> command (see <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you have found the student you want to remove from your favourites, type <code>unfav</code> into the command box, followed by the <code>INDEX</code> of the student in the list. Press <kbd>Enter</kbd> to execute it.</p>
@@ -950,18 +984,19 @@ The student <code>INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="sect3">
 <h4 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.3.8. Clearing all entries : <code>clear</code></a></h4>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br></p>
+<p>If you wish to remove all your student contacts in your address book, you can use the <code>clear</code> command.<br></p>
 </div>
-<div class="sect4">
-<h5 id="format-code-clear-code"><a class="link" href="#format-code-clear-code">Format: <code>clear</code></a></h5>
-
+<div class="paragraph">
+<p>Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="deleting-a-student-code-delete-code"><a class="link" href="#deleting-a-student-code-delete-code">3.3.9. Deleting a student : <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Deletes the specified student from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>If you wish to remove a student contact from the address book, you can use the <code>delete</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1001,8 +1036,10 @@ Deletes the 1st student in the results of the <code>find</code> command.</p>
 <div class="sect3">
 <h4 id="selecting-a-student-code-select-code"><a class="link" href="#selecting-a-student-code-select-code">3.3.10. Selecting a student : <code>select</code></a></h4>
 <div class="paragraph">
-<p>Selects the student identified by the index number used in the last student listing, and display their address on google maps.<br>
-Format: <code>select INDEX</code></p>
+<p>If you wish to view the address of your student on google map, you can use the <code>select</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>select INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1077,7 +1114,7 @@ Selects the 1st student in the results of the <code>find</code> command.</p>
 
 </div>
 <div class="sect4">
-<h5 id="steps-taken-4"><a class="link" href="#steps-taken-4">Steps Taken</a></h5>
+<h5 id="steps-taken-to-view-your-schedule"><a class="link" href="#steps-taken-to-view-your-schedule">Steps taken to view your schedule</a></h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1168,7 +1205,7 @@ Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson
 </div>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-5"><a class="link" href="#steps-taken-5">Steps Taken</a></h5>
+<h5 id="steps-taken-to-add-a-lesson"><a class="link" href="#steps-taken-to-add-a-lesson">Steps taken to add a lesson</a></h5>
 <div class="paragraph">
 <p>Let&#8217;s say that you may want to add a Lesson for Bernice (<code>index 2</code>). The lesson time slot would be Sunday, 10:00am to 12:00pm.</p>
 </div>
@@ -1245,7 +1282,7 @@ Deletes the 2nd lesson listing in the schedule</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-6"><a class="link" href="#steps-taken-6">Steps Taken</a></h5>
+<h5 id="steps-taken-to-delete-a-lesson"><a class="link" href="#steps-taken-to-delete-a-lesson">Steps taken to delete a lesson</a></h5>
 <div class="paragraph">
 <p>Let&#8217;s say you want to delete Charlotte&#8217;s Lesson, on Tuesday, 10:00am-12:00pm</p>
 </div>
@@ -1332,7 +1369,7 @@ You must first be logged out to log in
 </div>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-7"><a class="link" href="#steps-taken-7">Steps Taken</a></h5>
+<h5 id="steps-taken-to-log-in-to-your-google-account"><a class="link" href="#steps-taken-to-log-in-to-your-google-account">Steps taken to log in to your Google Account</a></h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1490,7 +1527,7 @@ The Calendar will only start syncing from the <strong>first Lesson occurring aft
 <p>Format: <code>sync</code></p>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-8"><a class="link" href="#steps-taken-8">Steps Taken</a></h5>
+<h5 id="steps-taken-to-sync-data-with-your-google-account"><a class="link" href="#steps-taken-to-sync-data-with-your-google-account">Steps taken to sync data with your Google Account</a></h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1591,7 +1628,7 @@ You must first be logged in to log out.
 <p>Format: <code>logout</code></p>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-9"><a class="link" href="#steps-taken-9">Steps taken</a></h5>
+<h5 id="steps-taken-to-log-out-of-your-google-account"><a class="link" href="#steps-taken-to-log-out-of-your-google-account">Steps taken to log out of your Google Account</a></h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1694,9 +1731,9 @@ Shows the dashboard of the 1st student in the address book.</p>
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-10"><a class="link" href="#steps-taken-10">Steps taken</a></h5>
+<h5 id="steps-taken-to-show-the-dashboard-of-a-student"><a class="link" href="#steps-taken-to-show-the-dashboard-of-a-student">Steps taken to show the dashboard of a student</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, find the student whose dashboard you wish to view using the <code>list</code> command (See <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
+<p><strong>Step 1</strong>: First, find the student whose dashboard you wish to view using the <code>list</code> command (see <a href="#listing-all-students-code-list-code">Section 3.3.2, &#8220;Listing all students : <code>list</code>&#8221;</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you have found the student, type <code>showDB</code> into the command box, followed by the <code>STUDENT_INDEX</code> of the student in the list. Press <kbd>Enter</kbd> to execute it.</p>
@@ -1778,9 +1815,9 @@ Adds a milestone to the dashboard of the 1st student in the address book. The mi
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-11"><a class="link" href="#steps-taken-11">Steps taken</a></h5>
+<h5 id="steps-taken-to-add-a-milestone-to-a-dashboard"><a class="link" href="#steps-taken-to-add-a-milestone-to-a-dashboard">Steps taken to add a milestone to a dashboard</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to add the milestone to (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
+<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to add the milestone to (see <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you can view the student&#8217;s dashboard, type <code>addMS</code> in the command box, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_DUE_DATE</code> and <code>DESCRIPTION_OF_MILESTONE</code>. Press <kbd>Enter</kbd> to execute it.</p>
@@ -1881,9 +1918,9 @@ Deletes the 1st milestone from the dashboard of the 1st student in the address b
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-12"><a class="link" href="#steps-taken-12">Steps taken</a></h5>
+<h5 id="steps-taken-to-delete-a-milestone-from-a-dashboard"><a class="link" href="#steps-taken-to-delete-a-milestone-from-a-dashboard">Steps taken to delete a milestone from a dashboard</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to remove the milestone from (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
+<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to remove the milestone from (see <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you can view the student&#8217;s dashboard, type <code>deleteMS</code> in the command box, followed by the <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code>. Press <kbd>Enter</kbd> to execute it.</p>
@@ -1965,9 +2002,9 @@ Adds a task to the 1st milestone in the dashboard of the 1st student in the addr
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-13"><a class="link" href="#steps-taken-13">Steps taken</a></h5>
+<h5 id="steps-taken-to-add-a-task-to-a-milestone"><a class="link" href="#steps-taken-to-add-a-task-to-a-milestone">Steps taken to add a task to a milestone</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to add the task to (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
+<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to add the task to (see <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you can view the student&#8217;s dashboard, type <code>addTask</code> in the command box, followed by <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, <code>NAME_OF_TASK</code> and <code>DESCRIPTION_OF_TASK</code>. Press <kbd>Enter</kbd> to execute it.</p>
@@ -2055,9 +2092,9 @@ Deletes the 1st task in the 1st milestone. The milestone is in the dashboard of 
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-14"><a class="link" href="#steps-taken-14">Steps taken</a></h5>
+<h5 id="steps-taken-to-delete-a-task-from-a-milestone"><a class="link" href="#steps-taken-to-delete-a-task-from-a-milestone">Steps taken to delete a task from a milestone</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to delete the task from (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
+<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to delete the task from (see <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you can view the student&#8217;s dashboard, type <code>deleteTask</code> in the command box, followed by <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code>. Press <kbd>Enter</kbd> to execute it.</p>
@@ -2157,9 +2194,9 @@ Marks the 1st task in the 1st milestone as completed. The milestone is in the da
 </ul>
 </div>
 <div class="sect4">
-<h5 id="steps-taken-15"><a class="link" href="#steps-taken-15">Steps taken</a></h5>
+<h5 id="steps-taken-to-mark-a-task-as-completed"><a class="link" href="#steps-taken-to-mark-a-task-as-completed">Steps taken to mark a task as completed</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>: First, view the dashboard of the student where the task is (See <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
+<p><strong>Step 1</strong>: First, view the dashboard of the student where the task is (see <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Step 2</strong>: Once you can view the student&#8217;s dashboard, type <code>checkTask</code> in the command box, followed by <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code>. Press <kbd>Enter</kbd> to execute it.</p>
@@ -2243,9 +2280,8 @@ The <code>moreInfo</code> command <em><strong>cannot</strong></em> work if there
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p><strong class="large">Steps Taken</strong><br></p>
-</div>
+<div class="sect4">
+<h5 id="steps-taken-to-display-the-profile-page-of-a-student"><a class="link" href="#steps-taken-to-display-the-profile-page-of-a-student">Steps taken to display the profile page of a student</a></h5>
 <div class="paragraph">
 <p>Suppose you wish to view the profile page of the 1st student of the current student list</p>
 </div>
@@ -2306,6 +2342,7 @@ You will be able to attain the profile page style in <code>Figure 5</code> if yo
 </div>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="edit-the-profile-picture-of-a-student-code-editpicture-code"><a class="link" href="#edit-the-profile-picture-of-a-student-code-editpicture-code">3.7.2. Edit the profile picture of a student : <code>editPicture</code></a></h4>
 <div class="paragraph">
@@ -2329,9 +2366,8 @@ The file path you entered can be relative to the current folder of the <code>jar
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p><strong class="large">Steps Taken</strong><br></p>
-</div>
+<div class="sect4">
+<h5 id="steps-taken-to-edit-the-profile-picture-of-a-student"><a class="link" href="#steps-taken-to-edit-the-profile-picture-of-a-student">Steps taken to edit the profile picture of a student</a></h5>
 <div class="paragraph">
 <p>Suppose you wish to have this picture, with the file name of <code>animal.jpg</code>  as a new profile picture as your student:</p>
 </div>
@@ -2413,6 +2449,7 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 </div>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="edit-the-miscellaneous-info-of-a-student-code-editmisc-code"><a class="link" href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">3.7.3. Edit the miscellaneous info of a student : <code>editMisc</code></a></h4>
 <div class="paragraph">
@@ -2421,9 +2458,8 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 <div class="paragraph">
 <p>Format: <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]</code></p>
 </div>
-<div class="paragraph">
-<p><strong class="large">Steps Taken</strong><br></p>
-</div>
+<div class="sect4">
+<h5 id="steps-taken-to-edit-the-miscellaneous-information-of-a-student"><a class="link" href="#steps-taken-to-edit-the-miscellaneous-information-of-a-student">Steps Taken to edit the miscellaneous information of a student</a></h5>
 <div class="paragraph">
 <p>Suppose you wish to edit the allergies information of a student to <code>Allergic to nuts</code>.</p>
 </div>
@@ -2480,6 +2516,7 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 <p>Existing values will be updated to and overwritten by the input values.</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -2820,7 +2857,7 @@ Spelling errors can be mis-interpreted and the wrong command might be invoked!
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:05:18 UTC
+Last updated 2018-04-15 08:57:20 UTC
 </div>
 </div>
 </body>
