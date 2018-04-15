@@ -933,7 +933,9 @@ Additional Info:** See our discussion  <a href="https://github.com/se-edu/addres
 <div class="sect2">
 <h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>A password must be implemented, used as secret key. Using <code>Java Cryptography Extension (JCE)</code> library, we can encrypt text in the xml files.<br>
+First we save as XML files, then we encrypt the text data in the XML to encrypted text, storing it somewhere, then deleting the XML file.<br>
+The reverse process is decrypting the encrypted data to XML, then reading data from there.</p>
 </div>
 </div>
 </div>
@@ -2579,7 +2581,7 @@ E.g. Next of kin contact and an optional profile picture</p>
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix B: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>Scheduler</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is <code>Codeducator</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-delete-student" class="discrete">Use case: Delete student</h3>
 <div class="paragraph">
@@ -2591,7 +2593,7 @@ E.g. Next of kin contact and an optional profile picture</p>
 <p>User requests to list students</p>
 </li>
 <li>
-<p>Schedule shows a list of students</p>
+<p>Codeducator shows a list of students</p>
 </li>
 <li>
 <p>User requests to delete a specific student in the list</p>
@@ -2620,7 +2622,7 @@ E.g. Next of kin contact and an optional profile picture</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>3a1. Codeducator shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2630,23 +2632,20 @@ E.g. Next of kin contact and an optional profile picture</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-student-2" class="discrete">Use case: Delete student</h3>
+<h3 id="use-case-adding-a-lesson" class="discrete">Use case: Adding a lesson</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Schedule panel shows lessons and timeslots</p>
+</li>
+<li>
 <p>User requests to add a lesson</p>
 </li>
 <li>
-<p>Scheduler shows a list of free slots</p>
-</li>
-<li>
-<p>User requests to add a lesson to a slot</p>
-</li>
-<li>
-<p>Scheduler adds that lesson to that slot</p>
+<p>Codeducator adds that lesson to that slot</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2659,27 +2658,27 @@ E.g. Next of kin contact and an optional profile picture</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The timetable is empty.</p>
+<p>2a. The schedule is empty.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 <li>
-<p>2b. The timetable is full.</p>
+<p>2b. The schedule is full. (Any attempt to add lessons will result in clashes)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>3b1. Scheduler shows an error message.</p>
+<p>3b1. Codeducator shows an error message.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>3a. The given index is invalid.</p>
+<p>3a. The given student index is invalid.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. Scheduler shows an error message.</p>
+<p>3a1. Codeducator shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2951,6 +2950,221 @@ E.g. Next of kin contact and an optional profile picture</p>
 <ul>
 <li>
 <p>4a1. The miscellaneous information portion is updated.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-deleting-a-lesson" class="discrete">Use case: Deleting a lesson</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Schedule panel shows lessons and timeslots.</p>
+</li>
+<li>
+<p>User requests to delete a lesson identified by index.</p>
+</li>
+<li>
+<p>Codeducator deletes that lesson from that slot.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The schedule is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>2b. The given lesson index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. Codeducator shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-logging-in" class="discrete">Use case: Logging in</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to log in to Google Accounts.</p>
+</li>
+<li>
+<p>A window opens in user&#8217;s default browser.</p>
+</li>
+<li>
+<p>User logs in to Google Accounts.</p>
+</li>
+<li>
+<p>User authorizes Codeducator.</p>
+</li>
+<li>
+<p>Codeducator shows login success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. User enters wrong password too many times.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. Codeducator goes into timeout after 45 seconds.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. User closes his browser window.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. Codeducator goes into timeout after 45 seconds.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>4a. User does not authorise Codeducator.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>4a1. Codeducator shows authentication denied error.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-logging-out" class="discrete">Use case: Logging out</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to log out of Google accounts in Codeducator</p>
+</li>
+<li>
+<p>Codeducator shows logout success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User was not logged in</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. Codeducator goes into timeout after 45 seconds.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. User closes his browser window</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. Codeducator goes into timeout after 45 seconds.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>4a. User does not authorise Codeducator</p>
+<div class="ulist">
+<ul>
+<li>
+<p>4a1. Codeducator shows authentication denied error</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-syncing-data" class="discrete">Use case: Syncing data</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to sync data with Google services.</p>
+</li>
+<li>
+<p>Codeducator uploads data through network connection.</p>
+</li>
+<li>
+<p>Codeducator shows data sync success</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User&#8217;s internet get cut</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. Codeducator goes into timeout after losing connection.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3287,10 +3501,10 @@ E.g. Next of kin contact and an optional profile picture</p>
 <li>
 <p>Should have its functions and commands easily understood and readable for first time users.</p>
 </li>
+<li>
+<p>Should be able to sync with any Google account ending with @gmail.com</p>
+</li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -3363,9 +3577,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-student"><a class="link" href="#deleting-a-student">E.2. Deleting a student</a></h3>
@@ -3395,9 +3606,6 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="saving-data"><a class="link" href="#saving-data">E.3. Saving data</a></h3>
@@ -3408,15 +3616,13 @@ Expected: Similar to previous.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Delete the contents of /data.<br>
+Expected: Codeducator will start off with sample contacts and empty schedule, empty dashboards, empty moreinfo pages</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -4683,7 +4889,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:45:03 UTC
+Last updated 2018-04-15 16:00:34 UTC
 </div>
 </div>
 </body>
