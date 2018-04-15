@@ -56,23 +56,10 @@ Users are able to track the progress of their students, manage their tutoring sc
 <p>Lessons can be added to the schedule.</p>
 </li>
 <li>
-<p>No clashing time slots allowed</p>
+<p>Users can upload contacts data and schedule data to Google Contacts and Calendar respectively.</p>
 </li>
 <li>
-<p>Able to upload contacts data and schedule data to Google Contacts and Calendar respectively.</p>
-</li>
-<li>
-<p>Easy organisation of data</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Data uploaded to Google Contact is uploaded under contact group label "Students"</p>
-</li>
-<li>
-<p>Data uploaded to Google Calendar is uploaded under calendar name "Student List". Events have the attendees as the students, so as to make the process of utilising Google Calendar much easier.</p>
-</li>
-</ul>
-</div>
+<p>Easy organisation of data: Data uploaded to Google Contact is uploaded under contact group label "Students". Data uploaded to Google Calendar is uploaded under calendar name "Student List". This make the process of utilising Google Accounts much easier.</p>
 </li>
 </ul>
 </div>
@@ -138,7 +125,7 @@ Both add up to around 3k lines of code.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com/CS2103JAN2018-W09-B3/main/pull/154">#154</a>)</p>
+<p>Updated the current GUI color scheme (Pull requests <a href="https://github.com/CS2103JAN2018-W09-B3/main/pull/154">#154</a>)</p>
 </li>
 <li>
 <p>Refactored <code>AddressBook</code> into a relational database where students are related to lessons by a <code>Uniquekey</code></p>
@@ -246,7 +233,7 @@ Both add up to around 3k lines of code.</p>
 <div class="sect3">
 <h4 id="viewing-your-schedule"><a class="link" href="#viewing-your-schedule">Viewing your Schedule</a></h4>
 <div class="paragraph">
-<p>Need a quick refresh of what lessons you have in the week? Coming from another panel? You can easily view your Schedule with a simple command.<br></p>
+<p>A quick refresh of what lessons you have in the week is a simple command away. You can easily view your Schedule with a simple command.<br></p>
 </div>
 <div class="sect4">
 <h5 id="format-code-schedule-code"><a class="link" href="#format-code-schedule-code">Format: <code>schedule</code></a></h5>
@@ -275,7 +262,7 @@ Both add up to around 3k lines of code.</p>
 <div class="sect3">
 <h4 id="adding-a-lesson-to-your-schedule"><a class="link" href="#adding-a-lesson-to-your-schedule">Adding a Lesson to your Schedule</a></h4>
 <div class="paragraph">
-<p>Your Student needs extra lessons? Got new Students that want lessons? Codeducator will allow you to add Lessons to your schedule.</p>
+<p>If your student needs extra lessons or you have new students that want lessons, Codeducator will allow you to add Lessons to your schedule.</p>
 </div>
 <div class="sect4">
 <h5 id="format-code-addlesson-index-d-day-st-start_time-et-end_time-code-br"><a class="link" href="#format-code-addlesson-index-d-day-st-start_time-et-end_time-code-br">Format: <code>addLesson INDEX [d/DAY] [st/START_TIME] [et/END_TIME]</code><br></a></h5>
@@ -384,80 +371,6 @@ Adds a lesson for the 1st student of the <code>find Betsy</code> command. Lesson
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="deleting-a-lesson-in-your-schedule"><a class="link" href="#deleting-a-lesson-in-your-schedule">Deleting a Lesson in your Schedule</a></h4>
-<div class="paragraph">
-<p>Need to remove lessons because Students drop out? Let&#8217;s use Codeducator&#8217;s <code>deleteLesson</code> command to do that for you.</p>
-</div>
-<div class="sect4">
-<h5 id="format-code-deletelesson-index-code-br"><a class="link" href="#format-code-deletelesson-index-code-br">Format: <code>deleteLesson INDEX</code><br></a></h5>
-<div class="paragraph">
-<p>Deletes an existing lesson in your schedule identified by the index number in the last schedule listing. of day, i.e. <code>mon</code> for Monday, <code>fri</code> for Friday.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes a lesson for the student at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the displayed Lesson Index shown in the title. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="examples"><a class="link" href="#examples">Examples:</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deleteLesson 2</code><br>
-Deletes the 2nd lesson listing in the schedule</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="steps-taken-to-delete-a-lesson"><a class="link" href="#steps-taken-to-delete-a-lesson">Steps taken to delete a lesson</a></h5>
-<div class="paragraph">
-<p>Let&#8217;s say you want to delete Charlotte&#8217;s Lesson, on Tuesday, 10:00am-12:00pm</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Type <code>schedule</code> into the command box. Press <kbd>enter</kbd> to execute.</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/deleteLessonStep1.png" alt="deleteLessonStep1" width="790">
-</div>
-<div class="title">Figure 6. After executing the <code>schedule</code> command. The Lesson is identified by <code>INDEX:2</code><br></div>
-</div>
-</li>
-<li>
-<p>Type <code>deleteLesson</code> into the command box. Press <kbd>enter</kbd> to execute the command</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/deleteLessonStep2.png" alt="deleteLessonStep2" width="790">
-</div>
-<div class="title">Figure 7. Type out the command as shown</div>
-</div>
-</li>
-<li>
-<p>The lesson will be removed from your schedule!</p>
-<div class="imageblock">
-<div class="content">
-<img src="../images/deleteLessonResult.png" alt="deleteLessonResult" width="790">
-</div>
-<div class="title">Figure 8. Result of executing the <code>deleteLesson</code> command</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -522,7 +435,7 @@ You must first be logged out to log in
 <div class="content">
 <img src="../images/loginStep1.png" alt="loginStep1" width="790">
 </div>
-<div class="title">Figure 9. Type <code>login</code> into the command box (Codeducator window)</div>
+<div class="title">Figure 6. Type <code>login</code> into the command box (Codeducator window)</div>
 </div>
 </li>
 <li>
@@ -534,7 +447,7 @@ You must first be logged out to log in
 <div class="content">
 <img src="../images/loginStep3.png" alt="loginStep3" width="790">
 </div>
-<div class="title">Figure 10. Google&#8217;s login screen (Your browser window)</div>
+<div class="title">Figure 7. Google&#8217;s login screen (Your browser window)</div>
 </div>
 </li>
 <li>
@@ -543,7 +456,7 @@ You must first be logged out to log in
 <div class="content">
 <img src="../images/loginStep4.png" alt="loginStep4" width="790">
 </div>
-<div class="title">Figure 11. Google&#8217;s OAuth/authentication window (Your browser window)</div>
+<div class="title">Figure 8. Google&#8217;s OAuth/authentication window (Your browser window)</div>
 </div>
 </li>
 <li>
@@ -552,7 +465,7 @@ You must first be logged out to log in
 <div class="content">
 <img src="../images/loginStep5.png" alt="loginStep5" width="790">
 </div>
-<div class="title">Figure 12. Google&#8217;s login success message (Your browser window)</div>
+<div class="title">Figure 9. Google&#8217;s login success message (Your browser window)</div>
 </div>
 </li>
 <li>
@@ -561,7 +474,7 @@ You must first be logged out to log in
 <div class="content">
 <img src="../images/loginStep6.png" alt="loginStep6" width="790">
 </div>
-<div class="title">Figure 13. Codeducator&#8217;s login success message (Codeducator window)</div>
+<div class="title">Figure 10. Codeducator&#8217;s login success message (Codeducator window)</div>
 </div>
 <div class="paragraph">
 <p>You are now ready to sync your account!<br></p>
@@ -684,7 +597,7 @@ The Calendar will only start syncing from the <strong>first Lesson occurring aft
 <div class="content">
 <img src="../images/syncStep00.png" alt="syncStep00" width=""790">
 </div>
-<div class="title">Figure 14. What my Google Contacts and Calendar look like before the sync</div>
+<div class="title">Figure 11. What my Google Contacts and Calendar look like before the sync</div>
 </div>
 </li>
 </ol>
@@ -696,7 +609,7 @@ The Calendar will only start syncing from the <strong>first Lesson occurring aft
 <div class="content">
 <img src="../images/syncStep0.png" alt="syncStep0" width=""790">
 </div>
-<div class="title">Figure 15. We will be using this example schedule</div>
+<div class="title">Figure 12. We will be using this example schedule</div>
 </div>
 </li>
 <li>
@@ -705,7 +618,7 @@ The Calendar will only start syncing from the <strong>first Lesson occurring aft
 <div class="content">
 <img src="../images/syncStep1.png" alt="syncStep1" width="790">
 </div>
-<div class="title">Figure 16. Type <code>sync</code> into the command box</div>
+<div class="title">Figure 13. Type <code>sync</code> into the command box</div>
 </div>
 </li>
 <li>
@@ -715,23 +628,23 @@ Codeducator will delete the old data in you Google Contacts and Calendar</p>
 <div class="content">
 <img src="../images/syncResult1.png" alt="syncResult1" width="790">
 </div>
-<div class="title">Figure 17. Viewing your schedule in Week and Month View in <a href="{calendarURL}">calendar.google.com</a>. Note the new Calendar "Student Lessons"</div>
+<div class="title">Figure 14. Viewing your schedule in Week and Month View in <a href="{calendarURL}">calendar.google.com</a>. Note the new Calendar "Student Lessons"</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/syncResult2.png" alt="syncResult2" width="790">
 </div>
-<div class="title">Figure 18. Viewing your contacts list in Google Contacts in <a href="{contactsURL}">contacts.google.com</a>. Note the new Label "Students"</div>
+<div class="title">Figure 15. Viewing your contacts list in Google Contacts in <a href="{contactsURL}">contacts.google.com</a>. Note the new Label "Students"</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/syncResult3.png" alt="syncResult3" width="790">
 </div>
-<div class="title">Figure 19. You will see this message if you successfully synced your account!</div>
+<div class="title">Figure 16. You will see this message if you successfully synced your account!</div>
 </div>
 </li>
 <li>
-<p>Congrats, your data has been synchronised! You are free to use them across your devices in anyway that Google Contacts and Calendar supports!</p>
+<p>Your data has been synchronised! You are free to use them across your devices in anyway that Google Contacts and Calendar supports!</p>
 </li>
 </ol>
 </div>
@@ -791,7 +704,7 @@ You must first be logged in to log out.
 <div class="content">
 <img src="../images/logoutStep1.png" alt="logoutStep1" width="790">
 </div>
-<div class="title">Figure 20. Type <code>logout</code> in the command box.</div>
+<div class="title">Figure 17. Type <code>logout</code> in the command box.</div>
 </div>
 </li>
 <li>
@@ -800,7 +713,7 @@ You must first be logged in to log out.
 <div class="content">
 <img src="../images/logoutResult.png" alt="logoutResult" width="790">
 </div>
-<div class="title">Figure 21. Result of executing <code>logout</code> command</div>
+<div class="title">Figure 18. Result of executing <code>logout</code> command</div>
 </div>
 </li>
 <li>
@@ -884,7 +797,7 @@ Deleting a student will also delete all his lessons in the schedule.</p>
 <div class="content">
 <img src="../images/AddLessonSequenceDiagram.png" alt="AddLessonSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 22. Sequence Diagram of <code>addLesson</code> command</div>
+<div class="title">Figure 19. Sequence Diagram of <code>addLesson</code> command</div>
 </div>
 <div class="paragraph">
 <p>The student will be selected by the Index of the last seen list of students.
@@ -915,7 +828,7 @@ If you have a future implementation that requires the addition of a new attribut
 <div class="content">
 <img src="../images/ScheduleCommandSequenceDiagram.png" alt="ScheduleCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 23. Sequence Diagram of <code>schedule</code> command</div>
+<div class="title">Figure 20. Sequence Diagram of <code>schedule</code> command</div>
 </div>
 <div class="paragraph">
 <p>From the following diagram,</p>
@@ -1054,7 +967,7 @@ If you have a future implementation that requires the addition of a new attribut
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:27:19 UTC
+Last updated 2018-04-15 14:35:19 UTC
 </div>
 </div>
 </body>
