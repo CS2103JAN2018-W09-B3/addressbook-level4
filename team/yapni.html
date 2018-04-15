@@ -161,172 +161,6 @@ and tracking their students' learning development.</p>
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="adding-a-student-to-favourites-code-fav-code"><a class="link" href="#adding-a-student-to-favourites-code-fav-code">Adding a student to favourites : <code>fav</code></a></h4>
-<div class="paragraph">
-<p>If you wish to access a student quickly, you can simply add the student as "favourite" using the <code>fav</code> command.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>fav INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>INDEX</code> refers to the index number of the student in the most recent listing.</p>
-</li>
-<li>
-<p><code>INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You can view the list of your favourite students using the command <code>list -f</code> (see <a href="#Listing all students : <code>list</code>">[Listing all students : <code>list</code>]</a>).
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>fav 1</code><br>
-Adds the 1st student in the address book to favourites.</p>
-</li>
-</ul>
-</div>
-<div class="sect4">
-<h5 id="steps-taken-to-add-a-student-to-favourites"><a class="link" href="#steps-taken-to-add-a-student-to-favourites">Steps taken to add a student to favourites</a></h5>
-<div class="paragraph">
-<p><strong>Step 1</strong>: First, find the student you wish to add to favourites using the <code>list</code> command (see <a href="#Listing all students : <code>list</code>">[Listing all students : <code>list</code>]</a>).</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 2</strong>: Once you have found the student you want to add to your favourites, type <code>fav</code> into the command box, followed by the <code>INDEX</code> of the student in the list. Press <kbd>Enter</kbd> to execute it.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/fav1_screenshot.png" alt="fav1 screenshot" width="800">
-</div>
-<div class="title">Figure 1. Entering the <code>fav</code> command followed by the <code>INDEX</code> 1 of the student to add to favourites</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 3</strong>: You have succeeded in adding the student as favourite when you see "Student added to favourites: [STUDENT&#8217;S NAME]" in the result box and the student&#8217;s name being highlighted in orange.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/fav2_screenshot.png" alt="fav2 screenshot" width="800">
-</div>
-<div class="title">Figure 2. Success in adding student "Alex Yeoh" at index 1 to favourites</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The student <code>INDEX</code> provided must be valid. Otherwise, an error message "The student index provided is invalid" will be displayed in the result box at <strong>Step 3</strong>.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/fav3_screenshot.png" alt="fav3 screenshot" width="800">
-</div>
-<div class="title">Figure 3. Error message displayed when an invalid <code>INDEX</code> 10 is entered. There are less than 10 students in the student contact list.</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="removing-a-student-from-favourites-code-unfav-code"><a class="link" href="#removing-a-student-from-favourites-code-unfav-code">Removing a student from favourites : <code>unfav</code></a></h4>
-<div class="paragraph">
-<p>If you want to remove a student from favourites, you can simply use the <code>unfav</code> command.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>unfav INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>INDEX</code> refers to the index number of the student in the most recent listing.</p>
-</li>
-<li>
-<p><code>INDEX</code> <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>unfav 1</code><br>
-Removes the 1st student in the address book from favourites.</p>
-</li>
-</ul>
-</div>
-<div class="sect4">
-<h5 id="steps-taken-to-remove-a-student-from-favourites"><a class="link" href="#steps-taken-to-remove-a-student-from-favourites">Steps taken to remove a student from favourites</a></h5>
-<div class="paragraph">
-<p><strong>Step 1</strong>: First, find the student you wish to remove from your favourites using the <code>list -f</code> command (see <a href="#Listing all students : <code>list</code>">[Listing all students : <code>list</code>]</a>).</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 2</strong>: Once you have found the student you want to remove from your favourites, type <code>unfav</code> into the command box, followed by the <code>INDEX</code> of the student in the list. Press <kbd>Enter</kbd> to execute it.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/unfav1_screenshot.png" alt="unfav1 screenshot" width="800">
-</div>
-<div class="title">Figure 4. Entering the <code>unfav</code> command followed by the <code>INDEX</code> 1 of the student to remove from favourites.</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 3</strong>: You have succeeded in removing the student from favourites when you see "Student removed from favourites: [STUDENT&#8217;S NAME]" in the result box.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/unfav2_screenshot.png" alt="unfav2 screenshot" width="800">
-</div>
-<div class="title">Figure 5. Success in removing student "Alex Yeoh" from favourites</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The student <code>INDEX</code> provided must be valid. Otherwise, an error message "The student index provided is invalid" will be displayed in the result box at <strong>Step 3</strong>.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/unfav3_screenshot.png" alt="unfav3 screenshot" width="800">
-</div>
-<div class="title">Figure 6. Error message displayed when an invalid <code>INDEX</code> 10 is entered. There are less than 10 students in the list of favourite students.</div>
-</div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="dashboard"><a class="link" href="#dashboard">Dashboard</a></h3>
 <div class="paragraph">
@@ -354,7 +188,7 @@ Codeducator allows you to create and add tasks to each milestone so that you can
 <div class="content">
 <img src="../images/DashboardScreenshot.png" alt="DashboardScreenshot" width="800">
 </div>
-<div class="title">Figure 7. An example of a student&#8217;s dashboard</div>
+<div class="title">Figure 1. An example of a student&#8217;s dashboard</div>
 </div>
 <div class="sect3">
 <h4 id="showing-the-dashboard-of-a-student-code-showdb-code"><a class="link" href="#showing-the-dashboard-of-a-student-code-showdb-code">Showing the dashboard of a student: <code>showDB</code></a></h4>
@@ -402,7 +236,7 @@ Shows the dashboard of the 1st student in the address book.</p>
 <div class="content">
 <img src="../images/showDB1_screenshot.png" alt="showDB1 screenshot" width="800">
 </div>
-<div class="title">Figure 8. Entering the <code>showDB</code> command followed by the <code>STUDENT_INDEX</code> 1 of the student whose dashboard you wish to view</div>
+<div class="title">Figure 2. Entering the <code>showDB</code> command followed by the <code>STUDENT_INDEX</code> 1 of the student whose dashboard you wish to view</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in viewing the student&#8217;s dashboard if you see the message "Selected Dashboard of Student: <code>STUDENT_INDEX</code> " in the result box, with the dashboard containing the student&#8217;s name appearing on the right panel.</p>
@@ -411,7 +245,7 @@ Shows the dashboard of the 1st student in the address book.</p>
 <div class="content">
 <img src="../images/showDB2_screenshot.png" alt="showDB2 screenshot" width="800">
 </div>
-<div class="title">Figure 9. Success in showing the dashboard of Alex Yeoh who has the index 1 on the students list</div>
+<div class="title">Figure 3. Success in showing the dashboard of Alex Yeoh who has the index 1 on the students list</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -429,7 +263,7 @@ The student <code>INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="content">
 <img src="../images/showDB3_screenshot.png" alt="showDB3 screenshot" width="800">
 </div>
-<div class="title">Figure 10. Error message displayed when an invalid <code>STUDENT_INDEX</code> 10 is entered. There are less than 10 students in the student contact list.</div>
+<div class="title">Figure 4. Error message displayed when an invalid <code>STUDENT_INDEX</code> 10 is entered. There are less than 10 students in the student contact list.</div>
 </div>
 </div>
 </div>
@@ -486,7 +320,7 @@ Adds a milestone to the dashboard of the 1st student in the address book. The mi
 <div class="content">
 <img src="../images/addMS1_screenshot.png" alt="addMS1 screenshot" width="800">
 </div>
-<div class="title">Figure 11. Entering the <code>addMS</code> command, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_DUE_DATE</code> as "23/05/2018 23:59" and <code>DESCRIPTION_OF_MILESTONE</code> as "Learn Arrays"</div>
+<div class="title">Figure 5. Entering the <code>addMS</code> command, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_DUE_DATE</code> as "23/05/2018 23:59" and <code>DESCRIPTION_OF_MILESTONE</code> as "Learn Arrays"</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in adding the milestone to the student&#8217;s dashboard if you see the message "Milestone added to Student&#8217;s Dashboard:" followed by the description of the milestone you have added in the result box.
@@ -496,7 +330,7 @@ The new milestone will also appear on the student&#8217;s dashboard.</p>
 <div class="content">
 <img src="../images/addMS2_screenshot.png" alt="addMS2 screenshot" width="800">
 </div>
-<div class="title">Figure 12. Success in adding the milestone with the description "Learn Arrays" which is due on "23/05/2018 23:59" to the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
+<div class="title">Figure 6. Success in adding the milestone with the description "Learn Arrays" which is due on "23/05/2018 23:59" to the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -514,7 +348,7 @@ The <code>STUDENT_INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="content">
 <img src="../images/addMS3_screenshot.png" alt="addMS3 screenshot" width="800">
 </div>
-<div class="title">Figure 13. Error message displayed when an invalid <code>STUDENT_INDEX</code> 10 is entered. There are less than 10 students in the student contact list.</div>
+<div class="title">Figure 7. Error message displayed when an invalid <code>STUDENT_INDEX</code> 10 is entered. There are less than 10 students in the student contact list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -532,7 +366,7 @@ The <code>MILESTONE_DUE_DATE</code> provided must have a valid calendar date and
 <div class="content">
 <img src="../images/addMS4_screenshot.png" alt="addMS4 screenshot" width="800">
 </div>
-<div class="title">Figure 14. Error message displayed when an invalid <code>MILESTONE_DUE_DATE</code> "31/02/2018 23:59" is entered. There is no 31/02/2018 in the calendar.</div>
+<div class="title">Figure 8. Error message displayed when an invalid <code>MILESTONE_DUE_DATE</code> "31/02/2018 23:59" is entered. There is no 31/02/2018 in the calendar.</div>
 </div>
 </div>
 </div>
@@ -589,7 +423,7 @@ Deletes the 1st milestone from the dashboard of the 1st student in the address b
 <div class="content">
 <img src="../images/deleteMS1_screenshot.png" alt="deleteMS1 screenshot" width="800">
 </div>
-<div class="title">Figure 15. Entering the <code>deleteMS</code> command, followed by the <code>STUDENT_INDEX</code> as "1" and <code>MILESTONE_INDEX</code> as "1"</div>
+<div class="title">Figure 9. Entering the <code>deleteMS</code> command, followed by the <code>STUDENT_INDEX</code> as "1" and <code>MILESTONE_INDEX</code> as "1"</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in deleting the milestone if you see the message "Deleted milestone:" followed by the description of the milestone in the result box. The milestone will also no longer be on the dashboard of the student.</p>
@@ -598,7 +432,7 @@ Deletes the 1st milestone from the dashboard of the 1st student in the address b
 <div class="content">
 <img src="../images/deleteMS2_screenshot.png" alt="deleteMS2 screenshot" width="800">
 </div>
-<div class="title">Figure 16. Success in deleting the milestone of index 1 in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
+<div class="title">Figure 10. Success in deleting the milestone of index 1 in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -616,302 +450,7 @@ The <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> provided must be
 <div class="content">
 <img src="../images/deleteMS3_screenshot.png" alt="deleteMS3 screenshot" width="800">
 </div>
-<div class="title">Figure 17. Error message displayed when invalid <code>STUDENT_INDEX</code> "10" and <code>MILESTONE_INDEX</code> "10" are entered</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="adding-a-task-to-a-milestone-code-addtask-code"><a class="link" href="#adding-a-task-to-a-milestone-code-addtask-code">Adding a task to a milestone: <code>addTask</code></a></h4>
-<div class="paragraph">
-<p>If you wish to keep track of a piece of work that needs to be done to complete a milestone&#8217;s objective, you can add a task to the milestone in the student&#8217;s dashboard using the <code>addTask</code> command.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>addTask i/STUDENT_INDEX m/MILESTONE_INDEX n/NAME_OF_TASK o/DESCRIPTION_OF_TASK</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>STUDENT_INDEX</code> refers to the index number of the student shown in the most recent listing.</p>
-</li>
-<li>
-<p><code>MILESTONE_INDEX</code> refers to the index number of the milestone in the dashboard shown in the most recent listing.</p>
-</li>
-<li>
-<p>The milestone is in the dashboard of the student at the specified <code>STUDENT_INDEX</code></p>
-</li>
-<li>
-<p><code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>showDB 1</code><br>
-<code>addTask i/1 m/1 n/Learn Array Syntax o/Student to refer to the textbook</code><br>
-Adds a task to the 1st milestone in the dashboard of the 1st student in the address book. The name of the task is "Learn Array Syntax" and the description is "Student to refer to the textbook".</p>
-</li>
-</ul>
-</div>
-<div class="sect4">
-<h5 id="steps-taken-to-add-a-task-to-a-milestone"><a class="link" href="#steps-taken-to-add-a-task-to-a-milestone">Steps taken to add a task to a milestone</a></h5>
-<div class="paragraph">
-<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to add the task to (see <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 2</strong>: Once you can view the student&#8217;s dashboard, type <code>addTask</code> in the command box, followed by <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, <code>NAME_OF_TASK</code> and <code>DESCRIPTION_OF_TASK</code>. Press <kbd>Enter</kbd> to execute it.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/addTask1_screenshot.png" alt="addTask1 screenshot" width="800">
-</div>
-<div class="title">Figure 18. Entering the command <code>addTask</code>, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_INDEX</code> as "1", <code>NAME_OF_TASK</code> as "Learn Array Syntax"  and <code>DESCRIPTION_OF_TASK</code> as "Student to refer to the textbook"</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 3</strong>: You have succeeded in adding the task to the milestone if you see the message "New task added:" followed by the description of the task you have added in the result box. The new task will also appear in the task list of the milestone.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/addTask2_screenshot.png" alt="addTask2 screenshot" width="800">
-</div>
-<div class="title">Figure 19. Success in adding a task with the name "Learn Array Syntax" and description "Student to refer to the textbook" to the 1st milestone in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> provided must be valid. Otherwise, an error message "One or more of the provided indexes are invalid" will be displayed in the result box at <strong>Step 3</strong>.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/addTask3_screenshot.png" alt="addTask3 screenshot" width="800">
-</div>
-<div class="title">Figure 20. Error message displayed when invalid <code>STUDENT_INDEX</code> "10" and <code>MILESTONE_INDEX</code> "10" are entered</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-a-task-from-a-milestone-code-deletetask-code"><a class="link" href="#deleting-a-task-from-a-milestone-code-deletetask-code">Deleting a task from a milestone: <code>deleteTask</code></a></h4>
-<div class="paragraph">
-<p>If you wish to remove a task you no longer need in a milestone of a dashboard, you can use the <code>deleteTask</code> command.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>deleteTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>STUDENT_INDEX</code> refers to the index number of the student shown in the most recent listing.</p>
-</li>
-<li>
-<p><code>MILESTONE_INDEX</code> refers to the index number of the milestone in the dashboard shown in the most recent listing.</p>
-</li>
-<li>
-<p><code>TASK_INDEX</code> refer to the index number of the task in the milestone shown in the most recent listing.</p>
-</li>
-<li>
-<p>The task is in the milestone at the specified <code>MILESTONE_INDEX</code></p>
-</li>
-<li>
-<p>The milestone is in the dashboard of a student at the specified <code>STUDENT_INDEX</code></p>
-</li>
-<li>
-<p><code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code> <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>showDB 1</code><br>
-<code>deleteTask i/1 m/1 tk/1</code><br>
-Deletes the 1st task in the 1st milestone. The milestone is in the dashboard of the 1st student in the address book.</p>
-</li>
-</ul>
-</div>
-<div class="sect4">
-<h5 id="steps-taken-to-delete-a-task-from-a-milestone"><a class="link" href="#steps-taken-to-delete-a-task-from-a-milestone">Steps taken to delete a task from a milestone</a></h5>
-<div class="paragraph">
-<p><strong>Step 1</strong>: First, view the dashboard of the student where you want to delete the task from (see <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 2</strong>: Once you can view the student&#8217;s dashboard, type <code>deleteTask</code> in the command box, followed by <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code>. Press <kbd>Enter</kbd> to execute it.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/deleteTask1_screenshot.png" alt="deleteTask1 screenshot" width="800">
-</div>
-<div class="title">Figure 21. Entering the command <code>deleteTask</code>, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_INDEX</code> as "1" and <code>TASK_INDEX</code> as "1"</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 3</strong>: You have succeeded in deleting the task from the milestone if you see the message: "Deleted task:" followed by the description of the task you deleted in the result box. The task will also no longer be in the task list of the milestone.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/deleteTask2_screenshot.png" alt="deleteTask2 screenshot" width="800">
-</div>
-<div class="title">Figure 22. Success in deleting the task of index 1 from the 1st milestone in the dashboard of Alex Yeoh. Alex Yeoh has the index 1 on the students list.</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, and <code>TASK_INDEX</code> provided must be valid. Otherwise, an error message "One or more of the provided indexes are invalid" will be displayed in the result box at <strong>Step 3</strong>.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/deleteTask3_screenshot.png" alt="deleteTask3 screenshot" width="800">
-</div>
-<div class="title">Figure 23. Error message displayed when invalid <code>STUDENT_INDEX</code> "10", <code>MILESTONE_INDEX</code> "10" and <code>TASK_INDEX</code> "10" are entered</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="marking-a-task-as-completed-code-checktask-code"><a class="link" href="#marking-a-task-as-completed-code-checktask-code">Marking a task as completed: <code>checkTask</code></a></h4>
-<div class="paragraph">
-<p>If your student has completed a task and you wish to mark it as completed, you can use the <code>checkTask</code> command.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>checkTask i/STUDENT_INDEX m/MILESTONE_INDEX tk/TASK_INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>STUDENT_INDEX</code> refers to the index number of the student shown in the most recent listing.</p>
-</li>
-<li>
-<p><code>MILESTONE_INDEX</code> refers to the index number of the milestone in the dashboard shown in the most recent listing.</p>
-</li>
-<li>
-<p><code>TASK_INDEX</code> refer to the index number of the task in the milestone shown in the most recent listing.</p>
-</li>
-<li>
-<p>The task is in the milestone at the specified <code>MILESTONE_INDEX</code></p>
-</li>
-<li>
-<p>The milestone is in the dashboard of a student at the specified <code>STUDENT_INDEX</code></p>
-</li>
-<li>
-<p><code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code> <strong>must be positive integers</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Marking a task as completed updates the progress of the milestone.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>showDB 1</code><br>
-<code>checkTask i/1 m/1 tk/1</code><br>
-Marks the 1st task in the 1st milestone as completed. The milestone is in the dashboard of the 1st student in the address book.</p>
-</li>
-</ul>
-</div>
-<div class="sect4">
-<h5 id="steps-taken-to-mark-a-task-as-completed"><a class="link" href="#steps-taken-to-mark-a-task-as-completed">Steps taken to mark a task as completed</a></h5>
-<div class="paragraph">
-<p><strong>Step 1</strong>: First, view the dashboard of the student where the task is (see <a href="#Show the dashboard of a student: <code>showDB</code>">[Show the dashboard of a student: <code>showDB</code>]</a>).</p>
-</div>
-<div class="paragraph">
-<p><strong>Step 2</strong>: Once you can view the student&#8217;s dashboard, type <code>checkTask</code> in the command box, followed by <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code>. Press <kbd>Enter</kbd> to execute it.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/checkTask1_screenshot.png" alt="checkTask1 screenshot" width="800">
-</div>
-<div class="title">Figure 24. Entering the command <code>checkTask</code>, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_INDEX</code> as "1" and <code>TASK_INDEX</code> as "1"</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 3</strong>: You have succeeded in marking the task as completed if you see the message "Task <code>TASK_INDEX</code> marked as completed in milestone <code>MILESTONE_INDEX</code> ".
-The task&#8217;s "Completed" field will become "Yes" and the progress of the milestone will be updated.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/checkTask2_screenshot.png" alt="checkTask2 screenshot" width="800">
-</div>
-<div class="title">Figure 25. Success in marking the task of index 1 from the 1st milestone in the dashboard of Alex Yeoh as completed. Alex Yeoh has the index 1 on the students list. The task&#8217;s "Completed" field is now "Yes" and the milestone&#8217;s progress is updated to 100%.</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Marking an already completed task as complete will cause the message "Task is already marked as completed" to be displayed in the result box at <strong>Step 3</strong>.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/checkTask4_screenshot.png" alt="checkTask4 screenshot" width="800">
-</div>
-<div class="title">Figure 26. Error message displayed when specified task is already marked as completed</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, and <code>TASK_INDEX</code> provided must be valid. Otherwise, an error message "One or more of the provided indexes are invalid" will be displayed in the result box at <strong>Step 3</strong>.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/checkTask3_screenshot.png" alt="checkTask3 screenshot" width="800">
-</div>
-<div class="title">Figure 27. Error message displayed when invalid <code>STUDENT_INDEX</code> "10", <code>MILESTONE_INDEX</code> "10" and <code>TASK_INDEX</code> "10" are entered</div>
+<div class="title">Figure 11. Error message displayed when invalid <code>STUDENT_INDEX</code> "10" and <code>MILESTONE_INDEX</code> "10" are entered</div>
 </div>
 </div>
 </div>
@@ -932,111 +471,12 @@ The <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, and <code>TASK_IND
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="favourites-feature"><a class="link" href="#favourites-feature">Favourites feature</a></h3>
-<div class="paragraph">
-<p>The favourites feature allows users to remember/mark a student by adding them to favourites.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-<div class="paragraph">
-<p>To facilitate the favourite/unfavourite feature, an association with a new <code>Favourite</code> class is added to the <code>Student</code> class:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/StudentWithPLFeature.png" alt="StudentWithPLFeature" width="500">
-</div>
-<div class="title">Figure 28. Structure of the atrributes of a <code>Student</code> in the Model component. The diagram shows that the <code>Student</code> class is associated with the <code>Favourite</code> class.</div>
-</div>
-<div class="paragraph">
-<p>Since the implementation of the favourite and unfavourite command are similar, we will describe the implementation of the favourite command only.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the favourite command works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/FavouriteCommandSequenceDiagram.png" alt="FavouriteCommandSequenceDiagram" width="800">
-</div>
-<div class="title">Figure 29. Sequence diagram for the favourite command</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The <code>FavouriteCommandParser</code> parses the user input to obtain the target student index and constructs a new <code>FavouriteCommand</code> with this index.</p>
-</li>
-<li>
-<p>The logic portion of the favourite command will be executed by the <code>FavouriteCommand</code> class.
-To mark a <code>Student</code> object called "studentToFavourite" as favourite:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>The <code>preprocessUndoableCommand()</code> method calls <code>setTargetStudent()</code> which will set the "studentToFavourite" object based on the provided student index.</p>
-</li>
-<li>
-<p><code>preprocessUndoableCommand()</code> will then call the <code>createEditedStudent()</code> method which will create a <code>Student</code> object called "editedStudent". "editedStudent" will have the attributes of "studentToFavourite", except that its <code>Favourite</code> attribute will be set to "true".<br>
-<code>createEditedStudent()</code> is implemented as such:</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">private</span> <span class="type">void</span> createEditedStudent() {
-        <span class="keyword">assert</span> targetStudent != <span class="predefined-constant">null</span>;
-        editedStudent = <span class="keyword">new</span> StudentBuilder(target).withFavourite(<span class="predefined-constant">true</span>).build();
-    }</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>In the <code>executeUndoableCommand()</code> method, <code>Model.updateStudent(Student, Student)</code> is called to replace "studentToFavourite" with "editedStudent" in the Address Book in-memory.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Aspect</th>
-<th class="tableblock halign-left valign-top">Alternatives</th>
-<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Implementation of 'FavouriteCommand'</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add a <code>Favourite</code> attribute to <code>Student</code> (current choice)</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ : It is easy to mark a student as favourite since we can make use of the current <code>Model.updateStudent(Student, Student)</code> method by creating a copy of the target <code>Student</code> object, with the value of its <code>Favourite</code> attribute set to "true"<br>
-<br>
-  - : Creating a copy of the <code>Student</code> object can be inefficient</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new <code>UniqueFavouriteStudentsList</code> that contains the list of students in favourites and store this list in the Address Book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Students that are currently in favourites can be managed more easily since there is a direct overview of which student is in favourites<br>
-<br>
- - : Students in the <code>UniqueFavouriteStudentsList</code> have to be synced with the <code>UniqueStudentsList</code>. For example, we have to ensure that deleting a student in the <code>UniqueStudentList</code> deletes the student in the <code>UniqueFavouriteStudentsList</code> too</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect2">
 <h3 id="dashboard-feature"><a class="link" href="#dashboard-feature">Dashboard feature</a></h3>
 <div class="paragraph">
 <p>The dashboard feature aims to help users keep track of their students' learning progress.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>To have a dashboard for each student, an association with a new <code>Dashboard</code> class is added to the <code>Student</code> class. We have also created new classes associated with the <code>Dashboard</code> class to facilitate the different capabilities of the dashboard.
 The following diagram shows the class diagram of the components that facilitate the dashboard feature:</p>
@@ -1045,7 +485,7 @@ The following diagram shows the class diagram of the components that facilitate 
 <div class="content">
 <img src="../images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width="500">
 </div>
-<div class="title">Figure 30. Class diagram of the components that facilitate the dashboard feature</div>
+<div class="title">Figure 12. Class diagram of the components that facilitate the dashboard feature</div>
 </div>
 <div class="paragraph">
 <p>Both <code>UniqueMilestoneList</code> and <code>UniqueTaskList</code> contain an attribute called "internalList" which are <code>ObservableList&lt;Milestone&gt;</code> and <code>ObservableList&lt;Task&gt;</code> respectively.
@@ -1134,7 +574,7 @@ A common implementation for commands that modify the dashboard (e.g. <code>AddMi
 <div class="content">
 <img src="../images/ShowDashboardCommandSequenceDiagram.png" alt="ShowDashboardCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 31. Sequence diagram showing how the the <code>EventsCenter</code> and the Ui components react to the <code>ShowDashboardCommand</code></div>
+<div class="title">Figure 13. Sequence diagram showing how the the <code>EventsCenter</code> and the Ui components react to the <code>ShowDashboardCommand</code></div>
 </div>
 <div class="paragraph">
 <p>As seen from the above diagram,</p>
@@ -1155,7 +595,7 @@ A common implementation for commands that modify the dashboard (e.g. <code>AddMi
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1192,7 +632,7 @@ A common implementation for commands that modify the dashboard (e.g. <code>AddMi
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:09:52 UTC
+Last updated 2018-04-15 14:13:33 UTC
 </div>
 </div>
 </body>
