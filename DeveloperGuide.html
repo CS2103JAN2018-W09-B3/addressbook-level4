@@ -2689,6 +2689,277 @@ E.g. Next of kin contact and an optional profile picture</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-view-a-student-s-profile-page" class="discrete">Use Case: View a student&#8217;s profile page</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list students.</p>
+</li>
+<li>
+<p>Student list panel shows a list of students.</p>
+</li>
+<li>
+<p>User requests to view profile page of a student.</p>
+</li>
+<li>
+<p>Browser panel shows profile page of student.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. Error message shown.</p>
+</li>
+<li>
+<p>3a2. User enters another index.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. There is no XML data currently.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. Error message shown.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-a-student-s-profile-picture" class="discrete">Use Case: Edit a student&#8217;s profile picture</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list students.</p>
+</li>
+<li>
+<p>Student list panel shows a list of students.</p>
+</li>
+<li>
+<p>User requests to edit a student&#8217;s profile picture.</p>
+</li>
+<li>
+<p>Command box shows updated picture.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. Error message shown.</p>
+</li>
+<li>
+<p>3a2. User enters another index.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The file path of the picture does not exist.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. Error message shown.</p>
+</li>
+<li>
+<p>3b2. User can enter another file path to the desired picture file.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3c The file path does not end with an extension of '.png' or '.jpg'.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3c1. Error message shown.</p>
+</li>
+<li>
+<p>3c2. User can enter another file path to the desired picture file.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>4a User is at the profile page while entering <code>editPicture</code> command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>4a1. Profile picture on the profile page changes</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-edit-a-student-s-miscellaneous-information" class="discrete">Use Case: Edit a student&#8217;s miscellaneous information</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list students.</p>
+</li>
+<li>
+<p>Student list panel shows a list of students.</p>
+</li>
+<li>
+<p>User requests to edit a student&#8217;s miscellaneous information.</p>
+</li>
+<li>
+<p>Command box shows command success.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. Error message shown.</p>
+</li>
+<li>
+<p>3a2. User enters another index.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. No fields are entered.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. Error message shown.</p>
+</li>
+<li>
+<p>3b2. User enters command with specific fields which are desired to edit.</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3c The prefixes are wrong.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3c1. Error message shown.</p>
+</li>
+<li>
+<p>3c2. User enters command with proper prefixes to changes desired</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>4a User is at the profile page while entering <code>editMisc</code> command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>4a1. The miscellaneous information portion is updated.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <h3 id="use-case-show-a-student-s-dashboard" class="discrete">Use case: Show a student&#8217;s dashboard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2990,9 +3261,6 @@ E.g. Next of kin contact and an optional profile picture</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -4415,7 +4683,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 15:26:17 UTC
+Last updated 2018-04-15 15:40:43 UTC
 </div>
 </div>
 </body>
