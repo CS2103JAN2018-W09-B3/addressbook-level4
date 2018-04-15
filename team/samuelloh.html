@@ -161,6 +161,272 @@ However, it is relatively small. Moreover, some details like Next-Of-Kin contact
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="student-profile-page"><a class="link" href="#student-profile-page">Student Profile Page</a></h3>
+<div class="sect3">
+<h4 id="displaying-profile-page-for-each-student-code-moreinfo-code"><a class="link" href="#displaying-profile-page-for-each-student-code-moreinfo-code">Displaying profile page for each student : <code>moreInfo</code></a></h4>
+<div class="paragraph">
+<p>Displays the full information of a student on the browser panel. The full information of a student consists of 3 elements, main information, miscellaneous information and his/her profile picture. You will be able to view his/her profile picture if one exists.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>moreInfo INDEX</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The <code>moreInfo</code> command <em><strong>cannot</strong></em> work if there is no existing XML data of students. Should you encounter this warning,you can either:<br>
+1) Simply enter <code>clear</code> and start out with an empty student list.<br>
+2) Add, edit or delete a student using their corresponding commands to generate XML data of the students.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong class="large">Steps Taken</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Suppose you wish to view the profile page of the 1st student of the current student list</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/moreInfoCommand.png" alt="width:400">
+</div>
+<div class="title">Figure 1. Command to be entered to display the 1st student&#8217;s profile page.</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>You will then be able to view the profile page of the student. Enter the same command with a different number for viewing the profile page of other students (e.g. <code>moreInfo 2</code>).</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/moreInfoResult.png" alt="width:800">
+</div>
+<div class="title">Figure 2. Executing the command <code>moreInfo 1</code> displays the 1st student (Alex Yeoh&#8217;s) profile page</div>
+</div>
+<div class="paragraph">
+<p><br>
+<br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You will be able to attain the profile page style in <code>Figure 5</code> if your OS zoom scale is set to <code>125%</code>. The profile photo may seem of a different size for other configurations. Search you computer settings should you wish to change this.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the full information of a student with the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the last schedule listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-the-profile-picture-of-a-student-code-editpicture-code"><a class="link" href="#edit-the-profile-picture-of-a-student-code-editpicture-code">Edit the profile picture of a student : <code>editPicture</code></a></h4>
+<div class="paragraph">
+<p>Allows you to edit the current profile picture of a student to a new picture from a specific file path indicated by you.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The image file you wish to use must exist and have extensions either of <code>.jpg</code> or <code>.png</code>.<br>
+The file path you entered can be relative to the current folder of the <code>jar</code> file or the absolute path e.g. <code>C:/Users/User/Desktop/photo.jpg</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong class="large">Steps Taken</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Suppose you wish to have this picture, with the file name of <code>animal.jpg</code>  as a new profile picture as your student:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/animal.jpg" alt="width:200">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/editPictureCommand.png" alt="width:400">
+</div>
+<div class="title">Figure 3. Command to be entered to edit a student&#8217;s profile picture</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>You will edit the profile picture of the 1st student of the latest student list to a picture existing in the same folder as the jar file with the name <code>animal.jpg</code>. You will then see the following:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/editPictureSuccess.png" alt="width:400">
+</div>
+<div class="title">Figure 4. Command to edit the student&#8217;s profile picture success!</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>By calling the <code>moreInfo</code> command (found in the section above), you will be able to view the student&#8217;s profile page with the updated picture as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/editedPicture.png" alt="width:800">
+</div>
+<div class="title">Figure 5. The profile page of the selected student is shown with the new profile picture!</div>
+</div>
+<div class="paragraph">
+<p><br>
+<br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The ideal aspect ratio of the picture is 1.25 from height to width.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Changes the profile photo of a student with the specified <code>INDEX</code> to a new one which has a file path of <code>FILE_PATH_OF_PICTURE</code></p>
+</li>
+<li>
+<p>The index refers to the index number shown in the last schedule listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The file path of the picture is either relative to the folder which the jar application is or can be speicifed from the hard drive.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-the-miscellaneous-info-of-a-student-code-editmisc-code"><a class="link" href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">Edit the miscellaneous info of a student : <code>editMisc</code></a></h4>
+<div class="paragraph">
+<p>Allows you to edit the miscellaneous information of a student. This includes his/her allergies, Next-Of-Kin name, Next-Of-Kin contact number and remarks for the student.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]</code></p>
+</div>
+<div class="paragraph">
+<p><strong class="large">Steps Taken</strong><br></p>
+</div>
+<div class="paragraph">
+<p>Suppose you wish to edit the allergies information of a student to <code>Allergic to nuts</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter the command as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/editMiscCommand.png" alt="width 400">
+</div>
+<div class="title">Figure 6. Command to be entered to edit the allergies information of a student.</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>You will edit the <code>allergies</code> portion of the miscellaneous information of the 1st student of the student list to "Allergic to nuts". You will then see the following:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/editPictureSuccess.png" alt="][width:400">
+</div>
+<div class="title">Figure 7. Command to edit the allergies portion of the student&#8217;s miscellaneous information success!</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>By calling the <code>moreInfo</code> command (found in the section above), you will be able to view the student&#8217;s profile page with the updated allergies information as shown below:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/editMiscSuccess.png" alt="width:800">
+</div>
+<div class="title">Figure 8. The profile page of the selected student is shown with the newly updated allergies information!</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the student&#8217;s miscellaneous info at the specified <code>INDEX</code>. The index refers to the index number shown in the last student listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one optional field must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to and overwritten by the input values.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -487,7 +753,7 @@ In this case, the <code>ProfilePicturePath</code> of the student is edited. When
 <div class="content">
 <img src="../images/editPictureCommandSD.png" alt="width:800">
 </div>
-<div class="title">Figure 1. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
+<div class="title">Figure 9. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
 </div>
 <div class="paragraph">
 <p>As seen from the above diagram, the <code>createFinalEditedStudent()</code> method ensures that the correct profile picture path is saved onto the student&#8217;s XML data in order to be read by the HTML file which displays the student profile page.
@@ -699,7 +965,7 @@ The following diagram shows the class diagram of the components that facilitate 
 <div class="content">
 <img src="../images/ModelComponentDashboardClassDiagram.png" alt="ModelComponentDashboardClassDiagram" width="500">
 </div>
-<div class="title">Figure 2. Class diagram of the components that facilitate the dashboard feature</div>
+<div class="title">Figure 10. Class diagram of the components that facilitate the dashboard feature</div>
 </div>
 <div class="paragraph">
 <p>Both <code>UniqueMilestoneList</code> and <code>UniqueTaskList</code> contain an attribute called "internalList" which are <code>ObservableList&lt;Milestone&gt;</code> and <code>ObservableList&lt;Task&gt;</code> respectively.
@@ -788,7 +1054,7 @@ A common implementation for commands that modify the dashboard (e.g. <code>AddMi
 <div class="content">
 <img src="../images/ShowDashboardCommandSequenceDiagram.png" alt="ShowDashboardCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 3. Sequence diagram showing how the the <code>EventsCenter</code> and the Ui components react to the <code>ShowDashboardCommand</code></div>
+<div class="title">Figure 11. Sequence diagram showing how the the <code>EventsCenter</code> and the Ui components react to the <code>ShowDashboardCommand</code></div>
 </div>
 <div class="paragraph">
 <p>As seen from the above diagram,</p>
@@ -922,7 +1188,7 @@ Every single input always has an <strong>intent</strong>, but that is not the ca
 <div class="content">
 <img src="../images/debug_message.PNG" alt="debug message" width="700">
 </div>
-<div class="title">Figure 4. Example of an intention and an entity, with its corresponding value. The intention is <code>Select</code> and the entity refers to the name of a person, which takes on a value of <code>Jason</code> in this particular case.</div>
+<div class="title">Figure 12. Example of an intention and an entity, with its corresponding value. The intention is <code>Select</code> and the entity refers to the name of a person, which takes on a value of <code>Jason</code> in this particular case.</div>
 </div>
 </div>
 <div class="sect4">
@@ -935,7 +1201,7 @@ passing any <strong>entities</strong> as parameters to the feature&#8217;s metho
 <div class="content">
 <img src="../images/Select(after).png" alt="Select(after)" width="650">
 </div>
-<div class="title">Figure 5. Following the example in Figure 12, the <code>select</code> command is invoked, passing <code>Jason</code> as a parameter, after the intent and entity is identified.</div>
+<div class="title">Figure 13. Following the example in Figure 12, the <code>select</code> command is invoked, passing <code>Jason</code> as a parameter, after the intent and entity is identified.</div>
 </div>
 </div>
 </div>
@@ -1040,7 +1306,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="../images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 6. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 14. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3107,7 +3373,7 @@ In this case, the <code>ProfilePicturePath</code> of the student is edited. When
 <div class="content">
 <img src="../images/editPictureCommandSD.png" alt="width:800">
 </div>
-<div class="title">Figure 7. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
+<div class="title">Figure 15. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
 </div>
 <div class="paragraph">
 <p>As seen from the above diagram, the <code>createFinalEditedStudent()</code> method ensures that the correct profile picture path is saved onto the student&#8217;s XML data in order to be read by the HTML file which displays the student profile page.
@@ -3165,7 +3431,7 @@ The method <code>createEditedStudent</code> creates the student wi</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 04:35:10 UTC
+Last updated 2018-04-15 04:37:15 UTC
 </div>
 </div>
 </body>
