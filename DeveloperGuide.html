@@ -2689,6 +2689,308 @@ E.g. Next of kin contact and an optional profile picture</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-show-a-student-s-dashboard" class="discrete">Use case: Show a student&#8217;s dashboard</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests view the dashboard of a student.</p>
+</li>
+<li>
+<p>Codeducator shows the dashboard the student.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The student index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. Codeducator shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-a-milestone-to-a-dashboard" class="discrete">Use case: Add a milestone to a dashboard</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests view the dashboard of a student.</p>
+</li>
+<li>
+<p>Codeducator shows the dashboard the student.</p>
+</li>
+<li>
+<p>User requests to add a specific milestone to the dashboard of that student.</p>
+</li>
+<li>
+<p>Codeducator adds the milestone to the dashboard of that student.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>3a. The milestone is a duplicate of an existing milestone in the dashboard.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Codeducator shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-a-task-to-a-milestone-in-a-dashboard" class="discrete">Use case: Add a task to a milestone in a dashboard</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests view the dashboard of a student.</p>
+</li>
+<li>
+<p>Codeducator shows the dashboard the student.</p>
+</li>
+<li>
+<p>User requests to add a specific task to a milestone in the dashboard of that student.</p>
+</li>
+<li>
+<p>Codeducator adds the task to the milestone in the dashboard of that student.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>3a. The task is a duplicate of an existing task in the milestone.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Codeducator shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-a-milestone-in-a-dashboard" class="discrete">Use case: Delete a milestone in a dashboard</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests view the dashboard of a student.</p>
+</li>
+<li>
+<p>Codeducator shows the dashboard the student.</p>
+</li>
+<li>
+<p>User requests to delete a milestone in the dashboard of that student.</p>
+</li>
+<li>
+<p>Codeducator deletes the milestone in the dashboard of that student.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>3a. The given student index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Codeducator shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The given milestone index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. Codeducator shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-a-task-in-a-milestone-in-the-dashboard" class="discrete">Use case: Delete a task in a milestone in the dashboard</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests view the dashboard of a student.</p>
+</li>
+<li>
+<p>Codeducator shows the dashboard the student.</p>
+</li>
+<li>
+<p>User requests to delete a task in a milestone in the dashboard of that student.</p>
+</li>
+<li>
+<p>Codeducator deletes the task in the milestone in the dashboard of that student.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>3a. The given student index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Codeducator shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The given milestone index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. Codeducator shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3c. The given task index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3c1. Codeducator shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-mark-a-task-in-a-milestone-as-completed" class="discrete">Use case: Mark a task in a milestone as completed</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests view the dashboard of a student.</p>
+</li>
+<li>
+<p>Codeducator shows the dashboard the student.</p>
+</li>
+<li>
+<p>User requests to mark a task in a milestone in the dashboard of that student as completed.</p>
+</li>
+<li>
+<p>Codeducator marks the task in the milestone in the dashboard of that student as completed.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>3a. The given student index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Codeducator shows an error message.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The given milestone index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. Codeducator shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3c. The given task index is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3c1. Codeducator shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
@@ -4113,7 +4415,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:35:19 UTC
+Last updated 2018-04-15 15:25:38 UTC
 </div>
 </div>
 </body>
