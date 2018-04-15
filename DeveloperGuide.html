@@ -119,6 +119,9 @@
 <li><a href="#editing-the-profile-picture-of-a-student">E.14. Editing the profile picture of a student</a></li>
 <li><a href="#adding-a-lesson-2">E.15. Adding a lesson</a></li>
 <li><a href="#deleting-a-lesson">E.16. Deleting a Lesson</a></li>
+<li><a href="#logging-in-to-google-accounts">E.17. Logging in to Google Accounts</a></li>
+<li><a href="#logging-out-of-google-accounts">E.18. Logging out of Google Accounts.</a></li>
+<li><a href="#syncing-data">E.19. Syncing data</a></li>
 </ul>
 </li>
 </ul>
@@ -1287,7 +1290,7 @@ The <code>moreInfo</code> command <strong>cannot</strong> function if there is n
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="type">void</span> displayStudentDetailsOnBrowserPanel(Student target) <span class="directive">throws</span> StudentNotFoundException,
             StorageFileMissingException {
-        addressBook.checkForStudentInAdressBook(target);
+        addressBook.checkForStudentInAddressBook(target);
         checkIfStorageFileExists();
         indicateRequiredStudentIndexChange(filteredStudents.indexOf(target));
         indicateBrowserPanelToDisplayStudent(target);
@@ -3834,9 +3837,202 @@ Expected:</p>
 </div>
 </li>
 <li>
-<p>Other incorrect deleteLessons to try: <code>deleteLesson</code>, <code>deleteLesson x</code> where x is larger than the index of the last lesson.</p>
+<p>Other incorrect <code>deleteLessons</code> commands to try: <code>deleteLesson</code>, <code>deleteLesson x</code> where x is larger than the index of the last lesson.</p>
 </li>
 </ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-in-to-google-accounts"><a class="link" href="#logging-in-to-google-accounts">E.17. Logging in to Google Accounts</a></h3>
+<div class="paragraph">
+<p>The testing will only include interactions with Codeducator. Login procedure to Google Accounts is handled by Google</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites: Valid Google account, you know your username and password, ending in @gmail.com</p>
+</li>
+<li>
+<p>Test case: Successfully logging in after executing <code>login</code> command.<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Message shows login success</p>
+</li>
+<li>
+<p>Now able to sync data.</p>
+</li>
+<li>
+<p>Now able to logout.</p>
+</li>
+<li>
+<p>Trying to login again results in error message that you are already logged in.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: Unable to login successfully to Google Accounts within 45 seconds.<br>
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Error message shows timeout.</p>
+</li>
+<li>
+<p>Unable to sync data.</p>
+</li>
+<li>
+<p>Unable to logout.</p>
+</li>
+<li>
+<p>Able to login again.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: Ignoring the login screen for 45 seconds.<br>
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Same as unable to login successfully</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: Wrong Google account username and password.<br>
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Same as unable to login successfully</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-out-of-google-accounts"><a class="link" href="#logging-out-of-google-accounts">E.18. Logging out of Google Accounts.</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites: Valid Google account, you know your username and password, ending in @gmail.com. Already logged in</p>
+</li>
+<li>
+<p>Test case: Successfully logging in after executing <code>logout</code> command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Message shows logout success</p>
+</li>
+<li>
+<p>Unable to sync data.</p>
+</li>
+<li>
+<p>Unable to logout.</p>
+</li>
+<li>
+<p>Able to login again.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: Execute <code>logout</code> without logging in first.<br>
+Expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Error message shows not logged in</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="syncing-data"><a class="link" href="#syncing-data">E.19. Syncing data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prerequisites:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Valid Google account, you know your username and password, ending in @gmail.com.<br>
+Expected:</p>
+</li>
+<li>
+<p>Already logged in</p>
+</li>
+<li>
+<p>Some contact data and schedule data</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: executing <code>sync</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>May take some time to sync</p>
+</li>
+<li>
+<p>In <a href="">contacts.google.com</a>, you can see your contacts data synced. Codeducator contacts are grouped under the label "Students".</p>
+</li>
+<li>
+<p>In <a href="">calendar.google.com</a>, you can see your schedule synced. Codeducator events are grouped under the calendar "Student lessons"</p>
+</li>
+<li>
+<p>Message shows sync success.</p>
+</li>
+<li>
+<p>Message</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: executing <code>sync</code> again after editing some data e.g. <code>add</code>, <code>edit</code>, <code>delete</code>, <code>addLesson</code>, <code>deleteLesson</code><br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>May take some time to sync</p>
+</li>
+<li>
+<p>In <a href="">contacts.google.com</a>, you can see your contacts data synced. Updated Codeducator contacts are grouped under the label "Students".</p>
+</li>
+<li>
+<p>In <a href="">calendar.google.com</a>, you can see your schedule synced. Updated Codeducator events are grouped under the calendar "Student lessons"</p>
+</li>
+<li>
+<p>Message shows sync success.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test case: Executing <code>sync</code> without logging in.<br>
+Expected:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Error message shows not logged in</p>
+</li>
+</ul>
 </div>
 </li>
 </ol>
@@ -3847,7 +4043,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 06:38:11 UTC
+Last updated 2018-04-15 07:05:18 UTC
 </div>
 </div>
 </body>
