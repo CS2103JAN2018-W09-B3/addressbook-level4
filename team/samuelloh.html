@@ -2920,12 +2920,252 @@ Expected:</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="profile-page-feature-2"><a class="link" href="#profile-page-feature-2">Profile Page feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The profile page feature allows the user to view the full information of contacts(students) kept in their data. This page has each student&#8217;s main info, miscellaneous info, and their profle picture.
+Users will also be able to edit the miscellaneous information of a student as well as his/her profile picture. The profile picture is changed by providing a file path to the actual picture file.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The picture file to be changed to must be a valid and existing file with extensions of <code>.png</code> or <code>.jpg</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the student model including the primary attributes as well as the miscellaneous information attributes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StudentWithMiscInfoDiagram.png" alt="StudentWithMiscInfoDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>When a student is added by the <code>addCommand</code>, the <code>MiscellaneousInfo</code> and <code>ProfilePicturePath</code> of the student will be set to these default values:
+* Allergies, NextOfKinName, Remarks will be set to <code>Not updated</code>.
+* NextOfKinPhone will be set to <code>000</code>.
+* ProfilePicturePath will be set to the path of a profile photo placeholder within the app.</p>
+</div>
+<div class="paragraph">
+<p>This feature revolves mainly around 3 commands:
+* <code>moreInfo</code> : Shows the actual profile page on the web browser.
+* <code>editMisc</code> : Edits the miscellaneous information of a student.
+* <code>editPicture</code> : Edits the profile picture of a student with a valid picture file(refer to note above). The user will have to provide the filepath to this file.</p>
+</div>
+<div class="paragraph">
+<p><strong class="large"><code>moreInfo</code> Command</strong></p>
+</div>
+<div class="paragraph">
+<p>For the command <code>moreInfo</code>, the model manager calls upon the data storage (addressbook) to raise an event for the Browser Panel to display the profile page of a student.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The <code>moreInfo</code> command <strong>cannot</strong> function if there is no real existing XML data of students. Thus, the sample student data provided at the initial start up will not work with this command. A warning will be mentioned if the command is called without existing data.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The code below shows how the the method is called with the parameter of the required <code>Student</code> functions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="type">void</span> displayStudentDetailsOnBrowserPanel(Student target) <span class="directive">throws</span> StudentNotFoundException,
+            StorageFileMissingException {
+        addressBook.checkForStudentInAdressBook(target);
+        checkIfStorageFileExists();
+        indicateRequiredStudentIndexChange(filteredStudents.indexOf(target));
+        indicateBrowserPanelToDisplayStudent(target);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The method <code>checkIfStorageFileExists()</code> checks if there is any real XML data of students at the moment. If none exists, then an exception is thrown and the command will not perform (as mentioned in the note above).</p>
+</div>
+<div class="paragraph">
+<p>The method <code>indicateRequiredStudentIndexChange(Index indexOfStudent)</code> calls the modifying of XML data of which student is needed to display his/her profile page. This is because the HTML files
+can only read data from XML files and hence, an external XML file containing the index of the student whose profile page is required to be shown is needed. The code snippet to update the file is as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> updateData(<span class="type">int</span> newIndex, <span class="predefined-type">String</span> filePath) <span class="directive">throws</span> <span class="exception">IOException</span> {
+                <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(filePath);
+                RequiredStudentIndex ris = <span class="keyword">new</span> RequiredStudentIndex(newIndex);
+                <span class="keyword">try</span> {
+                        XmlUtil.saveDataToFile(file, ris);
+                } <span class="keyword">catch</span> (JAXBException e) {
+                        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unexpected exception </span><span class="delimiter">&quot;</span></span> + e.getMessage());
+                }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lastly, indicating the browser panel to display a student will raise a <code>StudentInfoDisplayEvent</code> which is handled in the <code>BrowserPanel</code> with the following code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="type">void</span> handleStudentInfoDisplayEvent(StudentInfoDisplayEvent event) {
+                <span class="comment">//... logging process...</span>
+
+                loadStudentInfoPage();
+
+                <span class="comment">//... raising event to switch panels...</span>
+        }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The diagram below shows how the event is handled in the <code>BrowserPanel</code> :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/moreInfoCommandSD.png" alt="width:500">
+</div>
+</div>
+<div class="paragraph">
+<p><strong class="large"><code>editMisc</code> Command</strong></p>
+</div>
+<div class="paragraph">
+<p>For the command <code>editMisc</code>, this is similar to the edit function, except it takes on different optional parameters. These are [ALLERGIES], [NEXTOFKINNAME], [NEXTOFKINPHONE], [REMARKS].
+The code snippet below shows how the <code>studentToEdit</code> is created when the <code>editMisc command</code> is called.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student studentToEdit, EditMiscDescriptor editMiscDescriptor) {
+                <span class="keyword">assert</span> studentToEdit != <span class="predefined-constant">null</span>;
+
+                <span class="comment">//... main information of the student is copied over...</span>
+
+                Allergies allergies = editMiscDescriptor.getAllergies()
+                                .orElse(studentToEdit.getMiscellaneousInfo().getAllergies());
+                NextOfKinName nextOfKinName = editMiscDescriptor.getNextOfKinName()
+                                .orElse(studentToEdit.getMiscellaneousInfo().getNextOfKinName());
+                NextOfKinPhone nextOfKinPhone = editMiscDescriptor.getNextOfKinPhone()
+                                .orElse(studentToEdit.getMiscellaneousInfo().getNextOfKinPhone());
+                Remarks remarks = editMiscDescriptor.getRemarks()
+                                .orElse(studentToEdit.getMiscellaneousInfo().getRemarks());
+
+                MiscellaneousInfo miscellaneousInfo = <span class="keyword">new</span> MiscellaneousInfo(allergies, nextOfKinName, nextOfKinPhone, remarks);
+
+                <span class="keyword">return</span> <span class="keyword">new</span> Student(uniqueKey, name, phone, email, address,
+                                programmingLanguage, tags, isFavourite, dashboard, profilePicturePath, miscellaneousInfo);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After that, the student will be updated with the new details for his/her miscellaneous information.</p>
+</div>
+<div class="paragraph">
+<p><strong class="large"><code>editPicture</code> Command</strong></p>
+</div>
+<div class="paragraph">
+<p>For the command <code>editPicture</code>, the student&#8217;s index will have to be provided by the user again. The next parameter for this is the required file path of the picture file.
+This can be in the form of an absolute file path (starting from a hardrive like <code>C:/Users/&#8230;&#8203;/picture.png</code>) or relative to the folder that the jar application is in.</p>
+</div>
+<div class="paragraph">
+<p>This command uses the similar method of the <code>edit</code> command and the <code>editMisc</code> command where a new <code>Student</code> with the edited details is created to overwrite the current existing student.
+In this case, the <code>ProfilePicturePath</code> of the student is edited. When this command is called, a <code>ProfilePictureChangeEvent</code> will be raised and the Storage Manager will call a method to save the data of the profile picture from its original location to a location in the jar folder.</p>
+</div>
+<div class="paragraph">
+<p>The code below shows how the saving of the file is done:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="type">void</span> saveProfilePicture(ProfilePicturePath pathToChangeTo, Student student) <span class="directive">throws</span> <span class="exception">IOException</span> {
+                <span class="comment">//... ensuring that the picture's filepath exists</span>
+
+                <span class="comment">//... getting the extension of the provided filepath of the picture</span>
+
+                deleteExistingProfilePicture(studentPictureFilePath);
+                Path studentPictureFilePathWithExtension = Paths.get(studentPictureFilePath.toString() + extension);
+                logger.fine(<span class="string"><span class="delimiter">&quot;</span><span class="content">Attempting to write to data file: data/</span><span class="delimiter">&quot;</span></span> + student.getUniqueKey().toString());
+
+
+                Files.copy(newPath, studentPictureFilePathWithExtension);
+
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thus, the HTML file for displaying the student&#8217;s profile page will be able to show the new image, which is copied to the local jar folder.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates the process of calling the <code>editPicture</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/editPictureCommandSD.png" alt="width:800">
+</div>
+<div class="title">Figure 7. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
+</div>
+<div class="paragraph">
+<p>As seen from the above diagram, the <code>createFinalEditedStudent()</code> method ensures that the correct profile picture path is saved onto the student&#8217;s XML data in order to be read by the HTML file which displays the student profile page.
+The method <code>createEditedStudent</code> creates the student wi</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Aspect</th>
+<th class="tableblock halign-left valign-top">Alternatives</th>
+<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><strong>Displaying and styling the profile page of a student</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Have it as a JavaScript function in the HTML file of the student&#8217;s profile page.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ Able to directly read the XML data of students from the file. (current choice)*<br>
+<br>
+- Have to export the required files and folder out of the jar file as the JavaScript is unable to retrieve files outside of the Jar folder.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have it as a JavaFX file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Able to read the student&#8217;s data from the UniqueStudentList.<br>
+<br>
+- : Might be more difficult and messy to implement in code.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><strong>Editing the profile picture</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Copy the picture file into the local jar directory. (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Ensures that the picture can still be loaded even when the original picture file is deleted.<br>
+<br>
+- Requires more code to copy the files over and ensure their validity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read from the direct location of the original picture file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Less code of copying is required and any modifications to the original photo is immediately updated.<br>
+<br>
+- : If the picture is deleted or corrupted, the profile picture would not be able to display.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 16:38:11 UTC
+Last updated 2018-04-15 04:08:41 UTC
 </div>
 </div>
 </body>
