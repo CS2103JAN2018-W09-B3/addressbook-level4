@@ -25,7 +25,14 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Codeducator is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Codeducator is a desktop address book application for private programming language tutors.
+Users are able to track the progress of their students, manage their tutoring schedule and other important information about their students.<br></p>
+</div>
+<div class="paragraph">
+<p>Codeducator has a graphical user interface built with JavaFX but most of the user interactions are done using command line interface. It is written in Java and has about 10 kLoC.<br></p>
+</div>
+<div class="paragraph">
+<p>This project is based on the <a href="https://github.com/se-edu/addressbook-level4">AddressBook-Level4</a> created by the SE-EDU initiative.</p>
 </div>
 </div>
 </div>
@@ -35,29 +42,82 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>Scheduling</strong> functionality and <strong>Google Services integration</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: It allows a user to add lessons for students in their contact list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Schedule helps tutors keep track of their lessons.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Lessons can be added to the schedule.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>No clashing time slots allowed</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Able to upload contacts data and schedule data to Google Contacts and Calendar respectively.</p>
+</li>
+<li>
+<p>Easy organisation of data</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Data uploaded to Google Contact is uploaded under contact group label "Students"</p>
+</li>
+<li>
+<p>Data uploaded to Google Calendar is uploaded under calendar name "Student List". Events have the attendees as the students, so as to make the process of utilising Google Calendar much easier.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a findTag command that allows the user to find Students by Tags</p>
+<p>Justification: This feature improves the product significantly because:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The target user faces a big problem in keeping track of their timetable and schedule. This feature allows a user to easily add, remove and view the events specific to his part time teaching job.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Sync helps to push contacts and schedule to the cloud and be utilised by users in the cloud data context, e.g. viewing across devices</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Highlights: Scheduling required an addition of a major component not in the default AddressBook-level4.
+It required an in-depth analysis of design alternatives.
+The implementation too was challenging as it required fundamental changes the existing Model objects.
+Relating lessons with students required a refactor of <code>Student</code> class</p>
+</li>
+<li>
+<p>Credits:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Uses the excellent <a href="https://github.com/dlemmermann/CalendarFX">CalendarFX</a> class that was thankfully open source at the time of implementation.</p>
+</li>
+<li>
+<p>Uses Google APIs, which are very well documented and well developed. Made my life easier when exploring the option of Google Service integration.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a findTag command that allows the user to find Students by Tags.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W09-B3/main/blob/master/collated/functional/demitycho.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W09-B3/main/blob/master/collated/test/demitycho.md">Test code</a>]
+Both add up to around 3k lines of code.</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -68,7 +128,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.3</code> and <code>v1.5rc</code> (2 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -78,7 +138,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#154</a>)</p>
+<p>Updated the GUI color scheme (Pull requests <a href="https://github.com/CS2103JAN2018-W09-B3/main/pull/154">#154</a>)</p>
+</li>
+<li>
+<p>Refactored <code>AddressBook</code> into a relational database where students are related to lessons by a <code>Uniquekey</code></p>
 </li>
 </ul>
 </div>
@@ -88,7 +151,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Refactored User guide with a more user-friendly tone, where it was more conversational and not so instructional. Gave the user guide a more personalised touch.</p>
+</li>
+<li>
+<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/CS2103JAN2018-W09-B3/main/pull/174">#174</a></p>
 </li>
 </ul>
 </div>
@@ -98,7 +164,19 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103JAN2018-W09-B3/main/pull/167">#167</a></p>
+</li>
+<li>
+<p>Reported bugs for another team:
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/128">1</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/131">2</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/132">3</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/133">4</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/136">5</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/138">6</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/142">7</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/146">8</a>,
+<a href="https://github.com/CS2103JAN2018-W10-B4/main/issues/147">9</a></p>
 </li>
 </ul>
 </div>
@@ -108,10 +186,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Integrated a third party library (Google APIs) to the project (<a href="https://github.com/CS2103JAN2018-W09-B3/main/pull/95">#95</a>)</p>
 </li>
 </ul>
 </div>
@@ -755,8 +830,6 @@ You must first be logged in to log out.
 <h3 id="schedule-feature"><a class="link" href="#schedule-feature">Schedule feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-<div class="sect4">
-<h5 id="adding-a-lesson"><a class="link" href="#adding-a-lesson">Adding a lesson</a></h5>
 <div class="paragraph">
 <p>To get better control of one&#8217;s weekly schedule, we will now attach a component called <code>Schedule</code> to <code>Model</code>.</p>
 </div>
@@ -776,13 +849,17 @@ The UI is bounded to this <code>LessonList</code> so that it can automatically u
 <img src="../images/LessonClassDiagram.png" alt="LessonClassDiagram" width="800">
 </div>
 </div>
+<div class="sect4">
+<h5 id="implementation-of-commands-that-edit-your-schedule"><a class="link" href="#implementation-of-commands-that-edit-your-schedule">Implementation of commands that edit your Schedule</a></h5>
 <div class="paragraph">
-<p>A <code>Schedule</code> has a list of <code>Lesson</code> objects. A <code>Lesson</code> has a <code>UniqueKey</code> attribute, a <code>Day</code> attribute, a starting <code>TIME START_TIME</code> and an ending <code>TIME END_TIME</code> attribute</p>
+<p>Commands that modify the schedule are <code>addLesson</code> and <code>deleteLesson</code>.
+Editing a student&#8217;s name will edit the name of the event in the schedule.
+Deleting a student will also delete all his lessons in the schedule.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Students have a unique <code>UniqueKey</code> field, which we will now use in <code>Lesson</code> to create a relation to Student objects.</p>
+<p>Students have the <code>UniqueKey</code> field, which we will now use in <code>Lesson</code> to create a relation to Student objects.</p>
 </li>
 <li>
 <p>A <code>Lesson</code> object called <code>newLesson</code> will be created by <code>ModelManager.addLesson(UniqueKey key, Day day, Time startTime, Time endTime)</code>, which is implemented as such:</p>
@@ -791,18 +868,30 @@ The UI is bounded to this <code>LessonList</code> so that it can automatically u
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>    public void addLesson(Student studentToAddLesson, Day day, Time startTime, Time endTime) {
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> <span class="type">void</span> addLesson(Student studentToAddLesson, Day day, <span class="predefined-type">Time</span> startTime, <span class="predefined-type">Time</span> endTime) {
         requireAllNonNull(studentToAddLesson, day, startTime, endTime);
         UniqueKey studentKey = studentToAddLesson.getUniqueKey();
-        Lesson newLesson = new Lesson(studentKey, day, startTime, endTime);
+        Lesson newLesson = <span class="keyword">new</span> Lesson(studentKey, day, startTime, endTime);
         schedule.addLesson(newLesson);
         indicateScheduleChanged();
-    }</pre>
+    }</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>A sequence diagram of the result can be seen from the below diagram.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddLessonSequenceDiagram.png" alt="AddLessonSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 22. Sequence Diagram of <code>addLesson</code> command</div>
+</div>
+<div class="paragraph">
 <p>The student will be selected by the Index of the last seen list of students.
-The UniqueKey is retrieved from the Student. A new <code>Lesson</code> will now be added for that student at the specific <code>Day</code>, <code>startTime</code> and <code>endTime</code>, associated with the Student by the <code>key</code></p>
+The UniqueKey is then retrieved from the Student. A new <code>Lesson</code> will now be added for that student at the specific <code>Day</code>, <code>startTime</code> and <code>endTime</code>, associated with the Student by the <code>key</code></p>
+</div>
+<div class="paragraph">
+<p>No <code>Lesson</code> objects can be created for students not in contact list.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -818,8 +907,29 @@ If you have a future implementation that requires the addition of a new attribut
 </div>
 </div>
 <div class="sect4">
-<h5 id="viewing-lessons-in-schedule"><a class="link" href="#viewing-lessons-in-schedule">Viewing lessons in schedule</a></h5>
-
+<h5 id="implementation-of-viewing-your-schedule"><a class="link" href="#implementation-of-viewing-your-schedule">Implementation of viewing your Schedule</a></h5>
+<div class="paragraph">
+<p>The <code>schedule</code> command displays of a student’s dashboard. The <code>schedule</code> command is implemented this way:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ScheduleCommandSequenceDiagram.png" alt="ScheduleCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 23. Sequence Diagram of <code>schedule</code> command</div>
+</div>
+<div class="paragraph">
+<p>From the following diagram,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>InfoPanel</code> handles the <code>showScheduleEvent</code> event. It changes the view to the <code>CalendarPanel</code>, hiding <code>DashboardPanel</code> and <code>BrowserPanel</code>.</p>
+</li>
+<li>
+<p><code>InfoPanel</code> raises the <code>showScheduleEvent</code> which is also handled by <code>CalendarPanel</code> to display the lessons of the student in the schedule.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -839,7 +949,7 @@ If you have a future implementation that requires the addition of a new attribut
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Aspect: Implementation of <code>Schedule</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Implementation of <code>Lesson</code> in <code>Schedule</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>Schedule</code> contains <code>Lesson</code> objects, schedule is made up of only one layer, with attributes directly attached to <code>Lesson</code> (current choice)</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">+ : It is easier implement, just add <code>Lesson</code> to a <code>Schedule</code>, which is a list of <code>Lessons</code><br>
 <br>
@@ -851,6 +961,19 @@ If you have a future implementation that requires the addition of a new attribut
  <br>
  - : Much harder to implement and gets overly complicated</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Data structure of <code>Schedule</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Relational database related by a uniquekey attribute (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Much better normalised design. Modifying contacts list in any way will not affect the Schedule database.<br>
+ <br>
+ - : Another layer of abstraction. Harder to implement</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adding Student objects to lessons in schedule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Easier implementation.<br>
+ <br>
+ - : Changes in contacts list data will require more workarounds to modify schedule data.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -861,6 +984,23 @@ If you have a future implementation that requires the addition of a new attribut
 <p>To sync with Google Contacts and Google Calendar, a <code>GServiceManager</code> class is implemented to handle the 2 services.
 <code>GServiceManager</code> contains a <code>GContactsService</code> and <code>GCalendarService</code> objects. <code>GServiceManager.synchronize</code> calls <code>GContactsService.synchronize</code> and
 <code>GCalendarService.synchronize</code></p>
+</div>
+<div class="sect3">
+<h4 id="prerequisites-dependencies"><a class="link" href="#prerequisites-dependencies">Prerequisites/Dependencies</a></h4>
+<div class="paragraph">
+<p>Google Contacts and Calendar APIs require an external libaries. Remember to add the following to your dependencies</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">dependencies {
+    compile <span class="string"><span class="delimiter">'</span><span class="content">com.google.api-client:google-api-client:1.23.0</span><span class="delimiter">'</span></span>
+    compile <span class="string"><span class="delimiter">'</span><span class="content">com.google.oauth-client:google-oauth-client-jetty:1.23.0</span><span class="delimiter">'</span></span>
+    compile <span class="string"><span class="delimiter">'</span><span class="content">com.google.apis:google-api-services-oauth2:v1-rev139-1.23.0</span><span class="delimiter">'</span></span>
+    compile <span class="string"><span class="delimiter">'</span><span class="content">com.google.apis:google-api-services-calendar:v3-rev305-1.23.0</span><span class="delimiter">'</span></span>
+    compile group: <span class="string"><span class="delimiter">'</span><span class="content">com.google.gdata</span><span class="delimiter">'</span></span>, name: <span class="string"><span class="delimiter">'</span><span class="content">core</span><span class="delimiter">'</span></span>, version: <span class="string"><span class="delimiter">'</span><span class="content">1.47.1</span><span class="delimiter">'</span></span>
+}</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
@@ -879,7 +1019,7 @@ If you have a future implementation that requires the addition of a new attribut
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Aspect: Implementation of <code>GServiceManager</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Implementation of <code>GServiceManager</code> class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Separate out 2 Google Services into two classes (current choice)</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">+ : Less coupling<br>
  <br>
@@ -891,25 +1031,30 @@ If you have a future implementation that requires the addition of a new attribut
 <br>
  - : More coupling</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Implementation of flow of data for a sync</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Only Upload (current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As we have to store the IDs of contacts and events created offline, that would create a massive database issue.
++ : Reduces the complexity of the implementation of syncing data.<br></p>
+<p class="tableblock">+
+- : User cannot download updated data that he synced from another Codeducator instance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Upload and download</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Much more convenient for the user to sync his data to the cloud.<br>
+<br>
+- : Much harder to implement. At every session, need to keep track of which users were edited, added or deleted (similar to a diff program)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:23:02 UTC
+Last updated 2018-04-15 14:01:46 UTC
 </div>
 </div>
 </body>
