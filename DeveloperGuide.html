@@ -1103,6 +1103,9 @@ To mark a <code>Student</code> object called "studentToFavourite" as favourite:<
 </div>
 <div class="sect2">
 <h3 id="programming-language-feature"><a class="link" href="#programming-language-feature">5.3. Programming Language Feature</a></h3>
+<div class="paragraph">
+<p>The <code>programmingLanguage</code> field is part of the student model and helps to keep track of what programming language he/she is being taught with.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">5.3.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1123,7 +1126,7 @@ The string for <code>ProgrammingLanguage</code> must contain visible characters.
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/StudentWithPLFeature.png" alt="StudentWithPLFeature" width="500">
+<img src="images/StudentWithPLFeature.png" alt="StudentWithPLFeature" width="300">
 </div>
 </div>
 <div class="paragraph">
@@ -1140,17 +1143,12 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> AddCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
         <span class="comment">// ...Tokenize the String Input...</span>
-
         <span class="comment">// ...Check if prefixes are present...</span>
-
         <span class="keyword">try</span> {
             <span class="comment">// ...Parses the other fields required of a Student...</span>
-
             ProgrammingLanguage programmingLanguage = ParserUtil.parseSubject(argMultimap
                     .getValue(PREFIX_PROGRAMMING_LANGUAGE)).get();
-
             Student student = <span class="keyword">new</span> Student(name, phone, email, address, programmingLanguage, tagList);
-
             <span class="keyword">return</span> <span class="keyword">new</span> AddCommand(student);
                 } <span class="keyword">catch</span> (IllegalValueException ive) {
             <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(ive.getMessage(), ive);
@@ -1165,11 +1163,8 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student studentToEdit, EditStudentDescriptor editStudentDescriptor) {
         <span class="keyword">assert</span> studentToEdit != <span class="predefined-constant">null</span>;
-
         <span class="comment">// ...Set other attributes of the prospective newly edited student...</span>
-
         ProgrammingLanguage updatedProgrammingLanguage = editStudentDescriptor.getProgrammingLanguage();
-
         <span class="keyword">return</span> <span class="keyword">new</span> Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedProgrammingLanguage,
                 updatedTags);
     }</code></pre>
@@ -1227,11 +1222,13 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 <div class="sect2">
 <h3 id="profile-page-feature"><a class="link" href="#profile-page-feature">5.4. Profile Page feature</a></h3>
+<div class="paragraph">
+<p>The profile page feature allows the user to view the full information of contacts(students) kept in their data. This page has each student&#8217;s main info, miscellaneous info, and their profle picture.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">5.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The profile page feature allows the user to view the full information of contacts(students) kept in their data. This page has each student&#8217;s main info, miscellaneous info, and their profle picture.
-Users will also be able to edit the miscellaneous information of a student as well as his/her profile picture. The profile picture is changed by providing a file path to the actual picture file.</p>
+<p>Users will also be able to edit the miscellaneous information of a student as well as his/her profile picture. The profile picture is changed by providing a file path to the actual picture file.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1250,20 +1247,40 @@ The picture file to be changed to must be a valid and existing file with extensi
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/StudentWithMiscInfoDiagram.png" alt="StudentWithMiscInfoDiagram" width="800">
+<img src="images/StudentWithMiscInfoDiagram.png" alt="StudentWithMiscInfoDiagram" width="300">
 </div>
 </div>
 <div class="paragraph">
-<p>When a student is added by the <code>addCommand</code>, the <code>MiscellaneousInfo</code> and <code>ProfilePicturePath</code> of the student will be set to these default values:
-* Allergies, NextOfKinName, Remarks will be set to <code>Not updated</code>.
-* NextOfKinPhone will be set to <code>000</code>.
-* ProfilePicturePath will be set to the path of a profile photo placeholder within the app.</p>
+<p>When a student is added by the <code>addCommand</code>, the <code>MiscellaneousInfo</code> and <code>ProfilePicturePath</code> of the student will be set to these default values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allergies, NextOfKinName, Remarks will be set to <code>Not updated</code>.</p>
+</li>
+<li>
+<p>NextOfKinPhone will be set to <code>000</code>.</p>
+</li>
+<li>
+<p>ProfilePicturePath will be set to the path of a profile photo placeholder within the app.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>This feature revolves mainly around 3 commands:
-* <code>moreInfo</code> : Shows the actual profile page on the web browser.
-* <code>editMisc</code> : Edits the miscellaneous information of a student.
-* <code>editPicture</code> : Edits the profile picture of a student with a valid picture file(refer to note above). The user will have to provide the filepath to this file.</p>
+<p>This feature revolves mainly around 3 commands:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>moreInfo</code> : Shows the actual profile page on the web browser.</p>
+</li>
+<li>
+<p><code>editMisc</code> : Edits the miscellaneous information of a student.</p>
+</li>
+<li>
+<p><code>editPicture</code> : Edits the profile picture of a student with a valid picture file(refer to note above). The user will have to provide the filepath to this file.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p><strong class="large"><code>moreInfo</code> Command</strong></p>
@@ -1298,23 +1315,9 @@ The <code>moreInfo</code> command <strong>cannot</strong> function if there is n
 </div>
 </div>
 <div class="paragraph">
-<p>The method <code>checkIfStorageFileExists()</code> checks if there is any real XML data of students at the moment. If none exists, then an exception is thrown and the command will not perform (as mentioned in the note above).</p>
-</div>
-<div class="paragraph">
-<p>The method <code>indicateRequiredStudentIndexChange(Index indexOfStudent)</code> calls the modifying of XML data of which student is needed to display his/her profile page. This is because the HTML files
-can only read data from XML files and hence, an external XML file containing the index of the student whose profile page is required to be shown is needed. The code snippet to update the file is as shown:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> updateData(<span class="type">int</span> newIndex, <span class="predefined-type">String</span> filePath) <span class="directive">throws</span> <span class="exception">IOException</span> {
-                <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(filePath);
-                RequiredStudentIndex ris = <span class="keyword">new</span> RequiredStudentIndex(newIndex);
-                <span class="keyword">try</span> {
-                        XmlUtil.saveDataToFile(file, ris);
-                } <span class="keyword">catch</span> (JAXBException e) {
-                        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">AssertionError</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unexpected exception </span><span class="delimiter">&quot;</span></span> + e.getMessage());
-                }</code></pre>
-</div>
+<p>The method <code>checkIfStorageFileExists()</code> checks if there is any real XML data of students at the moment. If none exists, then an exception is thrown and the command will not perform (as mentioned in the note above).
+The method <code>indicateRequiredStudentIndexChange(Index indexOfStudent)</code> calls the modifying of XML data of which student is needed to display his/her profile page. This is because the HTML files
+can only read data from XML files and hence, an external XML file containing the index of the student whose profile page is required to be shown is needed.</p>
 </div>
 <div class="paragraph">
 <p>Lastly, indicating the browser panel to display a student will raise a <code>StudentInfoDisplayEvent</code> which is handled in the <code>BrowserPanel</code> with the following code:</p>
@@ -1323,9 +1326,7 @@ can only read data from XML files and hence, an external XML file containing the
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="type">void</span> handleStudentInfoDisplayEvent(StudentInfoDisplayEvent event) {
                 <span class="comment">//... logging process...</span>
-
                 loadStudentInfoPage();
-
                 <span class="comment">//... raising event to switch panels...</span>
         }</code></pre>
 </div>
@@ -1335,7 +1336,7 @@ can only read data from XML files and hence, an external XML file containing the
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/moreInfoCommandSD.png" alt="width:500">
+<img src="images/moreInfoCommandSD.png" alt="width:400">
 </div>
 </div>
 <div class="paragraph">
@@ -1349,9 +1350,7 @@ The code snippet below shows how the <code>studentToEdit</code> is created when 
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student studentToEdit, EditMiscDescriptor editMiscDescriptor) {
                 <span class="keyword">assert</span> studentToEdit != <span class="predefined-constant">null</span>;
-
                 <span class="comment">//... main information of the student is copied over...</span>
-
                 Allergies allergies = editMiscDescriptor.getAllergies()
                                 .orElse(studentToEdit.getMiscellaneousInfo().getAllergies());
                 NextOfKinName nextOfKinName = editMiscDescriptor.getNextOfKinName()
@@ -1360,7 +1359,6 @@ The code snippet below shows how the <code>studentToEdit</code> is created when 
                                 .orElse(studentToEdit.getMiscellaneousInfo().getNextOfKinPhone());
                 Remarks remarks = editMiscDescriptor.getRemarks()
                                 .orElse(studentToEdit.getMiscellaneousInfo().getRemarks());
-
                 MiscellaneousInfo miscellaneousInfo = <span class="keyword">new</span> MiscellaneousInfo(allergies, nextOfKinName, nextOfKinPhone, remarks);
 
                 <span class="keyword">return</span> <span class="keyword">new</span> Student(uniqueKey, name, phone, email, address,
@@ -1389,16 +1387,11 @@ In this case, the <code>ProfilePicturePath</code> of the student is edited. When
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">public</span> <span class="type">void</span> saveProfilePicture(ProfilePicturePath pathToChangeTo, Student student) <span class="directive">throws</span> <span class="exception">IOException</span> {
                 <span class="comment">//... ensuring that the picture's filepath exists</span>
-
                 <span class="comment">//... getting the extension of the provided filepath of the picture</span>
-
                 deleteExistingProfilePicture(studentPictureFilePath);
                 Path studentPictureFilePathWithExtension = Paths.get(studentPictureFilePath.toString() + extension);
                 logger.fine(<span class="string"><span class="delimiter">&quot;</span><span class="content">Attempting to write to data file: data/</span><span class="delimiter">&quot;</span></span> + student.getUniqueKey().toString());
-
-
                 Files.copy(newPath, studentPictureFilePathWithExtension);
-
     }</code></pre>
 </div>
 </div>
@@ -1410,7 +1403,7 @@ In this case, the <code>ProfilePicturePath</code> of the student is edited. When
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/editPictureCommandSD.png" alt="width:800">
+<img src="images/editPictureCommandSD.png" alt="width:600">
 </div>
 <div class="title">Figure 14. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
 </div>
@@ -4043,7 +4036,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 12:15:57 UTC
+Last updated 2018-04-15 13:23:01 UTC
 </div>
 </div>
 </body>
