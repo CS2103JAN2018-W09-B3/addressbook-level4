@@ -239,33 +239,6 @@ You will be able to attain the profile page style in <code>Figure 5</code> if yo
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="edit-the-profile-picture-of-a-student-code-editpicture-code"><a class="link" href="#edit-the-profile-picture-of-a-student-code-editpicture-code">Edit the profile picture of a student : <code>editPicture</code></a></h4>
-<div class="paragraph">
-<p>Allows you to edit the current profile picture of a student to a new picture from a specific file path indicated by you.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>editPicture i/STUDENT_INDEX pa/FILE_PATH_OF_PICTURE</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The image file you wish to use must exist and have extensions either of <code>.jpg</code> or <code>.png</code>.<br>
-The file path you entered can be relative to the current folder of the <code>jar</code> file or the absolute path e.g. <code>C:/Users/User/Desktop/photo.jpg</code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect4">
-<h5 id="steps-taken-to-edit-the-profile-picture-of-a-student"><a class="link" href="#steps-taken-to-edit-the-profile-picture-of-a-student">Steps taken to edit the profile picture of a student</a></h5>
 <div class="paragraph">
 <p>Suppose you wish to have this picture, with the file name of <code>animal.jpg</code>  as a new profile picture as your student:</p>
 </div>
@@ -325,94 +298,6 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 </tr>
 </table>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Changes the profile photo of a student with the specified <code>INDEX</code> to a new one which has a file path of <code>FILE_PATH_OF_PICTURE</code></p>
-</li>
-<li>
-<p>The index refers to the index number shown in the last schedule listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>The file path of the picture is either relative to the folder which the jar application is or can be speicifed from the hard drive.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="edit-the-miscellaneous-info-of-a-student-code-editmisc-code"><a class="link" href="#edit-the-miscellaneous-info-of-a-student-code-editmisc-code">Edit the miscellaneous info of a student : <code>editMisc</code></a></h4>
-<div class="paragraph">
-<p>Allows you to edit the miscellaneous information of a student. This includes his/her allergies, Next-Of-Kin name, Next-Of-Kin contact number and remarks for the student.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: <code>editMisc INDEX [al/ALLERGIES] [nokn/NEXT_OF_KIN_NAME] [nokp/NEXT_OF_KIN_PHONE] [r/REMARKS]</code></p>
-</div>
-<div class="sect4">
-<h5 id="steps-taken-to-edit-the-miscellaneous-information-of-a-student"><a class="link" href="#steps-taken-to-edit-the-miscellaneous-information-of-a-student">Steps Taken to edit the miscellaneous information of a student</a></h5>
-<div class="paragraph">
-<p>Suppose you wish to edit the allergies information of a student to <code>Allergic to nuts</code>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Enter the command as shown below:</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/editMiscCommand.png" alt="width 400">
-</div>
-<div class="title">Figure 6. Command to be entered to edit the allergies information of a student.</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>You will edit the <code>allergies</code> portion of the miscellaneous information of the 1st student of the student list to "Allergic to nuts". You will then see the following:</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/editPictureSuccess.png" alt="][width:400">
-</div>
-<div class="title">Figure 7. Command to edit the allergies portion of the student&#8217;s miscellaneous information success!</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>By calling the <code>moreInfo</code> command (found in the section above), you will be able to view the student&#8217;s profile page with the updated allergies information as shown below:</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/editMiscSuccess.png" alt="width:600">
-</div>
-<div class="title">Figure 8. The profile page of the selected student is shown with the newly updated allergies information!</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the student&#8217;s miscellaneous info at the specified <code>INDEX</code>. The index refers to the index number shown in the last student listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one optional field must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to and overwritten by the input values.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -431,61 +316,6 @@ The ideal aspect ratio of the picture is 1.25 from height to width.
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="programming-language-feature"><a class="link" href="#programming-language-feature">Programming Language Feature</a></h3>
-<div class="paragraph">
-<p>The <code>programmingLanguage</code> field is part of the student model and helps to keep track of what programming language he/she is being taught with.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The programming language feature involves having an additional class to the student model called <code>ProgrammingLanguage</code>.
-It stores the name of the programming language currently being taught to each student as a string.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The string for <code>ProgrammingLanguage</code> must contain visible characters.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/StudentWithPLFeature.png" alt="StudentWithPLFeature" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>As can be seen from the diagram, the field <code>ProgrammingLanuage</code> has been added to the student model.</p>
-</div>
-<div class="paragraph">
-<p>Concerning the Logic component, when the <code>add</code> command or <code>edit</code> command is called,
-a <code>Student</code> object with attributes including <code>ProgrammingLanguage</code> will be created/edited depending on which command was entered.</p>
-</div>
-<div class="paragraph">
-<p>For example, adding a student would have the command string parsed for arguments in such a way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> AddCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
-        <span class="comment">// ...Tokenize the String Input...</span>
-        <span class="comment">// ...Check if prefixes are present...</span>
-        <span class="keyword">try</span> {
-            <span class="comment">// ...Parses the other fields required of a Student...</span>
-            ProgrammingLanguage programmingLanguage = ParserUtil.parseSubject(argMultimap
-                    .getValue(PREFIX_PROGRAMMING_LANGUAGE)).get();
-            Student student = <span class="keyword">new</span> Student(name, phone, email, address, programmingLanguage, tagList);
-            <span class="keyword">return</span> <span class="keyword">new</span> AddCommand(student);
-                } <span class="keyword">catch</span> (IllegalValueException ive) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(ive.getMessage(), ive);
-        }
-        }</code></pre>
-</div>
-</div>
 <div class="paragraph">
 <p>A new student would then be added. On the other hand, editing a student&#8217;s programming language will be done by creating an edited student in such a way:</p>
 </div>
@@ -502,7 +332,6 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </div>
 <div class="paragraph">
 <p>The editedStudent will have the new programming language attribute and will hence be used to replace in the Address Book in-memory.</p>
-</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
@@ -548,70 +377,6 @@ a <code>Student</code> object with attributes including <code>ProgrammingLanguag
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="profile-page-feature"><a class="link" href="#profile-page-feature">Profile Page feature</a></h3>
-<div class="paragraph">
-<p>The profile page feature allows the user to view the full information of contacts(students) kept in their data. This page has each student&#8217;s main info, miscellaneous info, and their profle picture.</p>
-</div>
-<div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
-<div class="paragraph">
-<p>Users will also be able to edit the miscellaneous information of a student as well as his/her profile picture. The profile picture is changed by providing a file path to the actual picture file.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The picture file to be changed to must be a valid and existing file with extensions of <code>.png</code> or <code>.jpg</code>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following diagram shows the student model including the primary attributes as well as the miscellaneous information attributes.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/StudentWithMiscInfoDiagram.png" alt="StudentWithMiscInfoDiagram" width="300">
-</div>
-</div>
-<div class="paragraph">
-<p>When a student is added by the <code>addCommand</code>, the <code>MiscellaneousInfo</code> and <code>ProfilePicturePath</code> of the student will be set to these default values:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Allergies, NextOfKinName, Remarks will be set to <code>Not updated</code>.</p>
-</li>
-<li>
-<p>NextOfKinPhone will be set to <code>000</code>.</p>
-</li>
-<li>
-<p>ProfilePicturePath will be set to the path of a profile photo placeholder within the app.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This feature revolves mainly around 3 commands:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>moreInfo</code> : Shows the actual profile page on the web browser.</p>
-</li>
-<li>
-<p><code>editMisc</code> : Edits the miscellaneous information of a student.</p>
-</li>
-<li>
-<p><code>editPicture</code> : Edits the profile picture of a student with a valid picture file(refer to note above). The user will have to provide the filepath to this file.</p>
-</li>
-</ol>
-</div>
 <div class="paragraph">
 <p><strong class="large"><code>moreInfo</code> Command</strong></p>
 </div>
@@ -670,36 +435,6 @@ can only read data from XML files and hence, an external XML file containing the
 </div>
 </div>
 <div class="paragraph">
-<p><strong class="large"><code>editMisc</code> Command</strong></p>
-</div>
-<div class="paragraph">
-<p>For the command <code>editMisc</code>, this is similar to the edit function, except it takes on different optional parameters. These are [ALLERGIES], [NEXTOFKINNAME], [NEXTOFKINPHONE], [REMARKS].
-The code snippet below shows how the <code>studentToEdit</code> is created when the <code>editMisc command</code> is called.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">        <span class="directive">private</span> <span class="directive">static</span> Student createEditedStudent(Student studentToEdit, EditMiscDescriptor editMiscDescriptor) {
-                <span class="keyword">assert</span> studentToEdit != <span class="predefined-constant">null</span>;
-                <span class="comment">//... main information of the student is copied over...</span>
-                Allergies allergies = editMiscDescriptor.getAllergies()
-                                .orElse(studentToEdit.getMiscellaneousInfo().getAllergies());
-                NextOfKinName nextOfKinName = editMiscDescriptor.getNextOfKinName()
-                                .orElse(studentToEdit.getMiscellaneousInfo().getNextOfKinName());
-                NextOfKinPhone nextOfKinPhone = editMiscDescriptor.getNextOfKinPhone()
-                                .orElse(studentToEdit.getMiscellaneousInfo().getNextOfKinPhone());
-                Remarks remarks = editMiscDescriptor.getRemarks()
-                                .orElse(studentToEdit.getMiscellaneousInfo().getRemarks());
-                MiscellaneousInfo miscellaneousInfo = <span class="keyword">new</span> MiscellaneousInfo(allergies, nextOfKinName, nextOfKinPhone, remarks);
-
-                <span class="keyword">return</span> <span class="keyword">new</span> Student(uniqueKey, name, phone, email, address,
-                                programmingLanguage, tags, isFavourite, dashboard, profilePicturePath, miscellaneousInfo);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After that, the student will be updated with the new details for his/her miscellaneous information.</p>
-</div>
-<div class="paragraph">
 <p><strong class="large"><code>editPicture</code> Command</strong></p>
 </div>
 <div class="paragraph">
@@ -735,57 +470,7 @@ In this case, the <code>ProfilePicturePath</code> of the student is edited. When
 <div class="content">
 <img src="../images/editPictureCommandSD.png" alt="width:600">
 </div>
-<div class="title">Figure 9. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
-</div>
-<div class="paragraph">
-<p>As seen from the above diagram, the <code>createFinalEditedStudent()</code> method ensures that the correct profile picture path is saved onto the student&#8217;s XML data in order to be read by the HTML file which displays the student profile page.
-The method <code>createEditedStudent</code> creates the student wi</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Aspect</th>
-<th class="tableblock halign-left valign-top">Alternatives</th>
-<th class="tableblock halign-left valign-top">Pros (+)/ Cons(-)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><strong>Displaying and styling the profile page of a student</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">*Have it as a JavaScript function in the HTML file of the student&#8217;s profile page.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ Able to directly read the XML data of students from the file. (current choice)*<br>
-<br>
-- Have to export the required files and folder out of the jar file as the JavaScript is unable to retrieve files outside of the Jar folder.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have it as a JavaFX file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Able to read the student&#8217;s data from the UniqueStudentList.<br>
-<br>
-- : Might be more difficult and messy to implement in code.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><strong>Editing the profile picture</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Copy the picture file into the local jar directory. (current choice)</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Ensures that the picture can still be loaded even when the original picture file is deleted.<br>
-<br>
-- Requires more code to copy the files over and ensure their validity</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Read from the direct location of the original picture file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+ : Less code of copying is required and any modifications to the original photo is immediately updated.<br>
-<br>
-- : If the picture is deleted or corrupted, the profile picture would not be able to display.</p></td>
-</tr>
-</tbody>
-</table>
+<div class="title">Figure 6. Sequence diagram showing the important details of the process of the <code>editPicture</code> command</div>
 </div>
 </div>
 </div>
@@ -793,7 +478,7 @@ The method <code>createEditedStudent</code> creates the student wi</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 14:01:32 UTC
+Last updated 2018-04-15 14:09:52 UTC
 </div>
 </div>
 </body>
