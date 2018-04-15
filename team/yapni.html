@@ -219,7 +219,7 @@ Adds the 1st student in the address book to favourites.</p>
 <div class="content">
 <img src="../images/fav1_screenshot.png" alt="fav1 screenshot" width="800">
 </div>
-<div class="title">Figure 1. Entering the <code>fav</code> command followed by the <code>INDEX</code> of the student to add to favourites</div>
+<div class="title">Figure 1. Entering the <code>fav</code> command followed by the <code>INDEX</code> 1 of the student to add to favourites</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in adding the student as favourite when you see "Student added to favourites: [STUDENT&#8217;S NAME]" in the result box and the student&#8217;s name being highlighted in orange.</p>
@@ -246,7 +246,7 @@ The student <code>INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="content">
 <img src="../images/fav3_screenshot.png" alt="fav3 screenshot" width="800">
 </div>
-<div class="title">Figure 3. Error message displayed when an invalid student index is entered</div>
+<div class="title">Figure 3. Error message displayed when an invalid <code>INDEX</code> 10 is entered. There are less than 10 students in the student contact list.</div>
 </div>
 </div>
 </div>
@@ -296,7 +296,7 @@ Removes the 1st student in the address book from favourites.</p>
 <div class="content">
 <img src="../images/unfav1_screenshot.png" alt="unfav1 screenshot" width="800">
 </div>
-<div class="title">Figure 4. Entering the <code>unfav</code> command followed by the <code>INDEX</code> of the student to remove from favourites.</div>
+<div class="title">Figure 4. Entering the <code>unfav</code> command followed by the <code>INDEX</code> 1 of the student to remove from favourites.</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in removing the student from favourites when you see "Student removed from favourites: [STUDENT&#8217;S NAME]" in the result box.</p>
@@ -323,7 +323,7 @@ The student <code>INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="content">
 <img src="../images/unfav3_screenshot.png" alt="unfav3 screenshot" width="800">
 </div>
-<div class="title">Figure 6. Error message displayed when an invalid student index is entered</div>
+<div class="title">Figure 6. Error message displayed when an invalid <code>INDEX</code> 10 is entered. There are less than 10 students in the list of favourite students.</div>
 </div>
 </div>
 </div>
@@ -402,7 +402,7 @@ Shows the dashboard of the 1st student in the address book.</p>
 <div class="content">
 <img src="../images/showDB1_screenshot.png" alt="showDB1 screenshot" width="800">
 </div>
-<div class="title">Figure 8. Entering the <code>showDB</code> command followed by the <code>STUDENT_INDEX</code> of the student whose dashboard you wish to view</div>
+<div class="title">Figure 8. Entering the <code>showDB</code> command followed by the <code>STUDENT_INDEX</code> 1 of the student whose dashboard you wish to view</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in viewing the student&#8217;s dashboard if you see the message "Selected Dashboard of Student: <code>STUDENT_INDEX</code> " in the result box, with the dashboard containing the student&#8217;s name appearing on the right panel.</p>
@@ -429,7 +429,7 @@ The student <code>INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="content">
 <img src="../images/showDB3_screenshot.png" alt="showDB3 screenshot" width="800">
 </div>
-<div class="title">Figure 10. Error message displayed when an invalid student index is entered</div>
+<div class="title">Figure 10. Error message displayed when an invalid <code>STUDENT_INDEX</code> 10 is entered. There are less than 10 students in the student contact list.</div>
 </div>
 </div>
 </div>
@@ -486,7 +486,7 @@ Adds a milestone to the dashboard of the 1st student in the address book. The mi
 <div class="content">
 <img src="../images/addMS1_screenshot.png" alt="addMS1 screenshot" width="800">
 </div>
-<div class="title">Figure 11. Entering the <code>addMS</code> command, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_DUE_DATE</code> and <code>DESCRIPTION_OF_MILESTONE</code></div>
+<div class="title">Figure 11. Entering the <code>addMS</code> command, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_DUE_DATE</code> as "23/05/2018 23:59" and <code>DESCRIPTION_OF_MILESTONE</code> as "Learn Arrays"</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in adding the milestone to the student&#8217;s dashboard if you see the message "Milestone added to Student&#8217;s Dashboard:" followed by the description of the milestone you have added in the result box.
@@ -514,7 +514,7 @@ The <code>STUDENT_INDEX</code> provided must be valid. Otherwise, an error messa
 <div class="content">
 <img src="../images/addMS3_screenshot.png" alt="addMS3 screenshot" width="800">
 </div>
-<div class="title">Figure 13. Error message displayed when an invalid <code>STUDENT_INDEX</code> is entered</div>
+<div class="title">Figure 13. Error message displayed when an invalid <code>STUDENT_INDEX</code> 10 is entered. There are less than 10 students in the student contact list.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -532,7 +532,7 @@ The <code>MILESTONE_DUE_DATE</code> provided must have a valid calendar date and
 <div class="content">
 <img src="../images/addMS4_screenshot.png" alt="addMS4 screenshot" width="800">
 </div>
-<div class="title">Figure 14. Error message displayed when an invalid <code>MILESTONE_DUE_DATE</code> is entered</div>
+<div class="title">Figure 14. Error message displayed when an invalid <code>MILESTONE_DUE_DATE</code> "31/02/2018 23:59" is entered. There is no 31/02/2018 in the calendar.</div>
 </div>
 </div>
 </div>
@@ -589,7 +589,7 @@ Deletes the 1st milestone from the dashboard of the 1st student in the address b
 <div class="content">
 <img src="../images/deleteMS1_screenshot.png" alt="deleteMS1 screenshot" width="800">
 </div>
-<div class="title">Figure 15. Entering the <code>deleteMS</code> command, followed by the <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code></div>
+<div class="title">Figure 15. Entering the <code>deleteMS</code> command, followed by the <code>STUDENT_INDEX</code> as "1" and <code>MILESTONE_INDEX</code> as "1"</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in deleting the milestone if you see the message "Deleted milestone:" followed by the description of the milestone in the result box. The milestone will also no longer be on the dashboard of the student.</p>
@@ -616,7 +616,7 @@ The <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> provided must be
 <div class="content">
 <img src="../images/deleteMS3_screenshot.png" alt="deleteMS3 screenshot" width="800">
 </div>
-<div class="title">Figure 17. Error message displayed when invalid <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> are entered</div>
+<div class="title">Figure 17. Error message displayed when invalid <code>STUDENT_INDEX</code> "10" and <code>MILESTONE_INDEX</code> "10" are entered</div>
 </div>
 </div>
 </div>
@@ -673,7 +673,7 @@ Adds a task to the 1st milestone in the dashboard of the 1st student in the addr
 <div class="content">
 <img src="../images/addTask1_screenshot.png" alt="addTask1 screenshot" width="800">
 </div>
-<div class="title">Figure 18. Entering the command <code>addTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, <code>NAME_OF_TASK</code> and <code>DESCRIPTION_OF_TASK</code></div>
+<div class="title">Figure 18. Entering the command <code>addTask</code>, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_INDEX</code> as "1", <code>NAME_OF_TASK</code> as "Learn Array Syntax"  and <code>DESCRIPTION_OF_TASK</code> as "Student to refer to the textbook"</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in adding the task to the milestone if you see the message "New task added:" followed by the description of the task you have added in the result box. The new task will also appear in the task list of the milestone.</p>
@@ -700,7 +700,7 @@ The <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> provided must be
 <div class="content">
 <img src="../images/addTask3_screenshot.png" alt="addTask3 screenshot" width="800">
 </div>
-<div class="title">Figure 20. Error message displayed when invalid <code>STUDENT_INDEX</code> and <code>MILESTONE_INDEX</code> are entered</div>
+<div class="title">Figure 20. Error message displayed when invalid <code>STUDENT_INDEX</code> "10" and <code>MILESTONE_INDEX</code> "10" are entered</div>
 </div>
 </div>
 </div>
@@ -763,7 +763,7 @@ Deletes the 1st task in the 1st milestone. The milestone is in the dashboard of 
 <div class="content">
 <img src="../images/deleteTask1_screenshot.png" alt="deleteTask1 screenshot" width="800">
 </div>
-<div class="title">Figure 21. Entering the command <code>deleteTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code></div>
+<div class="title">Figure 21. Entering the command <code>deleteTask</code>, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_INDEX</code> as "1" and <code>TASK_INDEX</code> as "1"</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in deleting the task from the milestone if you see the message: "Deleted task:" followed by the description of the task you deleted in the result box. The task will also no longer be in the task list of the milestone.</p>
@@ -790,7 +790,7 @@ The <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, and <code>TASK_IND
 <div class="content">
 <img src="../images/deleteTask3_screenshot.png" alt="deleteTask3 screenshot" width="800">
 </div>
-<div class="title">Figure 23. Error message displayed when invalid <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code> are entered</div>
+<div class="title">Figure 23. Error message displayed when invalid <code>STUDENT_INDEX</code> "10", <code>MILESTONE_INDEX</code> "10" and <code>TASK_INDEX</code> "10" are entered</div>
 </div>
 </div>
 </div>
@@ -865,7 +865,7 @@ Marks the 1st task in the 1st milestone as completed. The milestone is in the da
 <div class="content">
 <img src="../images/checkTask1_screenshot.png" alt="checkTask1 screenshot" width="800">
 </div>
-<div class="title">Figure 24. Entering the command <code>checkTask</code>, followed by the <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code></div>
+<div class="title">Figure 24. Entering the command <code>checkTask</code>, followed by the <code>STUDENT_INDEX</code> as "1", <code>MILESTONE_INDEX</code> as "1" and <code>TASK_INDEX</code> as "1"</div>
 </div>
 <div class="paragraph">
 <p><strong>Step 3</strong>: You have succeeded in marking the task as completed if you see the message "Task <code>TASK_INDEX</code> marked as completed in milestone <code>MILESTONE_INDEX</code> ".
@@ -911,7 +911,7 @@ The <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code>, and <code>TASK_IND
 <div class="content">
 <img src="../images/checkTask3_screenshot.png" alt="checkTask3 screenshot" width="800">
 </div>
-<div class="title">Figure 27. Error message displayed when invalid <code>STUDENT_INDEX</code>, <code>MILESTONE_INDEX</code> and <code>TASK_INDEX</code> are entered</div>
+<div class="title">Figure 27. Error message displayed when invalid <code>STUDENT_INDEX</code> "10", <code>MILESTONE_INDEX</code> "10" and <code>TASK_INDEX</code> "10" are entered</div>
 </div>
 </div>
 </div>
@@ -1787,7 +1787,7 @@ Expected:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 04:08:41 UTC
+Last updated 2018-04-15 04:35:10 UTC
 </div>
 </div>
 </body>
